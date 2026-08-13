@@ -1,0 +1,57 @@
+---
+import { navigation, site } from '../../data/site';
+import OptimizedImage from '../ui/OptimizedImage.astro';
+import avatar from '../../assets/avatar.png';
+import Container from './Container.astro';
+import ThemeToggle from '../../islands/ThemeToggle';
+import MobileNav from '../../islands/MobileNav';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="relative z-50 pt-6">
+  <Container>
+    <div class="flex items-center gap-4">
+      <div class="flex flex-1">
+        <a href="/" class="group block cursor-pointer" aria-label={`${site.name} anasayfa`}>
+          <OptimizedImage
+            src={avatar}
+            alt=""
+            width={44}
+            height={44}
+            loading="eager"
+            fetchpriority="high"
+            sizes="44px"
+            class="rounded-full object-cover shadow-sm ring-2 ring-zinc-200 transition group-hover:ring-primary/40 dark:ring-zinc-700 dark:group-hover:ring-primary/50"
+          />
+        </a>
+      </div>
+
+      <nav class="hidden flex-1 justify-center md:flex" aria-label="Ana menü">
+        <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+          {
+            navigation.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    'block px-3 py-2 transition',
+                    currentPath === item.href ? 'text-primary' : 'hover:text-primary',
+                  ]}
+                  aria-current={currentPath === item.href ? 'page' : undefined}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex flex-1 items-center justify-end gap-3">
+        <MobileNav client:media="(max-width: 767px)" items={[...navigation]} currentPath={currentPath} />
+        <ThemeToggle client:idle />
+      </div>
+    </div>
+  </Container>
+</header>

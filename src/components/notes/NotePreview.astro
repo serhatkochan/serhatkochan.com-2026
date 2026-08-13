@@ -1,0 +1,57 @@
+---
+import { formatDate } from '../../lib/dates';
+
+interface Note {
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: Date;
+  inProgress?: boolean;
+}
+
+interface Props {
+  note: Note;
+  dense?: boolean;
+}
+
+const { note, dense = false } = Astro.props;
+const { title, description, slug, publishedAt, inProgress = false } = note;
+
+const badgeClass =
+  'inline-flex items-center rounded-md bg-primary px-2.5 py-1 text-xs font-medium leading-normal text-white';
+---
+
+<article class:list={['group relative', dense ? 'py-2' : 'py-6', 'md:grid md:grid-cols-4 md:items-baseline']}>
+  <span
+    class:list={[
+      'absolute -inset-x-4 z-0 scale-95 bg-zinc-100/80 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl',
+      dense ? '-inset-y-2' : '-inset-y-6',
+    ]}></span>
+
+  <a
+    href={`/notes/${slug}`}
+    aria-label={title}
+    class:list={[
+      'absolute z-20 cursor-pointer sm:rounded-2xl',
+      dense ? '-inset-x-4 -inset-y-2 sm:-inset-x-6' : '-inset-x-4 -inset-y-6 sm:-inset-x-6',
+    ]}></a>
+
+  <div class="pointer-events-none relative z-10 md:col-span-3">
+    <div class:list={['mb-3 flex items-center gap-2 font-mono text-sm text-zinc-400 dark:text-zinc-500', !dense && 'md:hidden']}>
+      <time datetime={publishedAt.toISOString()}>{formatDate(publishedAt)}</time>
+      {inProgress && <span class={badgeClass}>Devam ediyor</span>}
+    </div>
+
+    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">{title}</h2>
+    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{description}</p>
+  </div>
+
+  {
+    !dense && (
+      <div class="pointer-events-none relative z-10 mt-1 hidden flex-col items-end gap-2 font-mono text-sm text-zinc-400 md:flex dark:text-zinc-500">
+        <time datetime={publishedAt.toISOString()}>{formatDate(publishedAt)}</time>
+        {inProgress && <span class={badgeClass}>Devam ediyor</span>}
+      </div>
+    )
+  }
+</article>

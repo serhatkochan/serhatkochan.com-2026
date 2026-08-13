@@ -1,0 +1,37 @@
+# Serhat Koçhan — serhatkochan.com
+
+> Yazılımcı, teknoloji tutkunu. Yazılım, projeler ve deneyimler üzerine notlar.
+
+## Hakkında
+
+- İsim: Serhat Koçhan
+- Rol: Yazılımcı, Teknoloji Tutkunu
+- Site: https://serhatkochan.com
+- E-posta: serhatkochan@hotmail.com.tr
+- Portre: https://serhatkochan.com/assets/portrait.png
+
+## Sayfalar
+
+- [Anasayfa](https://serhatkochan.com/)
+- [Notlar](https://serhatkochan.com/notes/)
+- [Projeler](https://serhatkochan.com/projects/)
+- [Hakkında](https://serhatkochan.com/about/)
+
+## Notlar
+
+- [Yapay Zeka ve Öğrenme](https://serhatkochan.com/notes/yapay-zeka-ve-ogrenme-beynimizi-ve-aliskanliklarimizi-nasil-etkiliyor/)
+- [Scrum Nedir? Daily Toplantıları](https://serhatkochan.com/notes/scrum-nedir-daily-toplantilari-neden-yapilir/)
+- [React Performans Optimizasyonu](https://serhatkochan.com/notes/react-performans-optimizasyonu-memo-usememo-usecallback-ve-debounce-teknikleri/)
+- [Javascript Spread, Rest, Destructuring](https://serhatkochan.com/notes/javascriptin-3-silahsoru-spread-rest-destructuring/)
+
+## İletişim
+
+- GitHub: https://github.com/serhatkochan
+- LinkedIn: https://www.linkedin.com/in/serhatkochan
+- Twitter: https://twitter.com/serhatkochan_
+- Instagram: https://www.instagram.com/serhatkochan_/
+
+## Ek
+
+- RSS: https://serhatkochan.com/rss.xml
+- Tam içerik haritası: https://serhatkochan.com/llms-full.txt

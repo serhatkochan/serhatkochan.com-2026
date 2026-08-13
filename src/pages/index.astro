@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/layout/Container.astro';
+import SocialLink from '../components/ui/SocialLink.astro';
+import NotePreview from '../components/notes/NotePreview.astro';
+import Resume from '../components/ui/Resume.astro';
+import Photos from '../components/ui/Photos.astro';
+import { site, tagline, socialMedia } from '../data/site';
+import { travelPhotos } from '../data/photos';
+
+const allNotes = await getCollection('notes', ({ data }) => !data.draft);
+const notes = allNotes
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 5)
+  .map((entry) => ({
+    slug: entry.id,
+    ...entry.data,
+  }));
+
+const heroImage = await getImage({ src: travelPhotos[0].src, width: 352, height: 391, format: 'webp' });
+---
+
+<BaseLayout description={site.description} path="/" preloadImage={heroImage.src}>
+  <Container class="mt-9">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+        {site.name}
+      </h1>
+      <p class="mt-6 max-w-2xl text-base text-balance">{tagline}</p>
+      <div class="mt-6 flex gap-6">
+        {socialMedia.map((profile) => <SocialLink href={profile.link} label={`${profile.name} profili`} icon={profile.icon} />)}
+      </div>
+    </div>
+  </Container>
+
+  <Container>
+    <Photos />
+  </Container>
+
+  <Container class="mt-12">
+    <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+      <div class="flex flex-col gap-16">
+        {notes.map((note) => <NotePreview note={note} />)}
+      </div>
+      <div class="space-y-10 lg:ml-auto lg:pl-12 xl:pl-20">
+        <Resume />
+      </div>
+    </div>
+  </Container>
+</BaseLayout>

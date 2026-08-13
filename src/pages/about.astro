@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/layout/Container.astro';
+import OptimizedImage from '../components/ui/OptimizedImage.astro';
+import SocialLink from '../components/ui/SocialLink.astro';
+import { getImage } from 'astro:assets';
+import { socialMedia, site } from '../data/site';
+import { portrait } from '../data/photos';
+import { profilePageSchema } from '../lib/seo';
+import { aboutParagraphs, books, quotes, videosWorthWatching } from '../data/about';
+
+const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+const portraitOptimized = await getImage({ src: portrait, width: 480, height: 600, format: 'webp' });
+---
+
+<BaseLayout
+  title="Hakkında"
+  description="Yazılımcı, teknoloji tutkunu. Biyografi, deneyim, ilham kaynakları ve iletişim bilgileri."
+  path="/about"
+  image={site.assets.portrait}
+  imageAlt="Serhat Koçhan portre fotoğrafı"
+  preloadImage={portraitOptimized.src}
+  keywords={['hakkinda', 'biyografi', 'teknoloji-tutkunu']}
+  schema={profilePageSchema()}
+>
+  <Container class="mt-16 sm:mt-32">
+    <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+      <div class="lg:pl-20">
+        <div class="max-w-sm px-2.5 lg:max-w-none">
+          <OptimizedImage
+            src={portrait}
+            alt="Serhat Koçhan"
+            width={480}
+            height={600}
+            loading="eager"
+            fetchpriority="high"
+            sizes="(min-width: 1024px) 480px, 100vw"
+            class="aspect-[4/5] w-full rotate-2 rounded-2xl bg-zinc-100 object-cover object-top shadow-lg ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:ring-white/10"
+          />
+        </div>
+      </div>
+
+      <div class="about-content lg:order-first lg:row-span-2">
+        <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+          Merhaba, Ben Serhat Koçhan.
+        </h1>
+
+        <div class="mt-6 max-w-2xl space-y-4 text-base leading-7">
+          <p>
+            {aboutParagraphs.tagline} {aboutParagraphs.intro}
+          </p>
+          <p>
+            Yaklaşık 5 yıldır tam zamanlı olarak yazılım geliştiriyorum.{' '}
+            <a href="https://www.ufsteknoloji.com.tr/" target="_blank" rel="noopener noreferrer">UFS Teknoloji</a>
+            'de Frontend Developer olarak React ve TypeScript ağırlıklı çalışıyorum. Hobi projelerimde gömülü sistemler,
+            IoT, Spring Boot, React Native ve Godot ile geliştirmeler yapıyorum. Teknolojiye olan tutkum ve sınırsız
+            öğrenme arzusuyla, her geçen gün kendimi daha da geliştirmekteyim.
+          </p>
+          <p>{aboutParagraphs.life}</p>
+        </div>
+
+        <div class="mt-6 flex gap-6">
+          {socialMedia.map((profile) => <SocialLink href={profile.link} label={`${profile.name} profili`} icon={profile.icon} />)}
+        </div>
+
+        <section class="mt-12">
+          <h2 class="text-lg font-semibold">İzlemeye değer videolar</h2>
+          <ul class="mt-3 list-disc space-y-1 pl-5">
+            {videosWorthWatching.map((video) => (
+              <li>
+                <a href={video.link} target="_blank" rel="noopener noreferrer">{video.name}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-12">
+          <h2 class="text-lg font-semibold">Yeniden okunmaya değer kitaplar</h2>
+          <ul class="mt-3 list-disc space-y-1 pl-5">
+            {books.map((book) => (
+              <li>
+                <a href={book.link} target="_blank" rel="noopener noreferrer">{book.name}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-12">
+          <h2 class="text-lg font-semibold">Düşünmeye değer bir alıntı</h2>
+          <blockquote class="mt-4 border-l-4 border-primary/40 pl-4 italic text-zinc-600 dark:text-zinc-300">
+            <p>{randomQuote.content}</p>
+            <footer class="mt-2 not-italic text-sm text-zinc-500">{randomQuote.author}</footer>
+          </blockquote>
+        </section>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>

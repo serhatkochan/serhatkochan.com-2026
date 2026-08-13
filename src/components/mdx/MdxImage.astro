@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import { noteImages } from '../../data/photos';
+
+interface Props {
+  src: string;
+  alt?: string;
+  width?: number | string;
+  height?: number | string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const {
+  src,
+  alt = '',
+  width = 800,
+  height = 450,
+  class: className,
+  loading = 'eager',
+  fetchpriority = 'high',
+} = Astro.props;
+const imageSrc = noteImages[src];
+const w = typeof width === 'string' ? Number.parseInt(width, 10) : width;
+const h = typeof height === 'string' ? Number.parseInt(height, 10) : height;
+---
+
+{
+  imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={alt}
+      width={w || 800}
+      height={h || 450}
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+      format="webp"
+      class={className}
+    />
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      width={w || 800}
+      height={h || 450}
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+      class={className}
+    />
+  )
+}

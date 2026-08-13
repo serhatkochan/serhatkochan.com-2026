@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/layout/Container.astro';
+---
+
+<BaseLayout
+  title="Sayfa bulunamadı"
+  description="Aradığınız sayfa mevcut değil veya taşınmış olabilir."
+  path="/404"
+  noIndex={true}
+>
+  <Container class="mt-32">
+    <div class="max-w-xl">
+      <p class="font-mono text-sm text-zinc-500">404</p>
+      <h1 class="mt-4 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">Sayfa bulunamadı</h1>
+      <p class="mt-4 text-base text-zinc-600 dark:text-zinc-300">
+        Aradığınız sayfa mevcut değil, kaldırılmış veya adresi değişmiş olabilir.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4 text-sm font-medium">
+        <a href="/" class="text-primary hover:underline">Anasayfaya dön</a>
+        <a href="/notes" class="text-primary hover:underline">Notlara git</a>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+import { photoRotations, travelPhotos } from '../../data/photos';
+---
+
+<section class="my-8" aria-label="Fotoğraf galerisi">
+  <div
+    id="photo-slider"
+    class="hide-scrollbar -my-4 flex cursor-grab gap-8 overflow-x-auto py-4 pl-8 active:cursor-grabbing"
+  >
+    {
+      travelPhotos.map((photo, index) => (
+        <figure
+          class="photo-card relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800"
+          style={`--photo-rotate: ${photoRotations[index % photoRotations.length]}deg`}
+        >
+          <OptimizedImage
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            loading="eager"
+            fetchpriority={index === 0 ? 'high' : undefined}
+            sizes="176px"
+            class="absolute inset-0 h-full w-full object-cover transition duration-200 group-hover:scale-105"
+          />
+        </figure>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .photo-card {
+    user-select: none;
+    transform: rotate(var(--photo-rotate));
+    transition: transform 0.2s ease;
+  }
+  .photo-card:hover {
+    transform: rotate(0deg) scale(1.05);
+  }
+</style>
+
+<script>
+  const slider = document.getElementById('photo-slider');
+  if (slider) {
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    slider.addEventListener('mousedown', (event) => {
+      isDragging = true;
+      startX = event.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      slider.classList.add('cursor-grabbing');
+      slider.classList.remove('cursor-grab');
+    });
+
+    slider.addEventListener('mousemove', (event) => {
+      if (!isDragging) return;
+      event.preventDefault();
+      const x = event.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    const stopDragging = () => {
+      isDragging = false;
+      slider.classList.add('cursor-grab');
+      slider.classList.remove('cursor-grabbing');
+    };
+
+    slider.addEventListener('mouseleave', stopDragging);
+    slider.addEventListener('mouseup', stopDragging);
+  }
+</script>

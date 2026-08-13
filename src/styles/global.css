@@ -1,0 +1,213 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary: #fb2576;
+  --color-primary-light: #fd92ba;
+  --color-primary-dark: #8d0237;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  background: transparent;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply min-h-screen antialiased text-zinc-700 dark:text-zinc-300;
+  background: transparent;
+}
+
+/* antfu.me tarzı arkaplan katmanı — z-0, içerik z-10 üstünde */
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #ffffff;
+}
+
+html.dark .site-background {
+  background-color: #050505;
+}
+
+.art-dots-fallback {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgb(113 113 122 / 0.55) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+html.dark .art-dots-fallback {
+  background-image: radial-gradient(circle, rgb(113 113 122 / 0.5) 1px, transparent 1px);
+}
+
+#art-dots-canvas {
+  opacity: 0;
+}
+
+html.ready #art-dots-canvas {
+  opacity: 1;
+}
+
+html.ready .art-dots-fallback {
+  opacity: 0;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* View Transition — varsayılan cross-fade kapalı */
+::view-transition-group(root) {
+  animation-duration: 0s;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Aydınlık mod: içten dışa açılır (yeni katman üstte büyür) */
+html.theme-to-light::view-transition-new(root) {
+  z-index: 2;
+  animation: theme-expand 550ms ease-out forwards;
+}
+
+html.theme-to-light::view-transition-old(root) {
+  z-index: 1;
+  animation: none;
+}
+
+html.theme-to-dark::view-transition-old(root) {
+  z-index: 2;
+  animation: theme-close 550ms ease-in forwards;
+}
+
+html.theme-to-dark::view-transition-new(root) {
+  z-index: 1;
+  animation: none;
+}
+
+/* Tema geçişi sırasında yalnızca statik fallback görünsün (flaş önleme) */
+html:is(.theme-to-dark, .theme-to-light) .art-dots-fallback {
+  opacity: 1;
+}
+
+html:is(.theme-to-dark, .theme-to-light) #art-dots-canvas {
+  opacity: 0;
+}
+
+#art-dots-canvas,
+.site-background,
+.art-dots-fallback {
+  view-transition-name: none;
+}
+
+@keyframes theme-expand {
+  from {
+    clip-path: circle(0px at var(--theme-x) var(--theme-y));
+  }
+  to {
+    clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
+  }
+}
+
+@keyframes theme-close {
+  from {
+    clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
+  }
+  to {
+    clip-path: circle(0px at var(--theme-x) var(--theme-y));
+  }
+}
+
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white;
+}
+
+.prose-note {
+  @apply prose prose-zinc dark:prose-invert max-w-none;
+}
+
+.prose-note :is(h2, h3, h4) {
+  scroll-margin-top: 6rem;
+}
+
+.prose-note :where(p code, li code):not(:where(pre code)) {
+  @apply rounded-md bg-zinc-100 px-1.5 py-0.5 text-[0.875em] font-normal text-zinc-800 dark:bg-zinc-800/80 dark:text-zinc-200;
+}
+
+.prose-note :where(pre) {
+  @apply my-6 overflow-x-auto rounded-xl border border-zinc-200/70 bg-white p-0 dark:border-zinc-800/80 dark:bg-[#121212];
+}
+
+.prose-note :where(pre code) {
+  @apply block bg-transparent p-4 text-[0.8125rem] leading-6;
+}
+
+html.dark .prose-note :where(.astro-code),
+html.dark .prose-note :where(.astro-code span) {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+.prose-note :where(.highlighted-word) {
+  border-radius: 0.25rem;
+  padding-inline: 0.125rem;
+  background-color: rgb(251 37 118 / 0.12);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+html.dark .prose-note :where(.highlighted-word) {
+  background-color: rgb(251 37 118 / 0.2);
+}
+
+.about-content :is(a[href]:not([aria-label])) {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgb(161 161 170 / 0.85);
+}
+
+.about-content :is(a[href]:not([aria-label])):hover {
+  text-decoration-color: rgb(113 113 122);
+}
+
+html.dark .about-content :is(a[href]:not([aria-label])) {
+  text-decoration-color: rgb(113 113 122 / 0.85);
+}
+
+html.dark .about-content :is(a[href]:not([aria-label])):hover {
+  text-decoration-color: rgb(161 161 170);
+}
+
+/* Etkileşimli öğelerde pointer cursor */
+a[href],
+button:not(:disabled),
+[role='button'],
+label[for],
+select,
+summary {
+  cursor: pointer;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='search'],
+textarea {
+  cursor: text;
+}

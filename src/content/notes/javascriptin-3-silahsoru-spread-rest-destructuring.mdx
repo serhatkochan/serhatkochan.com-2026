@@ -1,0 +1,319 @@
+---
+title: "Javascript’in 3 Silahşörü: Spread, Rest, Destructuring"
+description: "JavaScript'in güçlü özelliklerinden Spread, Rest ve Destructuring operatörlerini derinlemesine öğrenin. Kodunuzu nasıl daha temiz, esnek ve etkili hale getirebileceğinizi keşfedin."
+publishedAt: 2023-05-01
+draft: false
+---
+
+---
+
+![](/assets/notes/javascriptin-3-silahsoru-spread-rest-destructuring/image-1.png)
+
+Spread, rest ve destructuring operatörleri, Javascript’teki veri yapılarını kullanmayı ve işlemeyi kolaylaştırır. Bu işlemler, kodun okunabilirliğini ve anlaşılırlığını artırırken, karmaşıklığı ve hata olasılığını azaltır.
+
+Günün sonunda kullanma gereksinimi duyduğumuz, duyacağımız bu metotlar’ı gelin detaylıca inceleyelim.
+
+---
+
+### Spread
+
+Spread işlemi, bir array veya object öğelerini başka bir array veya object içine kolayca yerleştirmeye yarar. Spread işlemi üç nokta `(...)` ile kullanılır.
+
+Spread işlemi, sadece iterable (tekrar edilebilir) object üzerinde çalışır. Yani, bu işlem Array, String ve Map gibi nesnelerle kullanılabilir. Ancak, Number ve Boolean gibi iterable olmayan veri türleriyle kullanılamaz.
+
+Spread işlemi, genellikle şu durumlarda kullanılır:
+
+### 1- Stringleri Karakterlere Ayırma
+Bir string’i karakterlerine ayırarak bir array’e dönüştürebilir.
+
+```javascript
+const stringValue = 'Serhat';
+const arrayOfChars = [...stringValue]; // ['S', 'e', 'r', 'h', 'a', 't']
+```
+
+### 2- Array Kopyalama ve Immutable Değerler
+Bir array’in kopyasını yeni bir referans ile oluşturmak için de kullanılabilir. Bu durumda, iki array birbirinden bağımsızdır ve birinin değerleri değiştirilirse, diğeri etkilenmez. Bu, özellikle immutable (değiştirilemez) değerlerle çalışırken önemlidir, çünkü orijinal veri yapılarının yanlışlıkla değiştirilmesini önler.
+
+Immutable değerler, bir kere oluşturulduktan sonra değiştirilemeyen değerlerdir. Spread işlemi, orijinal veri yapısını koruyarak yeni bir referans oluşturur ve böylece immutable değerlerin kullanımını destekler.
+
+```javascript
+const originalArray = [1, 2, 3];
+const copiedArray = [...originalArray]; // [1, 2, 3]
+```
+
+```javascript
+const originalArray = [1, 2, 3];
+const newRefArray= [...originalArray];
+const copiedArray = originalArray; // ref originalArray
+
+originalArray.push(4);
+console.log(originalArray); // [1, 2, 3, 4]
+console.log(newRefArray); // [1, 2, 3]
+console.log(copiedArray); // [1, 2, 3, 4]
+
+copiedArray.push(5);
+console.log(originalArray); // [1, 2, 3, 4, 5]
+console.log(newRefArray); // [1, 2, 3]
+console.log(copiedArray); // [1, 2, 3, 4, 5]
+```
+
+### 3- Array Birleştirme
+İki veya daha fazla array’i tek bir array içinde birleştirmek için kullanılabilir.
+
+```javascript
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const mergedArr = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
+```
+
+### 4- Array Yeni Öğeler Eklemek
+Mevcut bir array’e yeni öğeler eklemek için kullanılabilir.
+
+```javascript
+const originalArray = [1, 2, 3];
+const newArray = [0, ...originalArray, 4, 5]; // [0, 1, 2, 3, 4, 5]
+```
+
+### 5- Object’leri Kopyalama
+Spread işlemi, object’leri yeni bir referans ile kopyalamak için de kullanılabilir.
+
+```javascript
+let obj1 = { a: 1 };
+let copiedObj = obj1; // ref obj1
+let newRefObj = { ...obj1 };
+
+obj1.a = 2;
+console.log(obj1) // 2
+console.log(copiedObj) // 2
+console.log(newRefObj) // 1
+
+copiedObj.a = 3;
+console.log(obj1) // 3
+console.log(copiedObj) // 3
+console.log(newRefObj) // 1
+
+```
+
+### 6- Object’leri Birleştirme
+Spread işlemi, birleştirmek için de kullanılabilir. Eğer bir özellik birden fazla object’te var ise, en son spread edilen object’in değeri geçerli olur.
+
+```javascript
+const obj1 = { a: 1, b: 2, c: 3};
+const obj2 = { c: 99, d: 100};
+const combinedObject = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 99, d: 100}
+```
+
+### 7- Fonksiyonlara Çoklu Parametre Geçme
+Spread işlemi, bir array içindeki öğeleri fonksiyonlara ayrı parametreler olarak geçirmek için kullanılabilir.
+
+```javascript
+const sum = (x, y, z) => {
+  return x + y + z;
+}
+const numbers = [1, 2, 3];
+const result = sum(...numbers); // 6
+```
+
+---
+
+### Rest
+
+Rest işlemi, belirsiz sayıda argümanı veya öğeyi toplar ve bir array veya object içinde saklar. Rest parametresi de spread operatörü gibi üç nokta işareti `(...)` kullanılarak belirtilir.
+
+Rest işlemi, genellikle şu durumlarda kullanılır:
+
+### 1- Belirsiz Sayıda Parametre Alan Fonksiyonlar
+Rest işlemi, fonksiyonun alabileceği parametre sayısını önceden bilmediğimiz durumlar için kullanılabilir.
+
+```javascript
+const sum = (...numbers) => {
+  return numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+};
+
+console.log(sum(1, 2, 3, 4)); // 10
+console.log(sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)); // 55
+```
+
+```javascript
+const filterNumbers = (threshold, ...numbers) => {
+  return numbers.filter(number => number > threshold);
+};
+
+console.log(filterNumbers(5, 1, 2, 6, 7, 8, 3, 4)); // [6, 7, 8]
+```
+
+### 2- Geçersiz Rest Parametre Tanımlaması
+Rest işlemi, birden fazla rest parametresi kullanmaya izin vermez. Yani, aşağıdaki gibi bir işlem geçersizdir.
+
+```javascript
+const invalidFunc = (...args1, ...args2) => {
+  // ...
+};
+```
+
+---
+
+### Destructuring
+
+Destructuring, array’lerin ve object’lerin içindeki öğeleri veya özellikleri daha kolay, hızlı ve okunabilir bir şekilde çıkarmak için kullanılır.
+
+Destructuring, genellikle şu durumlarda kullanılır:
+
+### 1- Object’lerdeki Özelliklere Erişme
+Object’lerdeki özelliklere tek tek erişmek yerine destructuring özelliği kullanarak, istediğimiz özellikleri kolayca ayrı değişkenlere atayabiliriz.
+
+```javascript
+const person = {
+  name: 'Serhat',
+  age: 25,
+  city: 'Kocaeli'
+};
+const {name, age} = person;
+console.log(name, age); // Serhat 25
+```
+
+### 2- Array’lerdeki Elemanlara Erişme
+Destructuring özelliği, array’lerdeki elemanlara erişmek için de kullanılabilir. Aşağıdaki örnekte destructuring işlemi rest operatörü ile birlikte kullanılmıştır.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const [first, second, ...rest] = numbers; // rest
+console.log(first, second, rest); // 1 2 [3, 4, 5]
+```
+
+### 3- Array’lerdeki Öğeleri Çıkarma
+Destructuring, bir array içindeki öğeleri hızlı ve kolay bir şekilde çıkarmak için kullanılabilir.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const [first, second, , , fifth] = numbers; // skipping
+console.log(first, second, fifth); // 1 2 5
+```
+
+### 4- Fonksiyonlardan Değerleri Alma
+Destructuring özelliği, fonksiyonlardan birden fazla değeri tek bir satırda almak için de kullanılabilir.
+
+```javascript
+const getPerson = () => {
+  return {
+    name: 'Serhat',
+    age: 25,
+    city: 'Kocaeli'
+  };
+}
+
+const {name, age} = getPerson();
+console.log(name, age); // Serhat 25
+```
+
+### 5- Fonksiyon Parametrelerinde Destructuring
+Destructuring işlemi, array’leri ve object’leri parametre olarak alan fonksiyonlarda kullanılabilir, böylece fonksiyonları daha esnek ve okunabilir hale getirir.
+
+```javascript
+const printFullName = ({ firstName, age }) => {
+  console.log(`${firstName} ${age}`);
+};
+
+const user = {
+  firstName: 'Serhat',
+  age: 25,
+  city: 'Kocaeli'
+};
+
+printFullName(user); // Serhat 25
+```
+
+### 6- Swap İşlemleri
+Destructuring, iki değişkenin değerini değiştirirken geçici bir değişken kullanmadan işlem yapmak için kullanılabilir.
+
+```javascript
+let a = 1;
+let b = 2;
+
+[a, b] = [b, a];
+console.log(a, b); // 2 1
+```
+
+### 7- Nested Destructuring (İç İçe Geçmiş Yapılar)
+Destructuring, iç içe geçmiş object’lerin ve array’lerin özelliklerini ve öğelerini çıkarmak için kullanılabilir.
+
+```javascript
+const data = {
+  user: {
+    name: 'Serhat',
+    age: 25,
+    address: {
+      city: 'Kocaeli',
+    },
+  },
+};
+
+const {
+  user: {
+    name,
+    address: { city },
+  },
+} = data;
+
+console.log(name, city); // Serhat Kocaeli
+```
+
+### 8- Varsayılan Değer Belirleme
+Destructuring işlemi, varsayılan değerler belirlemeye de izin verir. Eğer çıkarılan özellik veya öğe mevcut değilse, varsayılan değer kullanılır.
+
+```javascript
+const { name, age, city = 'Kocaeli'} = { name: 'Serhat', age: 25 };
+console.log(name, age, city); // Serhat 25 Kocaeli
+```
+
+### 9- Field Adını Yeniden Adlandırma
+Aynı nesne içinde, çıkarılan özelliklere farklı isimler verilebilir.
+
+```javascript
+const person = {
+  firstName: 'Serhat',
+  city: 'Kocaeli'
+};
+
+const { firstName: first, city: province} = person;
+console.log(first, province); // Serhat Kocaeli
+```
+
+---
+
+### Bonus:
+
+### Destructuring ve Closure İşlemleri ile Javascript’te Özel Bir Durum Yöneticisi Oluşturma
+Aşağıdaki kod örneği, destructuring ve closure işlemleri kullanarak Javascript’te özel bir durum yöneticisi oluşturmaktadır. `useState` adında bir fonksiyon kullanarak başlangıç değerine göre durum değişkeni tanımlanır ve durumu okumak için `count` fonksiyonu, durumu güncellemek için de `setCount` fonksiyonu kullanılır. Burada dinamik olmayan bir yapı kurulduğunu unutmayalım.
+
+```javascript
+const useState = (initialValue) => {
+  let state = initialValue;
+
+  const getState = () => {
+    return state;
+  }
+
+  const setState = (newValue) => {
+    state = newValue;
+  }
+
+  return [getState, setState];
+}
+
+const [count, setCount] = useState(0);
+
+console.log(count()); // 0
+
+// Değeri güncellemek için 'setCount(value)' kullanın
+setCount(1);
+console.log(count()); // 1
+```
+
+---
+
+Sonuç olarak, bu üç operatörün kullanım alanlarına ve örneklerine değindik. Bu operatörler sayesinde kodlarınızı daha düzenli, kısa ve anlaşılır hale getirebilirsiniz. Spread ile veri yapılarını kolayca birleştirme, kopyalama ve parametre olarak geçme işlemleri yapabilir; Rest ile belirsiz sayıda argümanı veya öğeyi toplamak için kullanabilir; Destructuring ile veri yapılarını hızlı ve kolay bir şekilde çıkarabilirsiniz.
+
+Javascript’te veri yapılarıyla daha verimli ve rahat bir şekilde çalışmak için bu üç operatörü öğrenmek ve kullanmak oldukça önemlidir. Bu sayede, projelerinizde daha hızlı ve sağlam bir geliştirme süreci yaşayabilirsiniz.
+
+Okumak için zaman ayırdığınız için teşekkür ederim.

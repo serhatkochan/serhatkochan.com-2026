@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/layout/Container.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import NotePreview from '../../components/notes/NotePreview.astro';
+
+const allNotes = await getCollection('notes', ({ data }) => !data.draft);
+const notes = allNotes
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .map((entry) => ({ slug: entry.id, ...entry.data }));
+---
+
+<BaseLayout
+  title="Notlar"
+  description="Yazılım, ürün geliştirme, liderlik, seyahat ve diğer rastgele şeyler hakkındaki tüm düşünceler."
+  path="/notes"
+  keywords={['yazilim', 'notlar', 'teknoloji']}
+>
+  <Container>
+    <PageHeader
+      title="Yazılım, ürün geliştirme ve diğer şeyler üzerine notlar."
+      intro="Yazılım, ürün geliştirme, liderlik, seyahat ve diğer rastgele şeyler hakkındaki tüm düşüncelerim."
+    >
+      <div class="flex max-w-xl flex-col gap-16">
+        {notes.map((note) => <NotePreview note={note} />)}
+      </div>
+    </PageHeader>
+  </Container>
+</BaseLayout>

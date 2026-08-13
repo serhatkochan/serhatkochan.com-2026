@@ -1,0 +1,35 @@
+---
+import type { Project } from '../../data/projects';
+import Badge from '../ui/Badge.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="group relative flex h-full flex-col py-6">
+  <span
+    class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-100/80 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"
+  ></span>
+
+  {
+    project.link && (
+      <a
+        href={project.link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={project.title}
+        class="absolute -inset-x-4 -inset-y-6 z-20 cursor-pointer sm:-inset-x-6 sm:rounded-2xl"></a>
+    )
+  }
+
+  <div class="pointer-events-none relative z-10 flex h-full flex-col">
+    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">{project.title}</h2>
+    <p class="mt-2 flex-1 text-sm text-zinc-600 dark:text-zinc-400">{project.description}</p>
+    <div class="mt-6 flex flex-wrap gap-1 font-mono">
+      {project.techStack.map((tech) => <Badge>{tech}</Badge>)}
+    </div>
+  </div>
+</article>

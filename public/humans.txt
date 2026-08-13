@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: Serhat Koçhan
+Contact: serhatkochan@hotmail.com.tr
+Site: https://serhatkochan.com
+Location: Kocaeli, Türkiye
+
+/* SITE */
+Standards: HTML5, CSS3, JSON-LD, RSS, llms.txt
+Components: Astro, React, Tailwind CSS, MDX
+Language: Türkçe

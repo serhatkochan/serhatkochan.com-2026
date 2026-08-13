@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/layout/Container.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import ProjectCard from '../components/projects/ProjectCard.astro';
+import { currentProjects, pastProjects } from '../data/projects';
+---
+
+<BaseLayout
+  title="Projeler"
+  description="Yazılımcı, teknoloji tutkunu. Açık kaynak, hobi projeleri ve üzerinde çalıştığım her şey."
+  path="/projects"
+  keywords={['projeler', 'open-source', 'web-gelistirme']}
+>
+  <Container>
+    <PageHeader
+      title="Değer katmak ve faydalı hale getirmek için çabalıyorum."
+      intro="Tonlarca küçük proje üzerinde çalıştım ama aralarından seçtiklerim burada. Bazıları açık kaynaklı, bu yüzden ilginizi çeken bir şey görürseniz, kodu kontrol edin!"
+    >
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight">Şimdi</h2>
+        <p class="mt-2 text-base">Şu anda üzerinde çalıştığım projeler.</p>
+        <ul class="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3" role="list">
+          {currentProjects.map((project) => (
+            <li>
+              <ProjectCard project={project} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mt-24">
+        <h2 class="text-2xl font-bold tracking-tight">Geçmiş</h2>
+        <p class="mt-2 text-base">Üzerinde çalıştığım projeler. İnternet işlerinin doğası gereği hepsi hala çevrimiçi değil.</p>
+        <ul class="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3" role="list">
+          {pastProjects.map((project) => (
+            <li>
+              <ProjectCard project={project} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </PageHeader>
+  </Container>
+</BaseLayout>
