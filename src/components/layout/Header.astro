@@ -3,7 +3,7 @@ import { navigation, site } from '../../data/site';
 import OptimizedImage from '../ui/OptimizedImage.astro';
 import avatar from '../../assets/avatar.png';
 import Container from './Container.astro';
-import ThemeToggle from '../../islands/ThemeToggle';
+import ThemeToggle from '../ui/ThemeToggle.astro';
 import MobileNav from '../../islands/MobileNav';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -20,7 +20,6 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
             width={44}
             height={44}
             loading="eager"
-            fetchpriority="high"
             sizes="44px"
             class="rounded-full object-cover shadow-sm ring-2 ring-zinc-200 transition group-hover:ring-primary/40 dark:ring-zinc-700 dark:group-hover:ring-primary/50"
           />
@@ -36,7 +35,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
                   href={item.href}
                   class:list={[
                     'block px-3 py-2 transition',
-                    currentPath === item.href ? 'text-primary' : 'hover:text-primary',
+                    currentPath === item.href
+                      ? 'text-primary-dark dark:text-primary-light'
+                      : 'hover:text-primary-dark dark:hover:text-primary-light',
                   ]}
                   aria-current={currentPath === item.href ? 'page' : undefined}
                 >
@@ -50,7 +51,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
       <div class="flex flex-1 items-center justify-end gap-3">
         <MobileNav client:media="(max-width: 767px)" items={[...navigation]} currentPath={currentPath} />
-        <ThemeToggle client:idle />
+        <ThemeToggle />
       </div>
     </div>
   </Container>

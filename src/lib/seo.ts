@@ -68,7 +68,7 @@ export function buildPageMeta({
           modifiedTime: (modifiedTime ?? publishedTime).toISOString(),
         }
       : undefined,
-    preloadImage: preloadImage ? buildAbsoluteAsset(preloadImage) : undefined,
+    preloadImage,
   };
 }
 

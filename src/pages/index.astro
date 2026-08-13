@@ -19,7 +19,13 @@ const notes = allNotes
     ...entry.data,
   }));
 
-const heroImage = await getImage({ src: travelPhotos[0].src, width: 352, height: 391, format: 'webp' });
+const heroImage = await getImage({
+  src: travelPhotos[0].src,
+  width: 320,
+  height: 356,
+  format: 'webp',
+  quality: 78,
+});
 ---
 
 <BaseLayout description={site.description} path="/" preloadImage={heroImage.src}>

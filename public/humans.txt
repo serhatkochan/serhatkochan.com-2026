@@ -1,7 +1,7 @@
 /* TEAM */
 Developer: Serhat Koçhan
 Contact: serhatkochan@hotmail.com.tr
-Site: https://serhatkochan.com
+Site: https://www.serhatkochan.com
 Location: Kocaeli, Türkiye
 
 /* SITE */

@@ -11,6 +11,7 @@ interface Props {
   loading?: 'lazy' | 'eager';
   fetchpriority?: 'high' | 'low' | 'auto';
   sizes?: string;
+  quality?: number;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   loading = 'lazy',
   fetchpriority,
   sizes,
+  quality = 78,
 } = Astro.props;
 ---
 
@@ -35,5 +37,6 @@ const {
   fetchpriority={fetchpriority}
   sizes={sizes}
   format="webp"
+  quality={quality}
   class={className}
 />

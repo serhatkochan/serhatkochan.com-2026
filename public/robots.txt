@@ -22,4 +22,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://serhatkochan.com/sitemap-index.xml
+Sitemap: https://www.serhatkochan.com/sitemap-index.xml

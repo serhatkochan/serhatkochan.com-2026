@@ -20,7 +20,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
                       href={item.href}
                       class:list={[
                         'transition hover:text-primary',
-                        currentPath === item.href && 'text-primary',
+                        currentPath === item.href
+                          ? 'text-primary-dark dark:text-primary-light'
+                          : 'hover:text-primary-dark dark:hover:text-primary-light',
                       ]}
                       aria-current={currentPath === item.href ? 'page' : undefined}>
                       {item.name}
@@ -28,12 +30,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
                   ))
                 }
               </nav>
-              <p class="text-center text-sm text-zinc-400 sm:text-left dark:text-zinc-500">
+              <p class="text-center text-sm text-zinc-600 sm:text-left dark:text-zinc-400">
                 <a
                   href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="hover:text-zinc-600 dark:hover:text-zinc-300">
+                  class="underline decoration-zinc-400 underline-offset-2 hover:text-zinc-800 dark:decoration-zinc-500 dark:hover:text-zinc-200"
+                >
                   CC BY-NC-SA 4.0
                 </a>
                 {' '}

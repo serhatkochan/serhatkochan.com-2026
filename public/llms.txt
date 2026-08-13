@@ -6,23 +6,23 @@
 
 - İsim: Serhat Koçhan
 - Rol: Yazılımcı, Teknoloji Tutkunu
-- Site: https://serhatkochan.com
+- Site: https://www.serhatkochan.com
 - E-posta: serhatkochan@hotmail.com.tr
-- Portre: https://serhatkochan.com/assets/portrait.png
+- Portre: https://www.serhatkochan.com/assets/portrait.png
 
 ## Sayfalar
 
-- [Anasayfa](https://serhatkochan.com/)
-- [Notlar](https://serhatkochan.com/notes/)
-- [Projeler](https://serhatkochan.com/projects/)
-- [Hakkında](https://serhatkochan.com/about/)
+- [Anasayfa](https://www.serhatkochan.com/)
+- [Notlar](https://www.serhatkochan.com/notes/)
+- [Projeler](https://www.serhatkochan.com/projects/)
+- [Hakkında](https://www.serhatkochan.com/about/)
 
 ## Notlar
 
-- [Yapay Zeka ve Öğrenme](https://serhatkochan.com/notes/yapay-zeka-ve-ogrenme-beynimizi-ve-aliskanliklarimizi-nasil-etkiliyor/)
-- [Scrum Nedir? Daily Toplantıları](https://serhatkochan.com/notes/scrum-nedir-daily-toplantilari-neden-yapilir/)
-- [React Performans Optimizasyonu](https://serhatkochan.com/notes/react-performans-optimizasyonu-memo-usememo-usecallback-ve-debounce-teknikleri/)
-- [Javascript Spread, Rest, Destructuring](https://serhatkochan.com/notes/javascriptin-3-silahsoru-spread-rest-destructuring/)
+- [Yapay Zeka ve Öğrenme](https://www.serhatkochan.com/notes/yapay-zeka-ve-ogrenme-beynimizi-ve-aliskanliklarimizi-nasil-etkiliyor/)
+- [Scrum Nedir? Daily Toplantıları](https://www.serhatkochan.com/notes/scrum-nedir-daily-toplantilari-neden-yapilir/)
+- [React Performans Optimizasyonu](https://www.serhatkochan.com/notes/react-performans-optimizasyonu-memo-usememo-usecallback-ve-debounce-teknikleri/)
+- [Javascript Spread, Rest, Destructuring](https://www.serhatkochan.com/notes/javascriptin-3-silahsoru-spread-rest-destructuring/)
 
 ## İletişim
 
@@ -33,5 +33,5 @@
 
 ## Ek
 
-- RSS: https://serhatkochan.com/rss.xml
-- Tam içerik haritası: https://serhatkochan.com/llms-full.txt
+- RSS: https://www.serhatkochan.com/rss.xml
+- Tam içerik haritası: https://www.serhatkochan.com/llms-full.txt

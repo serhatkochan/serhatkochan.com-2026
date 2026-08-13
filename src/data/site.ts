@@ -4,7 +4,7 @@ export const site = {
   description:
     'Yazılımcı, teknoloji tutkunu. Yazılım notları, projeler ve deneyimler.',
   jobTitle: 'Yazılımcı, Teknoloji Tutkunu',
-  url: 'https://serhatkochan.com',
+  url: 'https://www.serhatkochan.com',
   locale: 'tr_TR',
   language: 'tr',
   author: 'Serhat Koçhan',

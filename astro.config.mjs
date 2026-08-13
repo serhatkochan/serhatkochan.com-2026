@@ -12,14 +12,14 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://serhatkochan.com',
+  site: 'https://www.serhatkochan.com',
   compressHTML: true,
   prefetch: {
     prefetchAll: false,
     defaultStrategy: 'hover',
   },
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   image: {
     service: {

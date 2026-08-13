@@ -6,10 +6,10 @@
 
 Serhat Koçhan, yazılımcı ve teknoloji tutkunu. Kişisel sitesinde yazılım notları, açık kaynak ve hobi projeleri ile deneyimlerini paylaşır.
 
-- Ana URL: https://serhatkochan.com
+- Ana URL: https://www.serhatkochan.com
 - Dil: Türkçe (tr-TR)
-- RSS: https://serhatkochan.com/rss.xml
-- Sitemap: https://serhatkochan.com/sitemap-index.xml
+- RSS: https://www.serhatkochan.com/rss.xml
+- Sitemap: https://www.serhatkochan.com/sitemap-index.xml
 
 ## Yazar
 
@@ -18,37 +18,37 @@ Serhat Koçhan, yazılımcı ve teknoloji tutkunu. Kişisel sitesinde yazılım 
 - Konum: Kocaeli, Türkiye
 - Şirket: UFS Teknoloji
 - E-posta: serhatkochan@hotmail.com.tr
-- Görsel: https://serhatkochan.com/assets/portrait.png
+- Görsel: https://www.serhatkochan.com/assets/portrait.png
 
 ## Statik sayfalar
 
 | Sayfa | URL | Açıklama |
 | --- | --- | --- |
-| Anasayfa | https://serhatkochan.com/ | Son notlar, fotoğraflar ve iş deneyimi özeti |
-| Notlar | https://serhatkochan.com/notes/ | Yazılım geliştirme üzerine Türkçe blog yazıları |
-| Projeler | https://serhatkochan.com/projects/ | Kişisel ve açık kaynak projeler |
-| Hakkında | https://serhatkochan.com/about/ | Biyografi, ilham kaynakları ve iletişim |
+| Anasayfa | https://www.serhatkochan.com/ | Son notlar, fotoğraflar ve iş deneyimi özeti |
+| Notlar | https://www.serhatkochan.com/notes/ | Yazılım geliştirme üzerine Türkçe blog yazıları |
+| Projeler | https://www.serhatkochan.com/projects/ | Kişisel ve açık kaynak projeler |
+| Hakkında | https://www.serhatkochan.com/about/ | Biyografi, ilham kaynakları ve iletişim |
 
 ## Yayınlanmış notlar
 
 ### Yapay Zeka ve Öğrenme: Beynimizi ve Alışkanlıklarımızı Nasıl Etkiliyor?
-- URL: https://serhatkochan.com/notes/yapay-zeka-ve-ogrenme-beynimizi-ve-aliskanliklarimizi-nasil-etkiliyor/
+- URL: https://www.serhatkochan.com/notes/yapay-zeka-ve-ogrenme-beynimizi-ve-aliskanliklarimizi-nasil-etkiliyor/
 - Tarih: 2025-07-29
 - Konu: Yapay zeka, öğrenme, alışkanlıklar, derin çalışma
 
 ### Scrum Nedir? Daily Toplantıları Neden Yapılır?
-- URL: https://serhatkochan.com/notes/scrum-nedir-daily-toplantilari-neden-yapilir/
+- URL: https://www.serhatkochan.com/notes/scrum-nedir-daily-toplantilari-neden-yapilir/
 - Tarih: 2024-02-23
 - Konu: Scrum, Sprint, Daily toplantıları, proje yönetimi
 
 ### React Performans Optimizasyonu (taslak)
-- URL: https://serhatkochan.com/notes/react-performans-optimizasyonu-memo-usememo-usecallback-ve-debounce-teknikleri/
+- URL: https://www.serhatkochan.com/notes/react-performans-optimizasyonu-memo-usememo-usecallback-ve-debounce-teknikleri/
 - Tarih: 2023-05-09
 - Durum: Devam ediyor — içerik henüz yayınlanmadı
 - Konu: React, memo, useMemo, useCallback, debounce
 
 ### Javascript'in 3 Silahşörü: Spread, Rest, Destructuring
-- URL: https://serhatkochan.com/notes/javascriptin-3-silahsoru-spread-rest-destructuring/
+- URL: https://www.serhatkochan.com/notes/javascriptin-3-silahsoru-spread-rest-destructuring/
 - Tarih: 2023-05-01
 - Konu: JavaScript ES6, spread, rest, destructuring
 
