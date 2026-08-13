@@ -1,6 +1,6 @@
 export const site = {
   name: 'Serhat Koçhan',
-  title: 'Serhat Koçhan — Teknoloji Tutkunu',
+  title: 'Serhat Koçhan — Yazılımcı, Teknoloji Tutkunu',
   description:
     'Yazılımcı, teknoloji tutkunu. Yazılım notları, projeler ve deneyimler.',
   jobTitle: 'Yazılımcı, Teknoloji Tutkunu',
