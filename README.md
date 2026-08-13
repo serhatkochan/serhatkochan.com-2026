@@ -9,7 +9,17 @@ Yazılımcı, teknoloji tutkunu. **Serhat Koçhan**'ın kişisel web sitesinin 2
 
 Notion API bağımlılığından vazgeçilerek sıfırdan yazıldı. MDX tabanlı içerik koleksiyonları, seçici React island'ları, Sharp ile optimize edilmiş görseller ve SEO/GEO odaklı statik üretimle performans hedefli bir site.
 
-**Canlı:** [serhatkochan.com](https://serhatkochan.com)
+**Canlı:** [serhatkochan.com](https://www.serhatkochan.com)
+
+## Önizleme
+
+| Anasayfa (açık) | Anasayfa (koyu) |
+| --- | --- |
+| ![Anasayfa — açık tema](.github/screenshots/home-light.png) | ![Anasayfa — koyu tema](.github/screenshots/home-dark.png) |
+
+| Notlar | Projeler | Hakkında |
+| --- | --- | --- |
+| ![Notlar](.github/screenshots/notes.png) | ![Projeler](.github/screenshots/projects.png) | ![Hakkında](.github/screenshots/about.png) |
 
 ---
 
@@ -46,10 +56,10 @@ src/
 │   ├── mdx/          # MDX bileşenleri (MdxImage)
 │   ├── notes/        # Not kartları ve paylaşım
 │   ├── projects/     # Proje kartları
-│   └── ui/           # Photos, Resume, OptimizedImage, SocialLink
+│   └── ui/           # Photos, Resume, OptimizedImage, SocialLink, ThemeToggle
 ├── content/notes/    # MDX blog yazıları
 ├── data/             # site, about, projects, photos
-├── islands/          # ThemeToggle, MobileNav, ArtDotsCanvas
+├── islands/          # MobileNav, ArtDotsCanvas
 ├── layouts/          # BaseLayout (SEO, schema, meta)
 ├── lib/              # seo, dates, share
 ├── pages/            # Rotalar ve RSS endpoint'i
@@ -93,6 +103,16 @@ npm run preview
 ```
 
 Çıktı `dist/` klasörüne yazılır.
+
+### README ekran görüntüleri
+
+```bash
+npm run build
+npm run preview
+npm run screenshots
+```
+
+Görseller `.github/screenshots/` altına yazılır. `preview` ayrı terminalde çalışırken `screenshots` komutunu çalıştırın.
 
 ## Yeni not ekleme
 

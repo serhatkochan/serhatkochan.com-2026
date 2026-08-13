@@ -14,11 +14,12 @@
 html {
   color-scheme: light;
   scroll-behavior: smooth;
-  background: transparent;
+  background-color: #ffffff;
 }
 
 html.dark {
   color-scheme: dark;
+  background-color: #050505;
 }
 
 body {

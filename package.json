@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "screenshots": "node scripts/capture-readme-screenshots.mjs",
     "astro": "astro"
   },
   "dependencies": {
@@ -27,5 +28,8 @@
     "react-dom": "^19.2.8",
     "simplex-noise": "^4.0.3",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
   }
 }
