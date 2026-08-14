@@ -8,8 +8,6 @@ import { socialMedia, site } from '../data/site';
 import { portrait } from '../data/photos';
 import { profilePageSchema } from '../lib/seo';
 import { aboutParagraphs, books, quotes, videosWorthWatching } from '../data/about';
-
-const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 const portraitOptimized = await getImage({
   src: portrait,
   width: 480,
@@ -62,7 +60,6 @@ const portraitOptimized = await getImage({
             IoT, Spring Boot, React Native ve Godot ile geliştirmeler yapıyorum. Teknolojiye olan tutkum ve sınırsız
             öğrenme arzusuyla, her geçen gün kendimi daha da geliştirmekteyim.
           </p>
-          <p>{aboutParagraphs.life}</p>
         </div>
 
         <div class="mt-6 flex gap-6">
@@ -93,12 +90,35 @@ const portraitOptimized = await getImage({
 
         <section class="mt-12">
           <h2 class="text-lg font-semibold">Düşünmeye değer bir alıntı</h2>
-          <blockquote class="mt-4 border-l-4 border-primary/40 pl-4 italic text-zinc-600 dark:text-zinc-300">
-            <p>{randomQuote.content}</p>
-            <footer class="mt-2 not-italic text-sm text-zinc-500">{randomQuote.author}</footer>
+          <blockquote
+            id="random-quote"
+            class="invisible mt-4 border-l-4 border-primary/40 pl-4 italic text-zinc-600 dark:text-zinc-300"
+          >
+            <p id="random-quote-content">{quotes[0].content}</p>
+            <footer id="random-quote-author" class="mt-2 not-italic text-sm text-zinc-500">{quotes[0].author}</footer>
           </blockquote>
         </section>
       </div>
     </div>
   </Container>
 </BaseLayout>
+
+<style>
+  @media (scripting: none) {
+    #random-quote {
+      visibility: visible;
+    }
+  }
+</style>
+
+<script define:vars={{ quotes }}>
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
+  const quoteEl = document.getElementById('random-quote');
+  const contentEl = document.getElementById('random-quote-content');
+  const authorEl = document.getElementById('random-quote-author');
+  if (quoteEl && contentEl && authorEl) {
+    contentEl.textContent = quote.content;
+    authorEl.textContent = quote.author;
+    quoteEl.classList.remove('invisible');
+  }
+</script>

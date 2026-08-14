@@ -32,7 +32,6 @@ export const videosWorthWatching = [
 export const aboutParagraphs = {
   tagline: 'Tutkulu bir yazılım geliştiricisi ve teknoloji meraklısıyım.',
   intro: 'Notlarımı, projelerimi ve denemelerimi burada topluyorum.',
-  life: 'Programlama dışında seyahat etmeyi, yeni tatlar denemeyi ve satranç oynamayı seviyorum. Kocaeli Darıca\'da yaşıyorum.',
 } as const;
 
 export const quotes = [
