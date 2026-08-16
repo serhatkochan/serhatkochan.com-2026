@@ -1,3 +1,8 @@
+export type AlternateLink = {
+  hreflang: string;
+  href: string;
+};
+
 export type SEOProps = {
   title?: string;
   description?: string;
@@ -12,4 +17,7 @@ export type SEOProps = {
   imageHeight?: number;
   preloadImage?: string;
   noIndex?: boolean;
+  htmlLang?: string;
+  ogLocale?: string;
+  alternates?: AlternateLink[];
 };

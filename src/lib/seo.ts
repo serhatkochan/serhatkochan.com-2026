@@ -1,5 +1,6 @@
 import type { SEOProps } from '../types/seo';
 import { site, socialMedia } from '../data/site';
+import { ANIMSAT_POLICY_UPDATED_ISO } from '../data/animsat/meta';
 
 export function buildCanonical(path: string) {
   const normalized = path.startsWith('/') ? path : `/${path}`;
@@ -24,12 +25,21 @@ export function buildPageMeta({
   imageHeight = 600,
   preloadImage,
   noIndex = false,
+  htmlLang,
+  ogLocale,
+  alternates = [],
 }: SEOProps) {
   const canonical = buildCanonical(path);
   const pageTitle = path === '/' ? site.title : `${title ?? site.name} | ${site.name}`;
   const pageDescription = description ?? site.description;
   const imageUrl = buildAbsoluteAsset(image ?? site.assets.ogImage);
   const alt = imageAlt ?? (path === '/' ? site.title : `${site.name} — ${title ?? 'sayfa'}`);
+  const locale = ogLocale ?? site.locale;
+  const language = htmlLang ?? site.language;
+  const alternateLinks =
+    alternates.length > 0
+      ? alternates
+      : [{ hreflang: site.language, href: canonical }];
 
   return {
     title: pageTitle,
@@ -41,13 +51,14 @@ export function buildPageMeta({
     imageHeight,
     robots: noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large',
     keywords: [...keywords, 'serhat koçhan', 'yazılımcı', 'teknoloji tutkunu', 'yazılım', 'teknoloji'],
+    htmlLang: language,
     openGraph: {
       title: pageTitle,
       description: pageDescription,
       url: canonical,
       type,
       siteName: site.name,
-      locale: site.locale,
+      locale,
       image: imageUrl,
       imageAlt: alt,
       imageWidth,
@@ -69,6 +80,7 @@ export function buildPageMeta({
         }
       : undefined,
     preloadImage,
+    alternates: alternateLinks,
   };
 }
 
@@ -119,6 +131,52 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
       name: item.name,
       item: buildCanonical(item.path),
     })),
+  };
+}
+
+export function softwareApplicationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Anımsat',
+    alternateName: 'Kaç Gün Kaldı',
+    applicationCategory: 'LifestyleApplication',
+    operatingSystem: 'iOS, Android',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
+    author: { '@type': 'Person', name: site.name, url: site.url },
+    url: `${site.url}/animsat`,
+    description:
+      'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.',
+    inLanguage: ['tr', 'en', 'de', 'fr', 'es', 'it', 'nl', 'ja', 'ko', 'zh', 'ar', 'pt', 'ru'],
+  };
+}
+
+export function privacyPolicySchema({
+  title,
+  description,
+  path,
+  locale,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  locale: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'PrivacyPolicy',
+    name: title,
+    description,
+    url: buildCanonical(path),
+    inLanguage: locale,
+    dateModified: ANIMSAT_POLICY_UPDATED_ISO,
+    about: {
+      '@type': 'SoftwareApplication',
+      name: 'Anımsat',
+      url: `${site.url}/animsat`,
+    },
+    publisher: { '@type': 'Person', name: site.name, url: site.url },
+    isPartOf: { '@type': 'WebSite', name: site.name, url: site.url },
   };
 }
 

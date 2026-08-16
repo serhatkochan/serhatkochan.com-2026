@@ -1,5 +1,6 @@
 ---
 import { navigation, site } from '../../data/site';
+import { navItemIsActive } from '../../lib/nav';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
@@ -20,11 +21,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
                       href={item.href}
                       class:list={[
                         'transition hover:text-primary',
-                        currentPath === item.href
+                        navItemIsActive(item.href, currentPath)
                           ? 'text-primary-dark dark:text-primary-light'
                           : 'hover:text-primary-dark dark:hover:text-primary-light',
                       ]}
-                      aria-current={currentPath === item.href ? 'page' : undefined}>
+                      aria-current={navItemIsActive(item.href, currentPath) ? 'page' : undefined}>
                       {item.name}
                     </a>
                   ))

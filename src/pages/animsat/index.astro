@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/layout/Container.astro';
+import {
+  ANIMSAT_DESCRIPTION,
+  ANIMSAT_NAME,
+  ANIMSAT_PATH,
+  ANIMSAT_TAGLINE,
+  policyPath,
+} from '../../data/animsat';
+import { breadcrumbSchema, softwareApplicationSchema } from '../../lib/seo';
+
+const privacyHref = policyPath('tr');
+---
+
+<BaseLayout
+  title={ANIMSAT_NAME}
+  description={ANIMSAT_DESCRIPTION}
+  path={ANIMSAT_PATH}
+  keywords={['animsat', 'kac-gun-kaldi', 'gizlilik-politikasi', 'react-native']}
+  schema={[
+    softwareApplicationSchema(),
+    breadcrumbSchema([
+      { name: 'Anasayfa', path: '/' },
+      { name: 'Projeler', path: '/projects' },
+      { name: ANIMSAT_NAME, path: ANIMSAT_PATH },
+    ]),
+  ]}
+>
+  <Container class="mt-16 sm:mt-32">
+    <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+      <a href="/projects" class="transition hover:text-primary">Projeler</a>
+      <span aria-hidden="true" class="mx-2">/</span>
+      <span>{ANIMSAT_NAME}</span>
+    </p>
+
+    <h1 class="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+      {ANIMSAT_NAME}
+    </h1>
+    <p class="mt-3 text-lg text-zinc-500 dark:text-zinc-400">{ANIMSAT_TAGLINE}</p>
+    <p class="mt-6 max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-300">
+      {ANIMSAT_DESCRIPTION}
+    </p>
+
+    <p class="mt-10">
+      <a
+        href={privacyHref}
+        class="text-base font-medium text-primary transition hover:text-primary-dark dark:hover:text-primary-light"
+      >
+        Gizlilik Politikasını Görüntüle
+      </a>
+    </p>
+  </Container>
+</BaseLayout>

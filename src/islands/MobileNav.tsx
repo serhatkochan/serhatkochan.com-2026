@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { navItemIsActive } from '../lib/nav';
 
 type NavItem = { name: string; href: string };
 
@@ -58,7 +59,8 @@ export default function MobileNav({ items, currentPath }: Props) {
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className={`block cursor-pointer py-3 text-base ${currentPath === item.href ? 'text-primary' : 'text-zinc-800 dark:text-zinc-300'}`}
+                      aria-current={navItemIsActive(item.href, currentPath) ? 'page' : undefined}
+                      className={`block cursor-pointer py-3 text-base ${navItemIsActive(item.href, currentPath) ? 'text-primary' : 'text-zinc-800 dark:text-zinc-300'}`}
                       onClick={() => setOpen(false)}
                     >
                       {item.name}

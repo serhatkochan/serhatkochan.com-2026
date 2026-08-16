@@ -1,14 +1,28 @@
+export type ProjectLink = {
+  href: string;
+  label: string;
+  /** true: GitHub vb. dış bağlantı. false: site içi sayfa. */
+  external?: boolean;
+};
+
 export type Project = {
   title: string;
   techStack: string[];
   description: string;
-  link?: {
-    label: string;
-    href: string;
-  };
+  link?: ProjectLink;
 };
 
 export const currentProjects: Project[] = [
+  {
+    title: 'Anımsat',
+    techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite'],
+    description:
+      'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.',
+    link: {
+      label: 'serhatkochan.com/animsat',
+      href: '/animsat',
+    },
+  },
   {
     title: 'serhatkochan.com / 2026',
     techStack: ['Astro', 'TypeScript', 'Tailwind CSS', 'MDX', 'React', 'View Transitions'],
@@ -17,6 +31,7 @@ export const currentProjects: Project[] = [
     link: {
       label: 'github.com',
       href: 'https://github.com/serhatkochan/serhatkochan.com-2026',
+      external: true,
     },
   },
 ];
@@ -30,6 +45,7 @@ export const pastProjects: Project[] = [
     link: {
       label: 'github.com',
       href: 'https://github.com/serhatkochan/serhatkochan.com-2024',
+      external: true,
     },
   },
   {
@@ -40,6 +56,7 @@ export const pastProjects: Project[] = [
     link: {
       label: 'github.com',
       href: 'https://github.com/serhatkochan/serhatkochan.com-2021',
+      external: true,
     },
   },
 ];
