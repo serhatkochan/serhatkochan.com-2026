@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import '../styles/animsat.css';
+import type { SEOProps } from '../types/seo';
+import { ANIMSAT_NAME, ANIMSAT_OG_IMAGE, ANIMSAT_SITE_URL } from '../data/animsat';
+import { buildPageMeta } from '../lib/seo';
+
+interface Props extends SEOProps {
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const props = Astro.props;
+const meta = buildPageMeta({
+  ...props,
+  siteName: ANIMSAT_NAME,
+  absoluteTitle: true,
+  image: props.image ?? ANIMSAT_OG_IMAGE,
+  imageAlt: props.imageAlt ?? `${ANIMSAT_NAME} — ${props.title ?? 'Kaç Gün Kaldı'}`,
+  imageWidth: props.imageWidth ?? 1024,
+  imageHeight: props.imageHeight ?? 1024,
+});
+const schemas = props.schema
+  ? Array.isArray(props.schema)
+    ? props.schema
+    : [props.schema]
+  : [];
+---
+
+<!doctype html>
+<html lang={meta.htmlLang} class="animsat-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="robots" content={meta.robots} />
+    <meta name="theme-color" content="#050506" />
+    <link rel="canonical" href={meta.canonical} />
+    {meta.alternates.map((item) => <link rel="alternate" hreflang={item.hreflang} href={item.href} />)}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    {
+      meta.preloadImage && (
+        <link rel="preload" as="image" href={meta.preloadImage} fetchpriority="high" />
+      )
+    }
+    <meta property="og:title" content={meta.openGraph.title} />
+    <meta property="og:description" content={meta.openGraph.description} />
+    <meta property="og:url" content={meta.openGraph.url} />
+    <meta property="og:type" content={meta.openGraph.type} />
+    <meta property="og:site_name" content={ANIMSAT_NAME} />
+    <meta property="og:locale" content={meta.openGraph.locale} />
+    <meta property="og:image" content={new URL(ANIMSAT_OG_IMAGE, ANIMSAT_SITE_URL).href} />
+    <meta property="og:image:alt" content={meta.openGraph.imageAlt} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={meta.twitter.title} />
+    <meta name="twitter:description" content={meta.twitter.description} />
+    <meta name="twitter:image" content={new URL(ANIMSAT_OG_IMAGE, ANIMSAT_SITE_URL).href} />
+    <link rel="icon" type="image/png" href="/animsat-icon.png" />
+    <link rel="apple-touch-icon" href="/animsat-icon.png" />
+    {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">İçeriğe atla</a>
+    <div class="animsat-site">
+      <div class="animsat-atmosphere" aria-hidden="true"></div>
+      <div class="animsat-grain" aria-hidden="true"></div>
+      <div class="animsat-shell flex min-h-screen flex-col">
+        <slot name="header" />
+        <main id="main-content" class="flex-1">
+          <slot />
+        </main>
+        <slot name="footer" />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import { ANIMSAT_NAME, ANIMSAT_PATH, ANIMSAT_TAGLINE, policyPath } from '../../data/animsat';
+import { landing } from '../../data/animsat/landing';
+
+const privacyHref = policyPath('tr');
+---
+
+<footer class="border-t border-white/10">
+  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-8">
+    <a href={ANIMSAT_PATH} class="text-[#faf8f5]">
+      <p class="animsat-display text-xl">{ANIMSAT_NAME}</p>
+      <p class="mt-1 text-sm text-[#a8a29e]">{ANIMSAT_TAGLINE}</p>
+    </a>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#faf8f5]/55">
+      <a href={privacyHref} class="hover:text-[#faf8f5]">Gizlilik</a>
+      <a href="https://www.serhatkochan.com" class="hover:text-[#faf8f5]">{landing.footerNote}</a>
+    </div>
+  </div>
+</footer>

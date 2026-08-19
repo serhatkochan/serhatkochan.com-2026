@@ -60,11 +60,13 @@ export default function middleware(request) {
     return;
   }
 
+  if (pathname === '/favicon.png' || pathname === '/apple-touch-icon.png') {
+    return rewrite(url, '/animsat-icon.png');
+  }
+
   if (
     pathname.startsWith('/_astro') ||
     pathname.startsWith('/assets') ||
-    pathname === '/favicon.png' ||
-    pathname === '/apple-touch-icon.png' ||
     pathname === '/manifest.webmanifest' ||
     pathname === '/humans.txt'
   ) {
