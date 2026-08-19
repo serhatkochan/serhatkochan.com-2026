@@ -38,13 +38,27 @@ function rewrite(url, pathname) {
   });
 }
 
+function notFound(url) {
+  const destination = new URL(url);
+  destination.pathname = '/404';
+  return new Response(null, {
+    status: 404,
+    headers: {
+      'x-middleware-rewrite': destination.toString(),
+    },
+  });
+}
+
 export default function middleware(request) {
   const url = new URL(request.url);
+  const pathname = normalizePath(url.pathname);
+
   if (url.hostname !== ANIMSAT_HOST) {
+    if (pathname === '/animsat' || pathname.startsWith('/animsat/')) {
+      return notFound(url);
+    }
     return;
   }
-
-  const pathname = normalizePath(url.pathname);
 
   if (
     pathname.startsWith('/_astro') ||
