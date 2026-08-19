@@ -1,3 +1,5 @@
+import { animsatCanonical, animsatHref } from './meta';
+
 export const ANIMSAT_POLICY_LOCALES = [
   { id: 'tr', nativeName: 'Türkçe', htmlLang: 'tr', ogLocale: 'tr_TR', hreflang: 'tr', languageLabel: 'Dil', rtl: false },
   { id: 'en-US', nativeName: 'English', htmlLang: 'en-US', ogLocale: 'en_US', hreflang: 'en-US', languageLabel: 'Language', rtl: false },
@@ -28,5 +30,9 @@ export function getAnimsatLocale(locale: AnimsatLocale) {
 }
 
 export function policyPath(locale: AnimsatLocale) {
-  return `/animsat/${locale}/policy`;
+  return animsatHref(`/${locale}/policy`);
+}
+
+export function policyCanonical(locale: AnimsatLocale) {
+  return animsatCanonical(`/${locale}/policy`);
 }

@@ -1,3 +1,5 @@
+import { ANIMSAT_SITE_URL } from './animsat/meta';
+
 export type ProjectLink = {
   href: string;
   label: string;
@@ -19,8 +21,9 @@ export const currentProjects: Project[] = [
     description:
       'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.',
     link: {
-      label: 'serhatkochan.com/animsat',
-      href: '/animsat',
+      label: 'animsat.serhatkochan.com',
+      href: ANIMSAT_SITE_URL,
+      external: false,
     },
   },
   {

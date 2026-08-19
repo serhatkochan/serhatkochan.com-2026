@@ -6,15 +6,17 @@ import Container from './Container.astro';
 import ThemeToggle from '../ui/ThemeToggle.astro';
 import MobileNav from '../../islands/MobileNav';
 import { navItemIsActive } from '../../lib/nav';
+import { buildCanonical } from '../../lib/seo';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const items = navigation.map((item) => ({ ...item, href: buildCanonical(item.href) }));
 ---
 
 <header class="relative z-50 pt-6">
   <Container>
     <div class="flex items-center gap-4">
       <div class="flex flex-1">
-        <a href="/" class="group block cursor-pointer" aria-label={`${site.name} anasayfa`}>
+        <a href={buildCanonical('/')} class="group block cursor-pointer" aria-label={`${site.name} anasayfa`}>
           <OptimizedImage
             src={avatar}
             alt=""
@@ -33,7 +35,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
             navigation.map((item) => (
               <li>
                 <a
-                  href={item.href}
+                  href={buildCanonical(item.href)}
                   class:list={[
                     'block px-3 py-2 transition',
                     navItemIsActive(item.href, currentPath)
@@ -51,7 +53,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       </nav>
 
       <div class="flex flex-1 items-center justify-end gap-3">
-        <MobileNav client:media="(max-width: 767px)" items={[...navigation]} currentPath={currentPath} />
+        <MobileNav client:media="(max-width: 767px)" items={items} currentPath={currentPath} />
         <ThemeToggle />
       </div>
     </div>

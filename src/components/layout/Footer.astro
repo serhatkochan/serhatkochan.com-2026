@@ -1,6 +1,7 @@
 ---
 import { navigation, site } from '../../data/site';
 import { navItemIsActive } from '../../lib/nav';
+import { buildCanonical } from '../../lib/seo';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
@@ -18,7 +19,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
                 {
                   navigation.map((item) => (
                     <a
-                      href={item.href}
+                      href={buildCanonical(item.href)}
                       class:list={[
                         'transition hover:text-primary',
                         navItemIsActive(item.href, currentPath)

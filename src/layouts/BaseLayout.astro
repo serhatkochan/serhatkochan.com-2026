@@ -37,8 +37,8 @@ const ogLocaleAlternates = meta.alternates
     <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={meta.canonical} />
     {meta.alternates.map((item) => <link rel="alternate" hreflang={item.hreflang} href={item.href} />)}
-    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Notlar RSS`} href="/rss.xml" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Notlar RSS`} href={`${site.url}/rss.xml`} />
+    <link rel="manifest" href={`${site.url}/manifest.webmanifest`} />
     {
       meta.preloadImage && (
         <link rel="preload" as="image" href={meta.preloadImage} fetchpriority="high" />

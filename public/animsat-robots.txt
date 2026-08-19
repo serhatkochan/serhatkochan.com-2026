@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://animsat.serhatkochan.com/sitemap.xml

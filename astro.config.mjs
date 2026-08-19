@@ -50,7 +50,7 @@ export default defineConfig({
     mdx(),
     react(),
     sitemap({
-      filter: (page) => !page.includes('/creating'),
+      filter: (page) => !page.includes('/creating') && !page.includes('/animsat'),
     }),
   ],
   markdown: {

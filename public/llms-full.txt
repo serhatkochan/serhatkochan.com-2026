@@ -27,8 +27,8 @@ Serhat Koçhan, yazılımcı ve teknoloji tutkunu. Kişisel sitesinde yazılım 
 | Anasayfa | https://www.serhatkochan.com/ | Son notlar, fotoğraflar ve iş deneyimi özeti |
 | Notlar | https://www.serhatkochan.com/notes/ | Yazılım geliştirme üzerine Türkçe blog yazıları |
 | Projeler | https://www.serhatkochan.com/projects/ | Kişisel ve açık kaynak projeler |
-| Anımsat | https://www.serhatkochan.com/animsat/ | Tarih sayacı uygulaması |
-| Anımsat Gizlilik Politikası | https://www.serhatkochan.com/animsat/tr/policy/ | Anımsat gizlilik politikası (çok dilli) |
+| Anımsat | https://animsat.serhatkochan.com/ | Tarih sayacı uygulaması |
+| Anımsat Gizlilik Politikası | https://animsat.serhatkochan.com/tr/policy/ | Anımsat gizlilik politikası (çok dilli) |
 | Hakkında | https://www.serhatkochan.com/about/ | Biyografi, ilham kaynakları ve iletişim |
 
 ## Yayınlanmış notlar

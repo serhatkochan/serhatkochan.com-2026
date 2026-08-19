@@ -7,6 +7,9 @@ export type SEOProps = {
   title?: string;
   description?: string;
   path?: string;
+  canonical?: string;
+  siteName?: string;
+  absoluteTitle?: boolean;
   type?: 'website' | 'article';
   publishedTime?: Date;
   modifiedTime?: Date;

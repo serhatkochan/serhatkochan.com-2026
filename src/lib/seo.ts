@@ -1,10 +1,11 @@
 import type { SEOProps } from '../types/seo';
 import { site, socialMedia } from '../data/site';
-import { ANIMSAT_POLICY_UPDATED_ISO } from '../data/animsat/meta';
+import { ANIMSAT_NAME, ANIMSAT_POLICY_UPDATED_ISO, ANIMSAT_SITE_URL } from '../data/animsat/meta';
 
-export function buildCanonical(path: string) {
+export function buildCanonical(path: string, base = site.url) {
+  if (/^https?:\/\//i.test(path)) return path;
   const normalized = path.startsWith('/') ? path : `/${path}`;
-  return new URL(normalized, site.url).href;
+  return new URL(normalized, base).href;
 }
 
 export function buildAbsoluteAsset(path: string) {
@@ -15,6 +16,9 @@ export function buildPageMeta({
   title,
   description,
   path = '/',
+  canonical: canonicalOverride,
+  siteName,
+  absoluteTitle = false,
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -29,11 +33,16 @@ export function buildPageMeta({
   ogLocale,
   alternates = [],
 }: SEOProps) {
-  const canonical = buildCanonical(path);
-  const pageTitle = path === '/' ? site.title : `${title ?? site.name} | ${site.name}`;
+  const brand = siteName ?? site.name;
+  const canonical = canonicalOverride ?? buildCanonical(path);
+  const pageTitle = absoluteTitle
+    ? (title ?? brand)
+    : path === '/'
+      ? site.title
+      : `${title ?? brand} | ${brand}`;
   const pageDescription = description ?? site.description;
   const imageUrl = buildAbsoluteAsset(image ?? site.assets.ogImage);
-  const alt = imageAlt ?? (path === '/' ? site.title : `${site.name} — ${title ?? 'sayfa'}`);
+  const alt = imageAlt ?? (path === '/' ? site.title : `${brand} — ${title ?? 'sayfa'}`);
   const locale = ogLocale ?? site.locale;
   const language = htmlLang ?? site.language;
   const alternateLinks =
@@ -57,7 +66,7 @@ export function buildPageMeta({
       description: pageDescription,
       url: canonical,
       type,
-      siteName: site.name,
+      siteName: brand,
       locale,
       image: imageUrl,
       imageAlt: alt,
@@ -144,7 +153,7 @@ export function softwareApplicationSchema() {
     operatingSystem: 'iOS, Android',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
     author: { '@type': 'Person', name: site.name, url: site.url },
-    url: `${site.url}/animsat`,
+    url: ANIMSAT_SITE_URL,
     description:
       'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.',
     inLanguage: ['tr', 'en', 'de', 'fr', 'es', 'it', 'nl', 'ja', 'ko', 'zh', 'ar', 'pt', 'ru'],
@@ -173,10 +182,10 @@ export function privacyPolicySchema({
     about: {
       '@type': 'SoftwareApplication',
       name: 'Anımsat',
-      url: `${site.url}/animsat`,
+      url: ANIMSAT_SITE_URL,
     },
     publisher: { '@type': 'Person', name: site.name, url: site.url },
-    isPartOf: { '@type': 'WebSite', name: site.name, url: site.url },
+    isPartOf: { '@type': 'WebSite', name: ANIMSAT_NAME, url: ANIMSAT_SITE_URL },
   };
 }
 

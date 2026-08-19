@@ -4,13 +4,17 @@ export {
   ANIMSAT_NAME,
   ANIMSAT_PATH,
   ANIMSAT_POLICY_UPDATED_ISO,
+  ANIMSAT_SITE_URL,
   ANIMSAT_SUPPORT_EMAIL,
   ANIMSAT_TAGLINE,
+  animsatCanonical,
+  animsatHref,
 } from './meta';
 export {
   ANIMSAT_POLICY_LOCALES,
   getAnimsatLocale,
   isAnimsatLocale,
+  policyCanonical,
   policyPath,
   type AnimsatLocale,
 } from './locales';
