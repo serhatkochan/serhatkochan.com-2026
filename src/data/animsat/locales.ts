@@ -1,4 +1,4 @@
-import { animsatCanonical, animsatHref } from './meta';
+import { ANIMSAT_DEFAULT_LOCALE, animsatCanonical, animsatHref } from './meta';
 
 export const ANIMSAT_POLICY_LOCALES = [
   { id: 'tr', nativeName: 'Türkçe', htmlLang: 'tr', ogLocale: 'tr_TR', hreflang: 'tr', languageLabel: 'Dil', rtl: false },
@@ -29,10 +29,24 @@ export function getAnimsatLocale(locale: AnimsatLocale) {
   return LOCALE_BY_ID.get(locale) ?? ANIMSAT_POLICY_LOCALES[0];
 }
 
+export type AnimsatPage = 'home' | 'policy';
+
+export function landingPath(locale: AnimsatLocale) {
+  return locale === ANIMSAT_DEFAULT_LOCALE ? animsatHref('/') : animsatHref(`/${locale}`);
+}
+
+export function landingCanonical(locale: AnimsatLocale) {
+  return locale === ANIMSAT_DEFAULT_LOCALE ? animsatCanonical('/') : animsatCanonical(`/${locale}`);
+}
+
 export function policyPath(locale: AnimsatLocale) {
   return animsatHref(`/${locale}/policy`);
 }
 
 export function policyCanonical(locale: AnimsatLocale) {
   return animsatCanonical(`/${locale}/policy`);
+}
+
+export function localePagePath(locale: AnimsatLocale, page: AnimsatPage) {
+  return page === 'policy' ? policyPath(locale) : landingPath(locale);
 }

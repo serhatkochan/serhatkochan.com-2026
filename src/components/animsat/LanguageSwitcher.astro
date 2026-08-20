@@ -1,0 +1,61 @@
+---
+import {
+  ANIMSAT_POLICY_LOCALES,
+  getAnimsatLocale,
+  localePagePath,
+  type AnimsatLocale,
+  type AnimsatPage,
+} from '../../data/animsat';
+
+interface Props {
+  current: AnimsatLocale;
+  page: AnimsatPage;
+}
+
+const { current, page } = Astro.props;
+const localeDef = getAnimsatLocale(current);
+---
+
+<div class="animsat-lang">
+  <details class="animsat-lang-details">
+    <summary class="animsat-lang-summary" aria-label={localeDef.languageLabel}>
+      <span>{localeDef.nativeName}</span>
+      <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" class="animsat-lang-chevron">
+        <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+      </svg>
+    </summary>
+    <ul class="animsat-lang-menu" role="list">
+      {
+        ANIMSAT_POLICY_LOCALES.map((item) => {
+          const active = item.id === current;
+          return (
+            <li>
+              <a
+                href={localePagePath(item.id, page)}
+                hreflang={item.hreflang}
+                lang={item.htmlLang}
+                data-astro-prefetch="false"
+                aria-current={active ? 'page' : undefined}
+                class:list={['animsat-lang-option', active && 'is-active']}
+              >
+                {item.nativeName}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </details>
+</div>
+
+<script>
+  const details = document.querySelector('.animsat-lang-details');
+  if (details instanceof HTMLDetailsElement) {
+    document.addEventListener('click', (event) => {
+      if (!details.contains(event.target as Node)) details.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') details.open = false;
+    });
+  }
+</script>

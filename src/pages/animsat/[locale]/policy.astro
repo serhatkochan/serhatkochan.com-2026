@@ -2,15 +2,14 @@
 import AnimsatLayout from '../../../layouts/AnimsatLayout.astro';
 import SiteHeader from '../../../components/animsat/SiteHeader.astro';
 import SiteFooter from '../../../components/animsat/SiteFooter.astro';
-import PolicyLanguageNav from '../../../components/animsat/PolicyLanguageNav.astro';
 import {
   ANIMSAT_NAME,
-  ANIMSAT_PATH,
   ANIMSAT_POLICY_LOCALES,
-  animsatCanonical,
   getAnimsatLocale,
+  getLanding,
   getPrivacyDoc,
   isAnimsatLocale,
+  landingPath,
   policyCanonical,
   policyPath,
 } from '../../../data/animsat';
@@ -30,9 +29,9 @@ if (!isAnimsatLocale(localeParam)) {
 const locale = localeParam;
 const localeDef = getAnimsatLocale(locale);
 const doc = getPrivacyDoc(locale);
+const copy = getLanding(locale);
 const path = policyPath(locale);
 const canonical = policyCanonical(locale);
-const homeCanonical = animsatCanonical('/');
 const description = doc.intro;
 const alternates = [
   ...ANIMSAT_POLICY_LOCALES.map((item) => ({
@@ -50,6 +49,8 @@ const alternates = [
   canonical={canonical}
   htmlLang={localeDef.htmlLang}
   ogLocale={localeDef.ogLocale}
+  dir={localeDef.rtl ? 'rtl' : 'ltr'}
+  skipLabel={copy.skipToContent}
   alternates={alternates}
   keywords={['animsat', 'gizlilik-politikasi', 'privacy-policy', locale]}
   schema={[
@@ -62,18 +63,14 @@ const alternates = [
     }),
   ]}
 >
-  <SiteHeader slot="header" />
+  <SiteHeader slot="header" locale={locale} page="policy" />
 
   <div class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
     <p class="text-xs font-semibold tracking-[0.28em] text-[#c45c4a] uppercase">
-      <a href={ANIMSAT_PATH} class="hover:text-[#faf8f5]">{ANIMSAT_NAME}</a>
+      <a href={landingPath(locale)} class="hover:text-[#faf8f5]">{ANIMSAT_NAME}</a>
       <span aria-hidden="true" class="mx-2 text-[#faf8f5]/30">/</span>
       <span class="text-[#faf8f5]/55">{doc.title}</span>
     </p>
-
-    <div class="mt-10">
-      <PolicyLanguageNav current={locale} label={localeDef.languageLabel} />
-    </div>
 
     <article class="mt-12" lang={localeDef.htmlLang} dir={localeDef.rtl ? 'rtl' : 'ltr'}>
       <header>
@@ -108,5 +105,5 @@ const alternates = [
     </article>
   </div>
 
-  <SiteFooter slot="footer" />
+  <SiteFooter slot="footer" locale={locale} />
 </AnimsatLayout>

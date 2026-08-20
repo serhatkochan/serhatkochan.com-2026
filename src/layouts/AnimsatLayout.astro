@@ -7,27 +7,27 @@ import { buildPageMeta } from '../lib/seo';
 
 interface Props extends SEOProps {
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  dir?: 'ltr' | 'rtl';
+  skipLabel?: string;
 }
 
-const props = Astro.props;
+const { dir: dirProp, skipLabel: skipProp, schema, ...seo } = Astro.props;
+const dir = dirProp ?? 'ltr';
+const skipLabel = skipProp ?? 'İçeriğe atla';
 const meta = buildPageMeta({
-  ...props,
+  ...seo,
   siteName: ANIMSAT_NAME,
   absoluteTitle: true,
-  image: props.image ?? ANIMSAT_OG_IMAGE,
-  imageAlt: props.imageAlt ?? `${ANIMSAT_NAME} — ${props.title ?? 'Kaç Gün Kaldı'}`,
-  imageWidth: props.imageWidth ?? 1024,
-  imageHeight: props.imageHeight ?? 1024,
+  image: seo.image ?? ANIMSAT_OG_IMAGE,
+  imageAlt: seo.imageAlt ?? `${ANIMSAT_NAME} — ${seo.title ?? 'Kaç Gün Kaldı'}`,
+  imageWidth: seo.imageWidth ?? 1024,
+  imageHeight: seo.imageHeight ?? 1024,
 });
-const schemas = props.schema
-  ? Array.isArray(props.schema)
-    ? props.schema
-    : [props.schema]
-  : [];
+const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
-<html lang={meta.htmlLang} class="animsat-root">
+<html lang={meta.htmlLang} dir={dir} class="animsat-root">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -65,7 +65,7 @@ const schemas = props.schema
     {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>
   <body>
-    <a href="#main-content" class="skip-link">İçeriğe atla</a>
+    <a href="#main-content" class="skip-link">{skipLabel}</a>
     <div class="animsat-site">
       <div class="animsat-atmosphere" aria-hidden="true"></div>
       <div class="animsat-grain" aria-hidden="true"></div>

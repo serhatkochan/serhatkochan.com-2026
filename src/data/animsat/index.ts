@@ -1,7 +1,6 @@
 export {
   ANIMSAT_DEFAULT_LOCALE,
   ANIMSAT_APP_STORE_URL,
-  ANIMSAT_DEMO_DATE,
   ANIMSAT_DESCRIPTION,
   ANIMSAT_NAME,
   ANIMSAT_OG_IMAGE,
@@ -18,8 +17,13 @@ export {
   ANIMSAT_POLICY_LOCALES,
   getAnimsatLocale,
   isAnimsatLocale,
+  landingCanonical,
+  landingPath,
+  localePagePath,
   policyCanonical,
   policyPath,
   type AnimsatLocale,
+  type AnimsatPage,
 } from './locales';
+export { getLanding, type LandingCopy } from './landing';
 export { getPrivacyDoc, GOOGLE_PRIVACY_URL, type PrivacyDoc } from './privacy';

@@ -1,0 +1,21 @@
+---
+import LandingView from '../../../components/animsat/LandingView.astro';
+import {
+  ANIMSAT_DEFAULT_LOCALE,
+  ANIMSAT_POLICY_LOCALES,
+  isAnimsatLocale,
+} from '../../../data/animsat';
+
+export function getStaticPaths() {
+  return ANIMSAT_POLICY_LOCALES.filter((item) => item.id !== ANIMSAT_DEFAULT_LOCALE).map((item) => ({
+    params: { locale: item.id },
+  }));
+}
+
+const localeParam = Astro.params.locale;
+if (!isAnimsatLocale(localeParam) || localeParam === ANIMSAT_DEFAULT_LOCALE) {
+  throw new Error(`Unknown Anımsat locale: ${localeParam}`);
+}
+---
+
+<LandingView locale={localeParam} />

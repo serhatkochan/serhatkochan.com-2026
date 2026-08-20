@@ -64,7 +64,7 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   'en-US': {
     title: 'Privacy Policy',
     updated: 'Last updated: 16 August 2026',
-    intro: `${ANIMSAT_NAME} keeps your dates yours. This policy explains what stays on your device — and how ads work on the free plan.`,
+    intro: `${ANIMSAT_NAME} keeps your dates yours. This policy explains what stays on your device, and how ads work on the free plan.`,
     sections: [
       {
         title: '1. Data we collect',
@@ -107,7 +107,7 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   'de-DE': {
     title: 'Datenschutz',
     updated: 'Zuletzt aktualisiert: 16. August 2026',
-    intro: `${ANIMSAT_NAME} lässt deine Daten auf dem Gerät. Hier steht, was bleibt — und wie Werbung im kostenlosen Plan läuft.`,
+    intro: `${ANIMSAT_NAME} lässt deine Daten auf dem Gerät. Hier steht, was bleibt, und wie Werbung im kostenlosen Plan läuft.`,
     sections: [
       {
         title: '1. Welche Daten wir erfassen',
@@ -150,7 +150,7 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   'fr-FR': {
     title: 'Politique de confidentialité',
     updated: 'Dernière mise à jour : 16 août 2026',
-    intro: `${ANIMSAT_NAME} garde tes dates sur l’appareil. Ce texte dit ce qui reste ici — et comment marchent les pubs de la version gratuite.`,
+    intro: `${ANIMSAT_NAME} garde tes dates sur l’appareil. Ce texte dit ce qui reste ici, et comment marchent les pubs de la version gratuite.`,
     sections: [
       {
         title: '1. Données collectées',
@@ -193,7 +193,7 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   'es-ES': {
     title: 'Política de privacidad',
     updated: 'Última actualización: 16 de agosto de 2026',
-    intro: `${ANIMSAT_NAME} deja tus fechas en el teléfono. Aquí va qué se queda — y cómo funcionan los anuncios en el plan gratis.`,
+    intro: `${ANIMSAT_NAME} deja tus fechas en el teléfono. Aquí va qué se queda, y cómo funcionan los anuncios en el plan gratis.`,
     sections: [
       {
         title: '1. Datos que recopilamos',
@@ -236,7 +236,7 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   it: {
     title: 'Informativa sulla privacy',
     updated: 'Ultimo aggiornamento: 16 agosto 2026',
-    intro: `${ANIMSAT_NAME} tiene le date sul telefono. Qui c’è cosa resta sul dispositivo — e come funzionano gli annunci nella versione gratuita.`,
+    intro: `${ANIMSAT_NAME} tiene le date sul telefono. Qui c’è cosa resta sul dispositivo, e come funzionano gli annunci nella versione gratuita.`,
     sections: [
       {
         title: '1. Dati raccolti',
@@ -279,7 +279,7 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   'nl-NL': {
     title: 'Privacybeleid',
     updated: 'Laatst bijgewerkt: 16 augustus 2026',
-    intro: `${ANIMSAT_NAME} houdt je data op dit apparaat. Hier lees je wat lokaal blijft — en hoe ads in het gratis plan werken.`,
+    intro: `${ANIMSAT_NAME} houdt je data op dit apparaat. Hier lees je wat lokaal blijft, en hoe ads in het gratis plan werken.`,
     sections: [
       {
         title: '1. Welke gegevens',
@@ -537,7 +537,7 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   'pt-BR': {
     title: 'Política de privacidade',
     updated: 'Última atualização: 16 de agosto de 2026',
-    intro: `${ANIMSAT_NAME} deixa suas datas neste aparelho. Aqui vai o que fica local — e como os anúncios do plano grátis funcionam.`,
+    intro: `${ANIMSAT_NAME} deixa suas datas neste aparelho. Aqui vai o que fica local, e como os anúncios do plano grátis funcionam.`,
     sections: [
       {
         title: '1. Dados que coletamos',
@@ -580,11 +580,11 @@ const docs: Partial<Record<AnimsatLocale, PrivacyDoc>> = {
   ru: {
     title: 'Политика конфиденциальности',
     updated: 'Обновлено: 16 августа 2026',
-    intro: `${ANIMSAT_NAME} хранит ваши даты на устройстве. Здесь — что остаётся локально и как работают объявления в бесплатном плане.`,
+    intro: `${ANIMSAT_NAME} хранит ваши даты на устройстве. Здесь то, что остаётся локально, и как работают объявления в бесплатном плане.`,
     sections: [
       {
         title: '1. Какие данные мы собираем',
-        body: `Введённые вами данные: даты, названия, места и фото хранятся только на этом устройстве и не отправляются разработчику или на сервер.\n\nРеклама: бесплатный план использует Google AdMob. AdMob может обрабатывать IP (примерное местоположение), идентификаторы устройства и рекламы (IDFA), отчёты о сбоях/производительности и взаимодействия с объявлениями — по политике Google.`,
+        body: `Введённые вами данные: даты, названия, места и фото хранятся только на этом устройстве и не отправляются разработчику или на сервер.\n\nРеклама: бесплатный план использует Google AdMob. AdMob может обрабатывать IP (примерное местоположение), идентификаторы устройства и рекламы (IDFA), отчёты о сбоях/производительности и взаимодействия с объявлениями, по политике Google.`,
         linkUrl: GOOGLE_PRIVACY_URL,
         linkLabel: 'policies.google.com/privacy',
       },

@@ -63,20 +63,98 @@ html.animsat-root body {
   letter-spacing: -0.04em;
 }
 
-.animsat-count {
-  font-family: var(--display);
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-size: clamp(6.5rem, 28vw, 17rem);
-  line-height: 0.78;
-  letter-spacing: -0.08em;
+.animsat-lang {
+  position: relative;
+}
+
+.animsat-lang-details {
+  position: relative;
+}
+
+.animsat-lang-summary {
+  display: inline-flex;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(250, 248, 245, 0.14);
+  background: rgba(250, 248, 245, 0.04);
+  padding: 0.4rem 0.75rem 0.4rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(250, 248, 245, 0.78);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.animsat-lang-summary::-webkit-details-marker,
+.animsat-lang-summary::marker {
+  display: none;
+  content: "";
+}
+
+.animsat-lang-summary:hover,
+.animsat-lang-details[open] .animsat-lang-summary {
   color: #faf8f5;
-  font-variant-numeric: tabular-nums;
+  border-color: rgba(250, 248, 245, 0.28);
+  background: rgba(250, 248, 245, 0.08);
+}
+
+.animsat-lang-chevron {
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+}
+
+.animsat-lang-details[open] .animsat-lang-chevron {
+  transform: rotate(180deg);
+}
+
+.animsat-lang-menu {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  inset-inline-end: 0;
+  z-index: 40;
+  margin: 0;
+  max-height: min(70vh, 22rem);
+  min-width: 11.5rem;
+  overflow: auto;
+  list-style: none;
+  border-radius: 1rem;
+  border: 1px solid rgba(250, 248, 245, 0.12);
+  background: rgba(12, 12, 14, 0.94);
+  padding: 0.4rem;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(18px);
+}
+
+.animsat-lang-option {
+  display: block;
+  border-radius: 0.7rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: rgba(250, 248, 245, 0.68);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.animsat-lang-option:hover {
+  background: rgba(250, 248, 245, 0.08);
+  color: #faf8f5;
+}
+
+.animsat-lang-option.is-active {
+  background: #faf8f5;
+  color: #121212;
 }
 
 .animsat-phone {
   position: relative;
   width: min(100%, 280px);
+}
+
+.animsat-feature-phone {
+  width: min(100%, 240px);
 }
 
 .animsat-phone-bezel {
@@ -87,6 +165,10 @@ html.animsat-root body {
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12),
     0 40px 80px -24px rgba(0, 0, 0, 0.85);
+}
+
+.animsat-feature-phone .animsat-phone-bezel {
+  border-radius: 1.85rem;
 }
 
 .animsat-phone-notch {
@@ -116,12 +198,18 @@ html.animsat-root body {
 .animsat-marquee-track {
   display: flex;
   width: max-content;
-  gap: 2.5rem;
   padding-block: 1.1rem;
   animation: animsat-marquee 36s linear infinite;
 }
 
-.animsat-marquee-track span {
+.animsat-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2.5rem;
+  padding-inline-end: 2.5rem;
+}
+
+.animsat-marquee-group span {
   font-family: var(--display);
   font-size: 1.05rem;
   font-weight: 400;
@@ -133,10 +221,10 @@ html.animsat-root body {
 
 @keyframes animsat-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-25%, 0, 0);
   }
 }
 

@@ -1,8 +1,9 @@
-import { ANIMSAT_POLICY_LOCALES, animsatCanonical } from '../../data/animsat';
+import { ANIMSAT_POLICY_LOCALES, animsatCanonical, landingCanonical } from '../../data/animsat';
 
 export async function GET() {
   const urls = [
-    animsatCanonical('/'),
+    landingCanonical('tr'),
+    ...ANIMSAT_POLICY_LOCALES.filter((item) => item.id !== 'tr').map((item) => landingCanonical(item.id)),
     ...ANIMSAT_POLICY_LOCALES.map((item) => animsatCanonical(`/${item.id}/policy`)),
   ];
 
