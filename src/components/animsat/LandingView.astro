@@ -35,10 +35,14 @@ const homeCanonical = landingCanonical(locale);
 const marqueeCopies = [0, 1, 2, 3];
 
 const featureOrder = ['dates', 'widget', 'photo', 'color'] as const;
-const features = featureOrder.map((id) => {
+const features = featureOrder.map((id, index) => {
   const feature = copy.features.find((item) => item.id === id);
   if (!feature) throw new Error(`Missing Anımsat feature: ${id}`);
-  return feature;
+  return {
+    ...feature,
+    kicker: String(index + 1).padStart(2, '0'),
+    align: index % 2 === 0 ? 'start' : 'end',
+  };
 });
 
 const featureShots = {
@@ -159,12 +163,18 @@ const schema = [
       {
         features.map((feature) => {
           const shot = featureShots[feature.id];
+          const isEnd = feature.align === 'end';
           return (
-            <article class="animsat-feature">
+            <article
+              class:list={[
+                'animsat-feature flex flex-col',
+                isEnd ? 'items-end text-right' : 'items-start text-left',
+              ]}
+            >
               <p class="font-mono text-xs tracking-[0.2em] text-[#faf8f5]/40">{feature.kicker}</p>
-              <h3 class="animsat-display mt-3 text-2xl text-[#faf8f5] sm:text-3xl">{feature.title}</h3>
+              <h3 class="animsat-display mt-3 max-w-md text-2xl text-[#faf8f5] sm:text-3xl">{feature.title}</h3>
               <p class="mt-3 max-w-md text-base leading-7 text-[#a8a29e]">{feature.body}</p>
-              <PhoneFrame src={shot.src} alt={shot.alt} class="animsat-feature-phone mx-auto mt-8" />
+              <PhoneFrame src={shot.src} alt={shot.alt} class="animsat-feature-phone mt-8" />
             </article>
           );
         })
