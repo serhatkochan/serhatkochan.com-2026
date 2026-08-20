@@ -34,6 +34,13 @@ const homePath = landingPath(locale);
 const homeCanonical = landingCanonical(locale);
 const marqueeCopies = [0, 1, 2, 3];
 
+const featureOrder = ['dates', 'widget', 'photo', 'color'] as const;
+const features = featureOrder.map((id) => {
+  const feature = copy.features.find((item) => item.id === id);
+  if (!feature) throw new Error(`Missing Anımsat feature: ${id}`);
+  return feature;
+});
+
 const featureShots = {
   dates: { src: shotHome, alt: copy.alts.phoneHome },
   photo: { src: shotPhoto, alt: copy.alts.phonePhoto },
@@ -148,9 +155,9 @@ const schema = [
     <p class="text-xs font-semibold tracking-[0.28em] text-[#c45c4a] uppercase">{copy.featuresKicker}</p>
     <h2 class="animsat-display mt-4 max-w-xl text-3xl text-[#faf8f5] sm:text-5xl">{copy.featuresTitle}</h2>
 
-    <div class="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:gap-x-14 lg:gap-y-16">
+    <div class="mt-12 grid gap-14 lg:gap-16">
       {
-        copy.features.map((feature) => {
+        features.map((feature) => {
           const shot = featureShots[feature.id];
           return (
             <article class="animsat-feature">
