@@ -69,8 +69,8 @@ const copy = {
       'Emeklilik',
       'Proje teslimi',
     ],
-    featuresKicker: 'Nasıl durur yanında',
-    featuresTitle: 'Tarihi kaydet. Kalanı her gün gör.',
+    featuresKicker: 'Özellikler',
+    featuresTitle: 'Tarihi kaydet, kaç gün kaldığını takip et.',
     features: [
       {
         id: 'dates',
@@ -144,8 +144,8 @@ const copy = {
       'Retirement',
       'Deadline',
     ],
-    featuresKicker: 'How it stays with you',
-    featuresTitle: 'Save the date. See what’s left, every day.',
+    featuresKicker: 'Features',
+    featuresTitle: 'Save the date, track how many days are left.',
     features: [
       {
         id: 'dates',
@@ -219,8 +219,8 @@ const copy = {
       'Deadline',
       'Festival',
     ],
-    featuresKicker: 'So bleibt es bei dir',
-    featuresTitle: 'Datum speichern. Den Rest jeden Tag sehen.',
+    featuresKicker: 'Funktionen',
+    featuresTitle: 'Speichere das Datum, verfolge wie viele Tage bleiben.',
     features: [
       {
         id: 'dates',
@@ -294,8 +294,8 @@ const copy = {
       'Deadline',
       'Festival',
     ],
-    featuresKicker: 'Comment ça reste près de toi',
-    featuresTitle: 'Enregistre la date. Vois le reste chaque jour.',
+    featuresKicker: 'Fonctionnalités',
+    featuresTitle: 'Enregistre la date, suis combien de jours il reste.',
     features: [
       {
         id: 'dates',
@@ -369,8 +369,8 @@ const copy = {
       'Entrega',
       'Festival',
     ],
-    featuresKicker: 'Cómo se queda contigo',
-    featuresTitle: 'Guarda la fecha. Mira lo que queda, cada día.',
+    featuresKicker: 'Funciones',
+    featuresTitle: 'Guarda la fecha, sigue cuántos días faltan.',
     features: [
       {
         id: 'dates',
@@ -444,8 +444,8 @@ const copy = {
       'Scadenza',
       'Festival',
     ],
-    featuresKicker: 'Come resta con te',
-    featuresTitle: 'Salva la data. Vedi il resto, ogni giorno.',
+    featuresKicker: 'Funzioni',
+    featuresTitle: 'Salva la data, segui quanti giorni mancano.',
     features: [
       {
         id: 'dates',
@@ -519,8 +519,8 @@ const copy = {
       'Deadline',
       'Festival',
     ],
-    featuresKicker: 'Zo blijft het bij je',
-    featuresTitle: 'Sla de datum op. Zie elke dag wat rest.',
+    featuresKicker: 'Functies',
+    featuresTitle: 'Sla de datum op, volg hoeveel dagen er nog zijn.',
     features: [
       {
         id: 'dates',
@@ -594,8 +594,8 @@ const copy = {
       '締切',
       'フェス',
     ],
-    featuresKicker: 'そばに残る理由',
-    featuresTitle: '日付を残す。残りを毎日見る。',
+    featuresKicker: '機能',
+    featuresTitle: '日付を残して、あと何日かを追う。',
     features: [
       {
         id: 'dates',
@@ -669,8 +669,8 @@ const copy = {
       '마감',
       '페스티벌',
     ],
-    featuresKicker: '곁에 남는 방식',
-    featuresTitle: '날짜를 저장하세요. 남은 날을 매일 보세요.',
+    featuresKicker: '기능',
+    featuresTitle: '날짜를 저장하고, 며칠 남았는지 추적하세요.',
     features: [
       {
         id: 'dates',
@@ -743,8 +743,8 @@ const copy = {
       '截止日期',
       '音乐节',
     ],
-    featuresKicker: '它如何陪着你',
-    featuresTitle: '记下日期。每天看见还剩多少。',
+    featuresKicker: '功能',
+    featuresTitle: '记下日期，追踪还剩几天。',
     features: [
       {
         id: 'dates',
@@ -816,8 +816,8 @@ const copy = {
       '截止日期',
       '音樂節',
     ],
-    featuresKicker: '它如何陪著你',
-    featuresTitle: '記下日期。每天看見還剩多少。',
+    featuresKicker: '功能',
+    featuresTitle: '記下日期，追蹤還剩幾天。',
     features: [
       {
         id: 'dates',
@@ -890,8 +890,8 @@ const copy = {
       'موعد نهائي',
       'مهرجان',
     ],
-    featuresKicker: 'كيف يبقى بجانبك',
-    featuresTitle: 'احفظ التاريخ. انظر ما تبقى كل يوم.',
+    featuresKicker: 'المزايا',
+    featuresTitle: 'احفظ التاريخ، وتابع كم يومًا تبقى.',
     features: [
       {
         id: 'dates',
@@ -965,8 +965,8 @@ const copy = {
       'Prazo',
       'Festival',
     ],
-    featuresKicker: 'Como fica com você',
-    featuresTitle: 'Salve a data. Veja o que resta, todos os dias.',
+    featuresKicker: 'Recursos',
+    featuresTitle: 'Salve a data, acompanhe quantos dias faltam.',
     features: [
       {
         id: 'dates',
@@ -1040,8 +1040,8 @@ const copy = {
       'Дедлайн',
       'Фестиваль',
     ],
-    featuresKicker: 'Как это остаётся рядом',
-    featuresTitle: 'Сохраните дату. Смотрите остаток каждый день.',
+    featuresKicker: 'Возможности',
+    featuresTitle: 'Сохраните дату, следите сколько дней осталось.',
     features: [
       {
         id: 'dates',
