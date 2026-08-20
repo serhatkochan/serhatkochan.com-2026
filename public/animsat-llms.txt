@@ -1,0 +1,34 @@
+# Anımsat — animsat.serhatkochan.com
+
+> Önemli günleri kaydet; ana ekranda kaç gün kaldığını gör. Veriler yalnızca cihazda kalır.
+
+## Ürün
+
+- İsim: Anımsat
+- Slogan: Kaç Gün Kaldı
+- URL: https://animsat.serhatkochan.com/
+- Geliştirici: Serhat Koçhan
+- Destek: serhatkochan@hotmail.com.tr
+- Platform: iOS, Android (yakında mağazalarda)
+
+## Sayfalar
+
+- [Anasayfa (TR)](https://animsat.serhatkochan.com/)
+- [English](https://animsat.serhatkochan.com/en-US)
+- [Gizlilik Politikası (TR)](https://animsat.serhatkochan.com/tr/policy)
+- [Privacy Policy (EN)](https://animsat.serhatkochan.com/en-US/policy)
+
+## Özellikler
+
+- Önemli tarihleri kaydetme ve geri sayım
+- Fotoğraf veya renk ile kart özelleştirme
+- Ana ekran / kilit ekranı widget’ları
+- Veriler cihazda; sunucuya gönderilmez
+- Anımsat Pro: reklamsız, sınırsız, tek seferlik
+
+## Keşif
+
+- Sitemap: https://animsat.serhatkochan.com/sitemap.xml
+- Robots: https://animsat.serhatkochan.com/robots.txt
+- Tam harita: https://animsat.serhatkochan.com/llms-full.txt
+- Geliştirici sitesi: https://www.serhatkochan.com/

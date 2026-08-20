@@ -1,0 +1,45 @@
+# Anımsat — tam içerik haritası (llms-full.txt)
+
+> Bu dosya yapay zeka sistemlerinin Anımsat alt alan adını anlaması içindir.
+
+## Özet
+
+Anımsat (Kaç Gün Kaldı), doğum günü, düğün, yolculuk gibi tarihleri kaydedip ana ekranda ve widget’ta kalan günü gösteren bir mobil uygulamadır. Girdiğin tarihler, başlıklar, konumlar ve fotoğraflar yalnızca cihazda saklanır.
+
+- Ana URL: https://animsat.serhatkochan.com/
+- Geliştirici: Serhat Koçhan (https://www.serhatkochan.com/)
+- Destek: serhatkochan@hotmail.com.tr
+- Sitemap: https://animsat.serhatkochan.com/sitemap.xml
+
+## Landing sayfaları
+
+| Dil | URL |
+| --- | --- |
+| Türkçe | https://animsat.serhatkochan.com/ |
+| English | https://animsat.serhatkochan.com/en-US |
+| Deutsch | https://animsat.serhatkochan.com/de-DE |
+| Français | https://animsat.serhatkochan.com/fr-FR |
+| Español | https://animsat.serhatkochan.com/es-ES |
+| Italiano | https://animsat.serhatkochan.com/it |
+| Nederlands | https://animsat.serhatkochan.com/nl-NL |
+| 日本語 | https://animsat.serhatkochan.com/ja |
+| 한국어 | https://animsat.serhatkochan.com/ko |
+| 简体中文 | https://animsat.serhatkochan.com/zh-Hans |
+| 繁體中文 | https://animsat.serhatkochan.com/zh-Hant |
+| العربية | https://animsat.serhatkochan.com/ar-SA |
+| Português | https://animsat.serhatkochan.com/pt-BR |
+| Русский | https://animsat.serhatkochan.com/ru |
+
+## Gizlilik politikası
+
+Her dil için `/[locale]/policy` yolu vardır. Örnekler:
+
+- https://animsat.serhatkochan.com/tr/policy
+- https://animsat.serhatkochan.com/en-US/policy
+
+Ücretsiz planda Google AdMob kullanılabilir; Pro reklamları kapatır. Tarih verileri üçüncü taraflarla paylaşılmaz.
+
+## İlişkili
+
+- Projeler: https://www.serhatkochan.com/projects/
+- Ana site llms.txt: https://www.serhatkochan.com/llms.txt

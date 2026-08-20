@@ -23,7 +23,7 @@ export const currentProjects: Project[] = [
     link: {
       label: 'animsat.serhatkochan.com',
       href: ANIMSAT_SITE_URL,
-      external: false,
+      external: true,
     },
   },
   {

@@ -19,6 +19,24 @@ const POLICY_ALIASES = {
   '/pt-PT/policy': '/pt-BR/policy',
 };
 
+/** Landing + policy locale segmentleri (tr ana dil; /tr → /) */
+const ANIMSAT_LOCALES = new Set([
+  'tr',
+  'en-US',
+  'de-DE',
+  'fr-FR',
+  'es-ES',
+  'it',
+  'nl-NL',
+  'ja',
+  'ko',
+  'zh-Hans',
+  'zh-Hant',
+  'ar-SA',
+  'pt-BR',
+  'ru',
+]);
+
 const MAIN_SITE_PREFIXES = ['/notes', '/projects', '/about', '/creating', '/rss.xml'];
 
 function normalizePath(pathname) {
@@ -67,7 +85,6 @@ export default function middleware(request) {
   if (
     pathname.startsWith('/_astro') ||
     pathname.startsWith('/assets') ||
-    pathname === '/manifest.webmanifest' ||
     pathname === '/humans.txt'
   ) {
     return;
@@ -99,8 +116,33 @@ export default function middleware(request) {
     return rewrite(url, '/animsat/sitemap.xml');
   }
 
+  if (pathname === '/llms.txt') {
+    return rewrite(url, '/animsat-llms.txt');
+  }
+
+  if (pathname === '/llms-full.txt') {
+    return rewrite(url, '/animsat-llms-full.txt');
+  }
+
+  if (pathname === '/manifest.webmanifest') {
+    return rewrite(url, '/animsat-manifest.webmanifest');
+  }
+
   if (pathname === '/') {
     return rewrite(url, '/animsat');
+  }
+
+  // /tr → ana landing (canonical)
+  if (pathname === '/tr') {
+    const destination = new URL(url);
+    destination.pathname = '/';
+    return Response.redirect(destination, 301);
+  }
+
+  // /en-US, /ja, … → /animsat/en-US, …
+  const localeMatch = pathname.match(/^\/([^/]+)$/);
+  if (localeMatch && ANIMSAT_LOCALES.has(localeMatch[1])) {
+    return rewrite(url, `/animsat/${localeMatch[1]}`);
   }
 
   if (/^\/[^/]+\/policy$/.test(pathname)) {

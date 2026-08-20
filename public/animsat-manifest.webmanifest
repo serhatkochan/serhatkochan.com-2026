@@ -1,0 +1,24 @@
+{
+  "name": "Anımsat",
+  "short_name": "Anımsat",
+  "description": "Doğum günü, düğün, yolculuk. Tarihi kaydet, ana ekranda kaç gün kaldığını gör.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050506",
+  "theme_color": "#050506",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/animsat-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/animsat-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

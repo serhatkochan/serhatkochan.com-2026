@@ -17,6 +17,7 @@
 - [Projeler](https://www.serhatkochan.com/projects/)
 - [Anımsat](https://animsat.serhatkochan.com/)
 - [Anımsat Gizlilik Politikası](https://animsat.serhatkochan.com/tr/policy/)
+- [Anımsat sitemap](https://animsat.serhatkochan.com/sitemap.xml)
 - [Hakkında](https://www.serhatkochan.com/about/)
 
 ## Notlar

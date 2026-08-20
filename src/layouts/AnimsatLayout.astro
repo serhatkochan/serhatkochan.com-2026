@@ -62,6 +62,7 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta name="twitter:image" content={new URL(ANIMSAT_OG_IMAGE, ANIMSAT_SITE_URL).href} />
     <link rel="icon" type="image/png" href="/animsat-icon.png" />
     <link rel="apple-touch-icon" href="/animsat-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>
   <body>

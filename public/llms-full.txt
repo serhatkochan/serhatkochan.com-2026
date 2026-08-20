@@ -10,6 +10,7 @@ Serhat Koçhan, yazılımcı ve teknoloji tutkunu. Kişisel sitesinde yazılım 
 - Dil: Türkçe (tr-TR)
 - RSS: https://www.serhatkochan.com/rss.xml
 - Sitemap: https://www.serhatkochan.com/sitemap-index.xml
+- Anımsat sitemap: https://animsat.serhatkochan.com/sitemap.xml
 
 ## Yazar
 
@@ -28,7 +29,9 @@ Serhat Koçhan, yazılımcı ve teknoloji tutkunu. Kişisel sitesinde yazılım 
 | Notlar | https://www.serhatkochan.com/notes/ | Yazılım geliştirme üzerine Türkçe blog yazıları |
 | Projeler | https://www.serhatkochan.com/projects/ | Kişisel ve açık kaynak projeler |
 | Anımsat | https://animsat.serhatkochan.com/ | Tarih sayacı uygulaması |
+| Anımsat (EN) | https://animsat.serhatkochan.com/en-US | English landing |
 | Anımsat Gizlilik Politikası | https://animsat.serhatkochan.com/tr/policy/ | Anımsat gizlilik politikası (çok dilli) |
+| Anımsat sitemap | https://animsat.serhatkochan.com/sitemap.xml | Alt alan adı site haritası |
 | Hakkında | https://www.serhatkochan.com/about/ | Biyografi, ilham kaynakları ve iletişim |
 
 ## Yayınlanmış notlar
