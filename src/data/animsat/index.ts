@@ -22,8 +22,11 @@ export {
   localePagePath,
   policyCanonical,
   policyPath,
+  supportCanonical,
+  supportPath,
   type AnimsatLocale,
   type AnimsatPage,
 } from './locales';
 export { getLanding, type LandingCopy } from './landing';
 export { getPrivacyDoc, GOOGLE_PRIVACY_URL, type PrivacyDoc } from './privacy';
+export { getSupportDoc, type SupportDoc } from './support';

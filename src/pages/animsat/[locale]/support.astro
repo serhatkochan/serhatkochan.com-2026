@@ -1,0 +1,132 @@
+---
+import AnimsatLayout from '../../../layouts/AnimsatLayout.astro';
+import SiteHeader from '../../../components/animsat/SiteHeader.astro';
+import SiteFooter from '../../../components/animsat/SiteFooter.astro';
+import {
+  ANIMSAT_NAME,
+  ANIMSAT_POLICY_LOCALES,
+  ANIMSAT_SUPPORT_EMAIL,
+  getAnimsatLocale,
+  getLanding,
+  getSupportDoc,
+  isAnimsatLocale,
+  landingPath,
+  supportCanonical,
+  supportPath,
+} from '../../../data/animsat';
+import { contactPageSchema, softwareApplicationSchema } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return ANIMSAT_POLICY_LOCALES.map((item) => ({
+    params: { locale: item.id },
+  }));
+}
+
+const localeParam = Astro.params.locale;
+if (!isAnimsatLocale(localeParam)) {
+  throw new Error(`Unknown Anımsat locale: ${localeParam}`);
+}
+
+const locale = localeParam;
+const localeDef = getAnimsatLocale(locale);
+const doc = getSupportDoc(locale);
+const copy = getLanding(locale);
+const path = supportPath(locale);
+const canonical = supportCanonical(locale);
+const mailto = `mailto:${ANIMSAT_SUPPORT_EMAIL}`;
+const alternates = [
+  ...ANIMSAT_POLICY_LOCALES.map((item) => ({
+    hreflang: item.hreflang,
+    href: supportCanonical(item.id),
+  })),
+  { hreflang: 'x-default', href: supportCanonical('tr') },
+];
+---
+
+<AnimsatLayout
+  title={`${doc.title} — ${ANIMSAT_NAME}`}
+  description={doc.intro}
+  path={path}
+  canonical={canonical}
+  htmlLang={localeDef.htmlLang}
+  ogLocale={localeDef.ogLocale}
+  dir={localeDef.rtl ? 'rtl' : 'ltr'}
+  skipLabel={copy.skipToContent}
+  alternates={alternates}
+  keywords={['animsat', 'destek', 'support', locale]}
+  schema={[
+    softwareApplicationSchema(),
+    contactPageSchema({
+      title: `${doc.title} — ${ANIMSAT_NAME}`,
+      description: doc.intro,
+      path: canonical,
+      locale: localeDef.htmlLang,
+    }),
+  ]}
+>
+  <SiteHeader slot="header" locale={locale} page="support" />
+
+  <div class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+    <p class="text-xs font-semibold tracking-[0.28em] text-[#c45c4a] uppercase">
+      <a href={landingPath(locale)} class="hover:text-[#faf8f5]">{ANIMSAT_NAME}</a>
+      <span aria-hidden="true" class="mx-2 text-[#faf8f5]/30">/</span>
+      <span class="text-[#faf8f5]/55">{doc.kicker}</span>
+    </p>
+
+    <article class="mt-10" lang={localeDef.htmlLang} dir={localeDef.rtl ? 'rtl' : 'ltr'}>
+      <h1 class="animsat-display text-5xl leading-[0.95] text-[#faf8f5] sm:text-7xl">{doc.title}</h1>
+      <p class="mt-6 max-w-lg text-base leading-7 text-[#a8a29e] sm:text-lg">{doc.intro}</p>
+
+      <section class="animsat-support-card mt-12" aria-labelledby="animsat-support-contact">
+        <p id="animsat-support-contact" class="text-xs font-semibold tracking-[0.24em] text-[#c45c4a] uppercase">
+          {doc.contactTitle}
+        </p>
+        <p class="animsat-display mt-4 text-2xl leading-snug text-[#faf8f5] sm:text-3xl">{doc.contactBody}</p>
+        <a href={mailto} class="animsat-support-mail mt-8 inline-flex items-center gap-3">
+          <span class="animsat-support-mail-mark" aria-hidden="true">@</span>
+          <span>
+            <span class="block text-sm font-semibold text-[#121212]">{doc.contactCta}</span>
+            <span class="mt-0.5 block text-sm text-[#121212]/60">{ANIMSAT_SUPPORT_EMAIL}</span>
+          </span>
+        </a>
+        <p class="mt-5 text-sm text-[#a8a29e]">{doc.responseNote}</p>
+      </section>
+
+      <section class="mt-16" aria-labelledby="animsat-support-faq">
+        <h2 id="animsat-support-faq" class="animsat-display text-3xl text-[#faf8f5]">{doc.faqTitle}</h2>
+        <div class="mt-8 divide-y divide-white/10 border-y border-white/10">
+          {
+            doc.faqs.map((item, index) => (
+              <details class="animsat-faq">
+                <summary class="animsat-faq-summary">
+                  <span class="mt-1.5 font-mono text-xs tracking-[0.18em] text-[#faf8f5]/35">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span class="animsat-display text-xl leading-snug text-[#faf8f5] sm:text-2xl">{item.q}</span>
+                  <svg
+                    class="animsat-faq-chevron"
+                    viewBox="0 0 12 8"
+                    width="12"
+                    height="8"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 1.5 6 6.5 11 1.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    ></path>
+                  </svg>
+                </summary>
+                <p class="ps-[2.75rem] mt-3 max-w-lg pb-2 text-base leading-7 text-[#a8a29e] sm:ps-[3.1rem]">{item.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <SiteFooter slot="footer" locale={locale} />
+</AnimsatLayout>

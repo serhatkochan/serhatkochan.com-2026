@@ -19,6 +19,24 @@ const POLICY_ALIASES = {
   '/pt-PT/policy': '/pt-BR/policy',
 };
 
+const SUPPORT_ALIASES = {
+  '/support': '/tr/support',
+  '/en/support': '/en-US/support',
+  '/de/support': '/de-DE/support',
+  '/fr/support': '/fr-FR/support',
+  '/es/support': '/es-ES/support',
+  '/nl/support': '/nl-NL/support',
+  '/pt/support': '/pt-BR/support',
+  '/ar/support': '/ar-SA/support',
+  '/zh/support': '/zh-Hans/support',
+  '/en-GB/support': '/en-US/support',
+  '/en-AU/support': '/en-US/support',
+  '/en-CA/support': '/en-US/support',
+  '/fr-CA/support': '/fr-FR/support',
+  '/es-MX/support': '/es-ES/support',
+  '/pt-PT/support': '/pt-BR/support',
+};
+
 /** Landing + policy locale segmentleri (tr ana dil; /tr → /) */
 const ANIMSAT_LOCALES = new Set([
   'tr',
@@ -101,7 +119,7 @@ export default function middleware(request) {
     return Response.redirect(destination, 308);
   }
 
-  const alias = POLICY_ALIASES[pathname];
+  const alias = POLICY_ALIASES[pathname] || SUPPORT_ALIASES[pathname];
   if (alias) {
     const destination = new URL(url);
     destination.pathname = alias;
@@ -145,7 +163,7 @@ export default function middleware(request) {
     return rewrite(url, `/animsat/${localeMatch[1]}`);
   }
 
-  if (/^\/[^/]+\/policy$/.test(pathname)) {
+  if (/^\/[^/]+\/(policy|support)$/.test(pathname)) {
     return rewrite(url, `/animsat${pathname}`);
   }
 }

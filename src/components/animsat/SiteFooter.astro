@@ -1,5 +1,5 @@
 ---
-import { ANIMSAT_NAME, getLanding, landingPath, policyPath, type AnimsatLocale } from '../../data/animsat';
+import { ANIMSAT_NAME, getLanding, landingPath, policyPath, supportPath, type AnimsatLocale } from '../../data/animsat';
 
 interface Props {
   locale?: AnimsatLocale;
@@ -17,6 +17,7 @@ const copy = getLanding(locale);
     </a>
     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#faf8f5]/55">
       <a href={policyPath(locale)} class="hover:text-[#faf8f5]">{copy.footerPrivacy}</a>
+      <a href={supportPath(locale)} class="hover:text-[#faf8f5]">{copy.footerSupport}</a>
       <a href="https://www.serhatkochan.com" class="hover:text-[#faf8f5]">{copy.footerNote}</a>
     </div>
   </div>

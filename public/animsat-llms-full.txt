@@ -39,6 +39,15 @@ Her dil için `/[locale]/policy` yolu vardır. Örnekler:
 
 Ücretsiz planda Google AdMob kullanılabilir; Pro reklamları kapatır. Tarih verileri üçüncü taraflarla paylaşılmaz.
 
+## Destek
+
+Her dil için `/[locale]/support` yolu vardır. App Store destek URL’si:
+
+- https://animsat.serhatkochan.com/tr/support
+- https://animsat.serhatkochan.com/en-US/support
+
+İletişim: serhatkochan@hotmail.com.tr
+
 ## İlişkili
 
 - Projeler: https://www.serhatkochan.com/projects/

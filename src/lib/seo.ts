@@ -1,6 +1,6 @@
 import type { SEOProps } from '../types/seo';
 import { site, socialMedia } from '../data/site';
-import { ANIMSAT_NAME, ANIMSAT_POLICY_UPDATED_ISO, ANIMSAT_SITE_URL } from '../data/animsat/meta';
+import { ANIMSAT_NAME, ANIMSAT_POLICY_UPDATED_ISO, ANIMSAT_SITE_URL, ANIMSAT_SUPPORT_EMAIL } from '../data/animsat/meta';
 
 export function buildCanonical(path: string, base = site.url) {
   if (/^https?:\/\//i.test(path)) return path;
@@ -157,6 +157,40 @@ export function softwareApplicationSchema() {
     description:
       'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.',
     inLanguage: ['tr', 'en', 'de', 'fr', 'es', 'it', 'nl', 'ja', 'ko', 'zh', 'ar', 'pt', 'ru'],
+  };
+}
+
+export function contactPageSchema({
+  title,
+  description,
+  path,
+  locale,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  locale: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: title,
+    description,
+    url: buildCanonical(path),
+    inLanguage: locale,
+    about: {
+      '@type': 'SoftwareApplication',
+      name: 'Anımsat',
+      url: ANIMSAT_SITE_URL,
+    },
+    publisher: { '@type': 'Person', name: site.name, url: site.url },
+    isPartOf: { '@type': 'WebSite', name: ANIMSAT_NAME, url: ANIMSAT_SITE_URL },
+    mainEntity: {
+      '@type': 'Organization',
+      name: ANIMSAT_NAME,
+      email: ANIMSAT_SUPPORT_EMAIL,
+      url: ANIMSAT_SITE_URL,
+    },
   };
 }
 

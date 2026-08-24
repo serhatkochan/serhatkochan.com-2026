@@ -1,6 +1,7 @@
-import { ANIMSAT_POLICY_LOCALES, landingCanonical, policyCanonical } from '../../data/animsat';
+import { ANIMSAT_POLICY_LOCALES, landingCanonical, policyCanonical, supportCanonical } from '../../data/animsat';
 
 const POLICY_UPDATED = '2026-08-16';
+const SUPPORT_UPDATED = '2026-08-24';
 
 function xhtmlLinks(
   pages: { hreflang: string; href: string }[],
@@ -42,7 +43,21 @@ export async function GET() {
     alternates: policyAlternates,
   }));
 
-  const urls = [...landingUrls, ...policyUrls];
+  const supportAlternates = [
+    ...ANIMSAT_POLICY_LOCALES.map((item) => ({
+      hreflang: item.hreflang,
+      href: supportCanonical(item.id),
+    })),
+    { hreflang: 'x-default', href: supportCanonical('tr') },
+  ];
+
+  const supportUrls = ANIMSAT_POLICY_LOCALES.map((item) => ({
+    loc: supportCanonical(item.id),
+    lastmod: SUPPORT_UPDATED,
+    alternates: supportAlternates,
+  }));
+
+  const urls = [...landingUrls, ...policyUrls, ...supportUrls];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

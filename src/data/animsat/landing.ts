@@ -30,6 +30,7 @@ export type LandingCopy = {
   proItems: readonly string[];
   footerNote: string;
   footerPrivacy: string;
+  footerSupport: string;
   alts: {
     phoneHome: string;
     phoneWidget: string;
@@ -107,6 +108,7 @@ const copy = {
     proItems: ['Reklamsız deneyim', 'Sınırsız tarih', 'Sınırsız widget', 'Tek seferlik satın alma'],
     footerNote: 'Serhat Koçhan yapımı',
     footerPrivacy: 'Gizlilik',
+    footerSupport: 'Destek',
     alts: {
       phoneHome: 'Anımsat ana ekranı: fotoğraflı tarih kartları ve kaç gün kaldığı',
       phoneWidget: 'Anımsat widget’ları iPhone ana ekranında',
@@ -182,6 +184,7 @@ const copy = {
     proItems: ['Ad-free experience', 'Unlimited dates', 'Unlimited widgets', 'One-time purchase'],
     footerNote: 'Made by Serhat Koçhan',
     footerPrivacy: 'Privacy',
+    footerSupport: 'Support',
     alts: {
       phoneHome: 'Anımsat home screen: dated photo cards and days remaining',
       phoneWidget: 'Anımsat widgets on an iPhone home screen',
@@ -257,6 +260,7 @@ const copy = {
     proItems: ['Werbefreie Nutzung', 'Unbegrenzte Termine', 'Unbegrenzte Widgets', 'Einmaliger Kauf'],
     footerNote: 'Von Serhat Koçhan',
     footerPrivacy: 'Datenschutz',
+    footerSupport: 'Support',
     alts: {
       phoneHome: 'Anımsat-Startbildschirm: Datumskarten mit Foto und verbleibenden Tagen',
       phoneWidget: 'Anımsat-Widgets auf einem iPhone-Startbildschirm',
@@ -332,6 +336,7 @@ const copy = {
     proItems: ['Expérience sans pub', 'Dates illimitées', 'Widgets illimités', 'Achat unique'],
     footerNote: 'Créé par Serhat Koçhan',
     footerPrivacy: 'Confidentialité',
+    footerSupport: 'Assistance',
     alts: {
       phoneHome: 'Écran d’accueil Anımsat: cartes de dates avec photo et jours restants',
       phoneWidget: 'Widgets Anımsat sur un écran d’accueil iPhone',
@@ -407,6 +412,7 @@ const copy = {
     proItems: ['Experiencia sin anuncios', 'Fechas ilimitadas', 'Widgets ilimitados', 'Compra única'],
     footerNote: 'Hecho por Serhat Koçhan',
     footerPrivacy: 'Privacidad',
+    footerSupport: 'Soporte',
     alts: {
       phoneHome: 'Pantalla de inicio de Anımsat: tarjetas de fechas con foto y días restantes',
       phoneWidget: 'Widgets de Anımsat en la pantalla de inicio de un iPhone',
@@ -482,6 +488,7 @@ const copy = {
     proItems: ['Esperienza senza ads', 'Date illimitate', 'Widget illimitati', 'Acquisto unico'],
     footerNote: 'Realizzato da Serhat Koçhan',
     footerPrivacy: 'Privacy',
+    footerSupport: 'Supporto',
     alts: {
       phoneHome: 'Home di Anımsat: schede data con foto e giorni rimanenti',
       phoneWidget: 'Widget Anımsat sulla Home di un iPhone',
@@ -557,6 +564,7 @@ const copy = {
     proItems: ['Zonder advertenties', 'Onbeperkte data', 'Onbeperkte widgets', 'Eenmalige aankoop'],
     footerNote: 'Gemaakt door Serhat Koçhan',
     footerPrivacy: 'Privacy',
+    footerSupport: 'Ondersteuning',
     alts: {
       phoneHome: 'Anımsat-beginscherm: datumkaarten met foto en resterende dagen',
       phoneWidget: 'Anımsat-widgets op een iPhone-beginscherm',
@@ -632,6 +640,7 @@ const copy = {
     proItems: ['広告なし', '日付は無制限', 'ウィジェットは無制限', '買い切り'],
     footerNote: 'Serhat Koçhan 制作',
     footerPrivacy: 'プライバシー',
+    footerSupport: 'サポート',
     alts: {
       phoneHome: 'Anımsat ホーム画面：写真付きの日付カードと残り日数',
       phoneWidget: 'iPhone ホーム画面上の Anımsat ウィジェット',
@@ -707,6 +716,7 @@ const copy = {
     proItems: ['광고 없는 경험', '무제한 날짜', '무제한 위젯', '일회 구매'],
     footerNote: 'Serhat Koçhan 제작',
     footerPrivacy: '개인정보',
+    footerSupport: '지원',
     alts: {
       phoneHome: 'Anımsat 홈 화면: 사진이 있는 날짜 카드와 남은 날',
       phoneWidget: 'iPhone 홈 화면의 Anımsat 위젯',
@@ -780,6 +790,7 @@ const copy = {
     proItems: ['无广告体验', '不限日期', '不限小组件', '一次购买'],
     footerNote: '由 Serhat Koçhan 制作',
     footerPrivacy: '隐私',
+    footerSupport: '支持',
     alts: {
       phoneHome: 'Anımsat 主屏幕：带照片的日期卡片和剩余天数',
       phoneWidget: 'iPhone 主屏幕上的 Anımsat 小组件',
@@ -853,6 +864,7 @@ const copy = {
     proItems: ['無廣告體驗', '不限日期', '不限小工具', '一次購買'],
     footerNote: '由 Serhat Koçhan 製作',
     footerPrivacy: '隱私',
+    footerSupport: '支援',
     alts: {
       phoneHome: 'Anımsat 主畫面：帶照片的日期卡片和剩餘天數',
       phoneWidget: 'iPhone 主畫面上的 Anımsat 小工具',
@@ -928,6 +940,7 @@ const copy = {
     proItems: ['تجربة بلا إعلانات', 'تواريخ بلا حد', 'ودجات بلا حد', 'شراء لمرة واحدة'],
     footerNote: 'من صنع Serhat Koçhan',
     footerPrivacy: 'الخصوصية',
+    footerSupport: 'الدعم',
     alts: {
       phoneHome: 'الشاشة الرئيسية لـ Anımsat: بطاقات تواريخ بصور والأيام المتبقية',
       phoneWidget: 'ودجات Anımsat على شاشة iPhone الرئيسية',
@@ -1003,6 +1016,7 @@ const copy = {
     proItems: ['Experiência sem anúncios', 'Datas ilimitadas', 'Widgets ilimitados', 'Compra única'],
     footerNote: 'Feito por Serhat Koçhan',
     footerPrivacy: 'Privacidade',
+    footerSupport: 'Suporte',
     alts: {
       phoneHome: 'Tela inicial do Anımsat: cartões de data com foto e dias restantes',
       phoneWidget: 'Widgets do Anımsat na tela inicial de um iPhone',
@@ -1078,6 +1092,7 @@ const copy = {
     proItems: ['Без рекламы', 'Безлимит дат', 'Безлимит виджетов', 'Разовая покупка'],
     footerNote: 'Сделано Serhat Koçhan',
     footerPrivacy: 'Конфиденциальность',
+    footerSupport: 'Поддержка',
     alts: {
       phoneHome: 'Главный экран Anımsat: карточки дат с фото и оставшимися днями',
       phoneWidget: 'Виджеты Anımsat на домашнем экране iPhone',

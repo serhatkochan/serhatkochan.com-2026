@@ -29,7 +29,7 @@ export function getAnimsatLocale(locale: AnimsatLocale) {
   return LOCALE_BY_ID.get(locale) ?? ANIMSAT_POLICY_LOCALES[0];
 }
 
-export type AnimsatPage = 'home' | 'policy';
+export type AnimsatPage = 'home' | 'policy' | 'support';
 
 export function landingPath(locale: AnimsatLocale) {
   return locale === ANIMSAT_DEFAULT_LOCALE ? animsatHref('/') : animsatHref(`/${locale}`);
@@ -47,6 +47,16 @@ export function policyCanonical(locale: AnimsatLocale) {
   return animsatCanonical(`/${locale}/policy`);
 }
 
+export function supportPath(locale: AnimsatLocale) {
+  return animsatHref(`/${locale}/support`);
+}
+
+export function supportCanonical(locale: AnimsatLocale) {
+  return animsatCanonical(`/${locale}/support`);
+}
+
 export function localePagePath(locale: AnimsatLocale, page: AnimsatPage) {
-  return page === 'policy' ? policyPath(locale) : landingPath(locale);
+  if (page === 'policy') return policyPath(locale);
+  if (page === 'support') return supportPath(locale);
+  return landingPath(locale);
 }
