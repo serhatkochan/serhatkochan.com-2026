@@ -19,7 +19,7 @@ html {
 
 html.dark {
   color-scheme: dark;
-  background-color: #050505;
+  background-color: #09090b;
 }
 
 body {
@@ -37,7 +37,7 @@ body {
 }
 
 html.dark .site-background {
-  background-color: #050505;
+  background-color: #09090b;
 }
 
 .art-dots-fallback {
@@ -48,7 +48,7 @@ html.dark .site-background {
 }
 
 html.dark .art-dots-fallback {
-  background-image: radial-gradient(circle, rgb(113 113 122 / 0.5) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgb(63 63 70 / 0.28) 1px, transparent 1px);
 }
 
 #art-dots-canvas {

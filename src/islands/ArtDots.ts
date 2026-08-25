@@ -64,14 +64,17 @@ export function initArtDots(canvas: HTMLCanvasElement) {
     const isDark = document.documentElement.classList.contains('dark');
 
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = isDark ? '#cccccc' : '#71717a';
+    ctx.fillStyle = isDark ? '#3f3f46' : '#71717a';
 
     for (const point of points) {
       const rad = getForce(point.x, point.y, t);
       const len = (noise3d(point.x / SCALE, point.y / SCALE, t * 2) + 0.5) * LENGTH;
       const nx = point.x + Math.cos(rad) * len;
       const ny = point.y + Math.sin(rad) * len;
-      const alpha = (Math.abs(Math.cos(rad)) * 0.8 + 0.2) * point.opacity * (isDark ? 0.45 : 0.48);
+      const pulse = isDark
+        ? Math.abs(Math.cos(rad)) * 0.28 + 0.48
+        : Math.abs(Math.cos(rad)) * 0.8 + 0.2;
+      const alpha = pulse * point.opacity * (isDark ? 0.2 : 0.48);
 
       ctx.globalAlpha = alpha;
       ctx.beginPath();
