@@ -64,7 +64,7 @@ export function initArtDots(canvas: HTMLCanvasElement) {
     const isDark = document.documentElement.classList.contains('dark');
 
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = isDark ? '#3f3f46' : '#71717a';
+    ctx.fillStyle = isDark ? '#52525b' : '#71717a';
 
     for (const point of points) {
       const rad = getForce(point.x, point.y, t);
@@ -74,7 +74,7 @@ export function initArtDots(canvas: HTMLCanvasElement) {
       const pulse = isDark
         ? Math.abs(Math.cos(rad)) * 0.28 + 0.48
         : Math.abs(Math.cos(rad)) * 0.8 + 0.2;
-      const alpha = pulse * point.opacity * (isDark ? 0.2 : 0.48);
+      const alpha = pulse * point.opacity * (isDark ? 0.28 : 0.48);
 
       ctx.globalAlpha = alpha;
       ctx.beginPath();
