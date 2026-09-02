@@ -154,7 +154,24 @@ html.animsat-root body {
 }
 
 .animsat-feature-phone {
-  width: min(100%, 240px);
+  width: min(100%, 280px);
+}
+
+@media (min-width: 1024px) {
+  .animsat-feature-phone {
+    width: min(100%, 300px);
+  }
+}
+
+.animsat-feature-phone::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 92, 74, 0.14), transparent 70%);
+  filter: blur(28px);
+  pointer-events: none;
 }
 
 .animsat-phone-bezel {
@@ -168,7 +185,7 @@ html.animsat-root body {
 }
 
 .animsat-feature-phone .animsat-phone-bezel {
-  border-radius: 1.85rem;
+  border-radius: 2.15rem;
 }
 
 .animsat-phone-notch {
