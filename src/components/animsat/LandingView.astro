@@ -147,16 +147,6 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
               </a>
             ) : null
           }
-          <button
-            type="button"
-            id="watch-video-btn"
-            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold text-zinc-300 transition hover:border-white/40 hover:bg-white/10 hover:text-white active:scale-95"
-          >
-            <svg class="w-4 h-4 text-rose-500 fill-current" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            {locale === 'tr' ? 'Tanıtımı İzle' : 'Watch Preview'}
-          </button>
         </div>
       </div>
 
@@ -248,71 +238,6 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
 
   <!-- 100% Free & Privacy Bento Section -->
   <FreeGuarantee locale={locale} />
-
-  <!-- Video Modal -->
-  <div
-    id="video-modal"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Anımsat Video Preview"
-  >
-    <div class="relative w-full max-w-xs sm:max-w-sm overflow-hidden rounded-[36px] border border-white/20 bg-[#09090b] shadow-2xl">
-      <button
-        id="close-video-btn"
-        class="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white/80 hover:bg-black hover:text-white backdrop-blur transition cursor-pointer"
-        aria-label="Kapat"
-      >
-        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <div class="aspect-[886/1920] w-full bg-black">
-        <video
-          id="promo-video-player"
-          class="h-full w-full object-cover"
-          playsinline
-          controls
-          preload="metadata"
-        >
-          <source src="/animsat-promo.mp4" type="video/mp4" />
-        </video>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const openBtn = document.getElementById('watch-video-btn');
-    const closeBtn = document.getElementById('close-video-btn');
-    const modal = document.getElementById('video-modal');
-    const video = document.getElementById('promo-video-player') as HTMLVideoElement | null;
-
-    function openModal() {
-      if (!modal) return;
-      modal.classList.remove('opacity-0', 'pointer-events-none');
-      if (video) {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      }
-    }
-
-    function closeModal() {
-      if (!modal) return;
-      modal.classList.add('opacity-0', 'pointer-events-none');
-      if (video) {
-        video.pause();
-      }
-    }
-
-    openBtn?.addEventListener('click', openModal);
-    closeBtn?.addEventListener('click', closeModal);
-    modal?.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-  </script>
 
   <SiteFooter slot="footer" locale={locale} />
 </AnimsatLayout>
