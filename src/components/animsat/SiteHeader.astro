@@ -1,6 +1,13 @@
 ---
 import { Image } from 'astro:assets';
-import { ANIMSAT_NAME, getLanding, landingPath, type AnimsatLocale, type AnimsatPage } from '../../data/animsat';
+import {
+  ANIMSAT_APP_STORE_URL,
+  ANIMSAT_NAME,
+  getLanding,
+  landingPath,
+  type AnimsatLocale,
+  type AnimsatPage,
+} from '../../data/animsat';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import logo from '../../assets/animsat/logo.png';
 
@@ -12,14 +19,52 @@ interface Props {
 const { locale = 'tr', page = 'home' } = Astro.props;
 const copy = getLanding(locale);
 const homeHref = landingPath(locale);
+
+const navPrefix = page === 'home' ? '' : homeHref;
+const featuresHref = `${navPrefix}#ozellikler`;
+const widgetHref = `${navPrefix}#widgetlar`;
+const privacyHref = `${navPrefix}#gizlilik`;
+const freeHref = `${navPrefix}#ucretsiz`;
 ---
 
-<header class="sticky top-0 z-30 border-b border-white/10 bg-[#050506]/55 backdrop-blur-xl">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-    <a href={homeHref} class="flex items-center gap-2.5 text-[#faf8f5]" aria-label={copy.homeAria}>
-      <Image src={logo} alt="" width={72} height={72} densities={[1, 2]} format="png" loading="eager" class="h-9 w-9" />
-      <span class="animsat-display text-lg tracking-tight">{ANIMSAT_NAME}</span>
+<header class="sticky top-0 z-40 w-full px-4 pt-4 sm:px-6 sm:pt-5">
+  <nav class="animsat-header-nav mx-auto flex max-w-5xl items-center justify-between gap-4 rounded-full border border-white/[0.1] bg-[#09090c]/70 px-4 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.65)] backdrop-blur-2xl sm:px-5">
+    <!-- Brand -->
+    <a href={homeHref} class="group flex items-center gap-2.5 text-[#faf8f5] transition-opacity hover:opacity-90" aria-label={copy.homeAria}>
+      <div class="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/5 p-1 shadow-inner ring-1 ring-white/15">
+        <Image src={logo} alt="" width={64} height={64} densities={[1, 2]} format="png" loading="eager" class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" />
+      </div>
+      <span class="animsat-display text-base font-semibold tracking-tight text-white">{ANIMSAT_NAME}</span>
     </a>
-    <LanguageSwitcher current={locale} page={page} />
-  </div>
+
+    <!-- Quick Navigation (Desktop) -->
+    <div class="hidden items-center gap-1 md:flex" role="navigation" aria-label="Sayfa içi gezinme">
+      <a href={featuresHref} class="animsat-nav-link">{copy.featuresKicker}</a>
+      <a href={widgetHref} class="animsat-nav-link">Widget</a>
+      <a href={privacyHref} class="animsat-nav-link">{copy.privacyKicker}</a>
+      <a href={freeHref} class="animsat-nav-link">{copy.proKicker}</a>
+    </div>
+
+    <!-- Right Controls -->
+    <div class="flex items-center gap-2.5 sm:gap-3">
+      <LanguageSwitcher current={locale} page={page} />
+      {
+        ANIMSAT_APP_STORE_URL ? (
+          <a
+            href={ANIMSAT_APP_STORE_URL}
+            class="animsat-nav-cta hidden sm:inline-flex"
+          >
+            <span>App Store</span>
+          </a>
+        ) : (
+          <a
+            href="#ozellikler"
+            class="animsat-nav-cta hidden sm:inline-flex"
+          >
+            <span>{copy.ctaSoon}</span>
+          </a>
+        )
+      }
+    </div>
+  </nav>
 </header>

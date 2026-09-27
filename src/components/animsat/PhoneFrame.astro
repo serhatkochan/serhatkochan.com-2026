@@ -13,18 +13,26 @@ const { src, alt, class: className, priority = false } = Astro.props;
 ---
 
 <figure class:list={['animsat-phone', className]}>
-  <div class="animsat-phone-bezel">
-    <span class="animsat-phone-notch" aria-hidden="true"></span>
-    <Image
-      src={src}
-      alt={alt}
-      widths={[280, 420, 560]}
-      sizes="(min-width: 1024px) 280px, 70vw"
-      format="webp"
-      quality={78}
-      loading={priority ? 'eager' : 'lazy'}
-      fetchpriority={priority ? 'high' : 'auto'}
-      class="animsat-phone-screen"
-    />
+  <div class="animsat-phone-chassis">
+    <div class="animsat-phone-bezel">
+      <!-- Dynamic Island with subtle camera & sensor detail -->
+      <div class="animsat-phone-island" aria-hidden="true">
+        <span class="animsat-phone-sensor"></span>
+        <span class="animsat-phone-camera"></span>
+      </div>
+      <!-- Subtle angled glass sheen for realistic depth -->
+      <div class="animsat-phone-glare" aria-hidden="true"></div>
+      <Image
+        src={src}
+        alt={alt}
+        widths={[280, 420, 560]}
+        sizes="(min-width: 1024px) 280px, 70vw"
+        format="webp"
+        quality={88}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
+        class="animsat-phone-screen"
+      />
+    </div>
   </div>
 </figure>

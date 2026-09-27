@@ -1,26 +1,35 @@
+/* ==========================================================================
+   Anımsat — Award-Winning Bespoke Design System
+   ========================================================================== */
+
 html.animsat-root {
   color-scheme: dark;
-  background-color: #050506 !important;
+  background-color: #070709 !important;
   scroll-behavior: smooth;
 }
 
 html.animsat-root body {
   min-height: 100vh;
   margin: 0;
-  background: #050506;
-  color: #faf8f5;
+  background: #070709;
+  color: #f7f5f2;
   font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .animsat-site {
-  --void: #050506;
-  --cream: #faf8f5;
+  --void: #070709;
+  --onyx: #0e0e13;
+  --cream: #f7f5f2;
   --muted: #a8a29e;
   --soft: #78716c;
-  --clay: #c45c4a;
-  --line: rgba(250, 248, 245, 0.12);
-  --display: "Fraunces", "Times New Roman", serif;
+  --copper: #d96b52;
+  --copper-glow: rgba(217, 107, 82, 0.22);
+  --amber: #f59e0b;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --display: "Fraunces", Georgia, serif;
   --body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   position: relative;
   isolation: isolate;
@@ -28,40 +37,119 @@ html.animsat-root body {
   overflow-x: clip;
 }
 
+/* ==========================================================================
+   Cinematic Atmosphere & Studio Lighting (No cheap AI blobs)
+   ========================================================================== */
+
 .animsat-atmosphere {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(80% 55% at 38% 8%, rgba(244, 63, 94, 0.38), transparent 58%),
-    radial-gradient(70% 50% at 82% 14%, rgba(236, 72, 153, 0.28), transparent 55%),
-    radial-gradient(75% 60% at 72% 58%, rgba(59, 130, 246, 0.22), transparent 62%),
-    radial-gradient(60% 45% at 22% 48%, rgba(109, 40, 217, 0.28), transparent 60%),
-    #050506;
+    radial-gradient(ellipse 70% 45% at 50% -8%, rgba(217, 107, 82, 0.15), transparent 72%),
+    radial-gradient(circle 500px at 85% 15%, rgba(245, 158, 11, 0.06), transparent 65%),
+    radial-gradient(circle 600px at 15% 55%, rgba(99, 102, 241, 0.04), transparent 70%),
+    #070709;
+}
+
+.animsat-grid-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 25%, #000 25%, transparent 80%);
 }
 
 .animsat-grain {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 1;
-  opacity: 0.18;
+  z-index: 2;
+  opacity: 0.12;
   mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 .animsat-shell {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
+
+/* ==========================================================================
+   Typography Hierarchy
+   ========================================================================== */
 
 .animsat-display {
   font-family: var(--display);
   font-optical-sizing: auto;
   font-weight: 600;
   letter-spacing: -0.04em;
+  font-feature-settings: "liga" 1, "clig" 1;
 }
+
+.animsat-display-italic {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  letter-spacing: -0.03em;
+  padding-inline-end: 0.25em;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+
+.animsat-nav-link {
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(247, 245, 242, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.animsat-nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.animsat-nav-cta {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #f7f5f2;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #0c0c10;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .animsat-nav-cta {
+    display: inline-flex;
+  }
+}
+
+.animsat-nav-cta:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   Language Switcher
+   ========================================================================== */
 
 .animsat-lang {
   position: relative;
@@ -79,12 +167,12 @@ html.animsat-root body {
   align-items: center;
   gap: 0.45rem;
   border-radius: 999px;
-  border: 1px solid rgba(250, 248, 245, 0.14);
-  background: rgba(250, 248, 245, 0.04);
-  padding: 0.4rem 0.75rem 0.4rem 0.9rem;
-  font-size: 0.8125rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: rgba(250, 248, 245, 0.78);
+  color: rgba(247, 245, 242, 0.8);
   transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -96,9 +184,9 @@ html.animsat-root body {
 
 .animsat-lang-summary:hover,
 .animsat-lang-details[open] .animsat-lang-summary {
-  color: #faf8f5;
-  border-color: rgba(250, 248, 245, 0.28);
-  background: rgba(250, 248, 245, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .animsat-lang-chevron {
@@ -114,126 +202,531 @@ html.animsat-root body {
   position: absolute;
   top: calc(100% + 0.55rem);
   inset-inline-end: 0;
-  z-index: 40;
+  z-index: 50;
   margin: 0;
   max-height: min(70vh, 22rem);
-  min-width: 11.5rem;
+  min-width: 12rem;
   overflow: auto;
   list-style: none;
-  border-radius: 1rem;
-  border: 1px solid rgba(250, 248, 245, 0.12);
-  background: rgba(12, 12, 14, 0.94);
-  padding: 0.4rem;
-  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(18px);
+  border-radius: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(13, 13, 17, 0.94);
+  padding: 0.45rem;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
 }
 
 .animsat-lang-option {
   display: block;
   border-radius: 0.7rem;
   padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  color: rgba(250, 248, 245, 0.68);
+  font-size: 0.8125rem;
+  color: rgba(247, 245, 242, 0.75);
   text-decoration: none;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .animsat-lang-option:hover {
-  background: rgba(250, 248, 245, 0.08);
-  color: #faf8f5;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
 }
 
 .animsat-lang-option.is-active {
-  background: #faf8f5;
-  color: #121212;
+  background: #f7f5f2;
+  color: #0c0c10;
+  font-weight: 600;
 }
+
+/* ==========================================================================
+   Hardware Phone Frame (Titanium Bezel, Glare, Island)
+   ========================================================================== */
 
 .animsat-phone {
   position: relative;
   width: min(100%, 280px);
-}
-
-.animsat-feature-phone {
-  width: min(100%, 280px);
+  margin-inline: auto;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 1024px) {
-  .animsat-feature-phone {
+  .animsat-phone {
     width: min(100%, 300px);
   }
 }
 
-.animsat-feature-phone::before {
-  content: "";
-  position: absolute;
-  inset: -12%;
-  z-index: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(196, 92, 74, 0.14), transparent 70%);
-  filter: blur(28px);
-  pointer-events: none;
+.animsat-phone-chassis {
+  position: relative;
+  border-radius: 2.85rem;
+  padding: 5px;
+  background: linear-gradient(150deg, #383a42 0%, #15161b 38%, #272830 70%, #101114 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.25),
+    0 25px 60px -15px rgba(0, 0, 0, 0.95),
+    0 45px 95px -25px rgba(0, 0, 0, 0.85);
 }
 
 .animsat-phone-bezel {
   position: relative;
   overflow: hidden;
-  border-radius: 2.15rem;
-  background: #0a0a0a;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 40px 80px -24px rgba(0, 0, 0, 0.85);
+  border-radius: 2.55rem;
+  background: #000;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.95);
+  aspect-ratio: 946 / 2048;
 }
 
-.animsat-feature-phone .animsat-phone-bezel {
-  border-radius: 2.15rem;
-}
-
-.animsat-phone-notch {
+.animsat-phone-island {
   position: absolute;
   top: 10px;
   left: 50%;
-  z-index: 2;
-  width: 92px;
-  height: 22px;
-  translate: -50% 0;
+  transform: translateX(-50%);
+  z-index: 15;
+  width: 76px;
+  height: 21px;
   border-radius: 999px;
-  background: #050506;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  gap: 5px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.animsat-phone-camera {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0d1728;
+  box-shadow: inset 0 0 2px rgba(56, 189, 248, 0.45);
+}
+
+.animsat-phone-sensor {
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: #141720;
+}
+
+.animsat-phone-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8;
+  border-radius: 2.55rem;
+  background: linear-gradient(
+    118deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.02) 26%,
+    transparent 48%
+  );
 }
 
 .animsat-phone-screen {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 2.55rem;
 }
+
+/* ==========================================================================
+   Hero Staging & Spatial Depth
+   ========================================================================== */
+
+.animsat-hero-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 2rem;
+}
+
+.animsat-stage-light {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 60%, rgba(217, 107, 82, 0.22), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.animsat-hero-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.animsat-hero-phones {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 520px;
+}
+
+@media (min-width: 640px) {
+  .animsat-hero-phones {
+    min-height: 580px;
+  }
+}
+
+/* Front Phone (Core Countdown List) */
+.animsat-hero-phone-front {
+  position: relative;
+  z-index: 20;
+  transform: translateX(-35px) rotate(-4deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease, z-index 0.2s ease;
+  cursor: pointer;
+  will-change: transform;
+}
+
+/* Back Phone (Home & Lock Screen Widgets) */
+.animsat-hero-phone-back {
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  margin-left: -140px;
+  z-index: 10;
+  transform: translateX(65px) translateY(-14px) rotate(6deg);
+  opacity: 0.95;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease, z-index 0.2s ease;
+  cursor: pointer;
+  will-change: transform;
+}
+
+@media (min-width: 1024px) {
+  .animsat-hero-phone-front {
+    transform: translateX(-45px) rotate(-4deg);
+  }
+  .animsat-hero-phone-back {
+    margin-left: -150px;
+    transform: translateX(85px) translateY(-18px) rotate(6.5deg);
+  }
+}
+
+/* Back Phone Peek Badge */
+.animsat-hero-phone-back-badge {
+  position: absolute;
+  top: -12px;
+  right: 14px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(18, 16, 14, 0.94);
+  padding: 0.3rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fbd38d;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* Explicit Active States (Click or Mobile Switcher) */
+.animsat-hero-stage[data-active="widget"] .animsat-hero-phone-back {
+  z-index: 30;
+  opacity: 1;
+  transform: translateX(10px) translateY(-10px) rotate(0deg) scale(1.04);
+}
+
+.animsat-hero-stage[data-active="widget"] .animsat-hero-phone-back-badge {
+  opacity: 0;
+}
+
+.animsat-hero-stage[data-active="widget"] .animsat-hero-phone-front {
+  z-index: 10;
+  transform: translateX(-70px) rotate(-7deg) scale(0.93);
+  opacity: 0.65;
+  filter: brightness(0.85);
+}
+
+.animsat-hero-stage[data-active="home"] .animsat-hero-phone-front {
+  z-index: 25;
+}
+
+.animsat-hero-stage[data-active="home"] .animsat-hero-phone-back {
+  z-index: 10;
+}
+
+/* Desktop Hover Interaction (Magnetic Bring-to-Front) */
+@media (hover: hover) and (pointer: fine) {
+  .animsat-hero-stage .animsat-hero-phone-back:hover {
+    z-index: 40 !important;
+    opacity: 1 !important;
+    transform: translateX(10px) translateY(-10px) rotate(0deg) scale(1.05) !important;
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.95)) !important;
+  }
+
+  .animsat-hero-stage .animsat-hero-phone-back:hover .animsat-hero-phone-back-badge {
+    opacity: 0 !important;
+    transform: translateY(-6px) !important;
+  }
+
+  .animsat-hero-stage:has(.animsat-hero-phone-back:hover) .animsat-hero-phone-front {
+    z-index: 10 !important;
+    transform: translateX(-75px) rotate(-7deg) scale(0.93) !important;
+    opacity: 0.6 !important;
+    filter: brightness(0.8) !important;
+  }
+
+  .animsat-hero-stage .animsat-hero-phone-front:hover {
+    z-index: 40 !important;
+    transform: translateX(-20px) rotate(0deg) scale(1.03) !important;
+    opacity: 1 !important;
+  }
+
+  .animsat-hero-stage:has(.animsat-hero-phone-front:hover) .animsat-hero-phone-back {
+    z-index: 10 !important;
+    transform: translateX(95px) translateY(-10px) rotate(7.5deg) scale(0.95) !important;
+    opacity: 0.85 !important;
+  }
+}
+
+/* Mobile Stage Responsive Tuning */
+@media (max-width: 639px) {
+  .animsat-hero-phones {
+    min-height: 480px;
+  }
+
+  .animsat-hero-phone-front {
+    transform: translateX(-24px) rotate(-3deg);
+  }
+
+  .animsat-hero-phone-back {
+    margin-left: -140px;
+    transform: translateX(28px) translateY(-10px) rotate(4deg);
+  }
+
+  .animsat-hero-stage[data-active="widget"] .animsat-hero-phone-back {
+    transform: translateX(0px) translateY(-8px) rotate(0deg) scale(1.02);
+  }
+
+  .animsat-hero-stage[data-active="widget"] .animsat-hero-phone-front {
+    transform: translateX(-35px) rotate(-5deg) scale(0.92);
+  }
+
+  .animsat-hero-stage[data-active="home"] .animsat-hero-phone-front {
+    transform: translateX(0px) rotate(0deg) scale(1.02);
+  }
+
+  .animsat-hero-stage[data-active="home"] .animsat-hero-phone-back {
+    transform: translateX(28px) translateY(-10px) rotate(4deg) scale(0.92);
+  }
+}
+
+/* Mobile Switcher Pills */
+.animsat-stage-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(16, 16, 22, 0.85);
+  padding: 0.25rem;
+  margin-top: 1.5rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 25;
+}
+
+.animsat-stage-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(247, 245, 242, 0.65);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.animsat-stage-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.animsat-stage-btn.active {
+  background: rgba(217, 107, 82, 0.22);
+  color: #f7c2aa;
+  border-color: rgba(217, 107, 82, 0.35);
+  box-shadow: 0 2px 8px rgba(217, 107, 82, 0.2);
+}
+
+@media (min-width: 640px) {
+  .animsat-stage-switcher {
+    display: none;
+  }
+}
+
+/* Floating Badges (Desktop Only, Positioned Outside Phone) */
+.animsat-float-pill {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .animsat-float-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: absolute;
+    z-index: 30;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(16, 16, 22, 0.88);
+    padding: 0.55rem 0.95rem;
+    box-shadow:
+      0 16px 36px -8px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+    pointer-events: none;
+    animation: animsat-float 6s ease-in-out infinite alternate;
+  }
+
+  .animsat-float-pill-1 {
+    top: 14%;
+    left: -4.5rem;
+    animation-delay: 0s;
+  }
+
+  .animsat-float-pill-2 {
+    top: 48%;
+    right: -4.5rem;
+    animation-delay: -2s;
+  }
+
+  .animsat-float-pill-3 {
+    bottom: 8%;
+    left: -4rem;
+    animation-delay: -4s;
+  }
+}
+
+.animsat-pill-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1rem;
+}
+
+@keyframes animsat-float {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ==========================================================================
+   Bento Cards & Stages
+   ========================================================================== */
+
+.animsat-bento-card {
+  position: relative;
+  overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+  border-radius: 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(168deg, rgba(20, 20, 26, 0.7) 0%, rgba(11, 11, 15, 0.85) 100%);
+  box-shadow:
+    0 24px 60px -20px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animsat-bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.animsat-card-spotlight {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   Infinite Moments Ribbon
+   ========================================================================== */
 
 .animsat-marquee {
   overflow: hidden;
   border-block: 1px solid var(--line);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  background: rgba(10, 10, 14, 0.4);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
 .animsat-marquee-track {
   display: flex;
   width: max-content;
-  padding-block: 1.1rem;
-  animation: animsat-marquee 36s linear infinite;
+  padding-block: 1.25rem;
+  animation: animsat-marquee 42s linear infinite;
+}
+
+.animsat-marquee:hover .animsat-marquee-track {
+  animation-play-state: paused;
 }
 
 .animsat-marquee-group {
   display: flex;
   flex-shrink: 0;
-  gap: 2.5rem;
-  padding-inline-end: 2.5rem;
+  gap: 1rem;
+  padding-inline-end: 1rem;
 }
 
-.animsat-marquee-group span {
-  font-family: var(--display);
-  font-size: 1.05rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(250, 248, 245, 0.55);
+.animsat-moment-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.45rem 1.05rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(247, 245, 242, 0.75);
+  letter-spacing: 0.04em;
   white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.animsat-moment-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.animsat-moment-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d96b52;
 }
 
 @keyframes animsat-marquee {
@@ -241,39 +734,94 @@ html.animsat-root body {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(-25%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-.animsat-reveal {
-  animation: animsat-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* ==========================================================================
+   Interactive Buttons & Badges
+   ========================================================================== */
+
+.animsat-cta-apple {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 999px;
+  background: #f7f5f2;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0c0c10;
+  text-decoration: none;
+  box-shadow:
+    0 10px 25px -5px rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.animsat-reveal-2 {
-  animation-delay: 0.12s;
-}
-.animsat-reveal-3 {
-  animation-delay: 0.24s;
-}
-.animsat-reveal-4 {
-  animation-delay: 0.36s;
+.animsat-cta-apple:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 15px 35px -5px rgba(255, 255, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
 }
 
-@keyframes animsat-rise {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.animsat-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.75rem 1.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f7f5f2;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
+
+.animsat-cta-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Tab / Switcher Capsules
+   ========================================================================== */
+
+.animsat-tab-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(247, 245, 242, 0.7);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.animsat-tab-chip:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Support & Policy Styles
+   ========================================================================== */
 
 .animsat-support-card {
   border-radius: 1.75rem;
-  border: 1px solid rgba(250, 248, 245, 0.12);
-  background: linear-gradient(165deg, rgba(250, 248, 245, 0.06), rgba(250, 248, 245, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
   padding: 1.75rem 1.5rem;
 }
 
@@ -285,7 +833,7 @@ html.animsat-root body {
 
 .animsat-support-mail {
   border-radius: 1.15rem;
-  background: #faf8f5;
+  background: #f7f5f2;
   padding: 0.9rem 1.1rem;
   text-decoration: none;
   transition:
@@ -297,11 +845,11 @@ html.animsat-root body {
 .animsat-support-mail:hover {
   background: #fff;
   transform: translateY(-1px);
-  box-shadow: 0 18px 40px -24px rgba(250, 248, 245, 0.55);
+  box-shadow: 0 18px 40px -24px rgba(255, 255, 255, 0.55);
 }
 
 .animsat-support-mail:focus-visible {
-  outline: 2px solid #c45c4a;
+  outline: 2px solid #d96b52;
   outline-offset: 3px;
 }
 
@@ -312,8 +860,8 @@ html.animsat-root body {
   flex-shrink: 0;
   place-items: center;
   border-radius: 0.8rem;
-  background: #c45c4a;
-  color: #faf8f5;
+  background: #d96b52;
+  color: #f7f5f2;
   font-family: var(--display);
   font-size: 1.15rem;
   font-weight: 600;
@@ -339,31 +887,64 @@ html.animsat-root body {
 }
 
 .animsat-faq-summary:focus-visible {
-  outline: 2px solid #c45c4a;
+  outline: 2px solid #d96b52;
   outline-offset: 4px;
   border-radius: 0.4rem;
 }
 
 .animsat-faq-chevron {
   margin-top: 0.45rem;
-  color: rgba(250, 248, 245, 0.4);
+  color: rgba(255, 255, 255, 0.4);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .animsat-faq[open] .animsat-faq-chevron {
   transform: rotate(180deg);
-  color: #c45c4a;
+  color: #d96b52;
+}
+
+/* ==========================================================================
+   Subtle Reveal Animations & Reduced Motion
+   ========================================================================== */
+
+.animsat-reveal {
+  animation: animsat-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animsat-reveal-2 {
+  animation-delay: 0.1s;
+}
+
+.animsat-reveal-3 {
+  animation-delay: 0.2s;
+}
+
+.animsat-reveal-4 {
+  animation-delay: 0.3s;
+}
+
+@keyframes animsat-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animsat-marquee-track,
+  .animsat-float-pill,
   .animsat-reveal,
   .animsat-reveal-2,
   .animsat-reveal-3,
   .animsat-reveal-4,
   .animsat-support-mail,
-  .animsat-faq-chevron {
-    animation: none;
-    transition: none;
+  .animsat-faq-chevron,
+  .animsat-phone {
+    animation: none !important;
+    transition: none !important;
   }
 }
