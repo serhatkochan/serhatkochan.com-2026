@@ -28,5 +28,5 @@ export {
   type AnimsatPage,
 } from './locales';
 export { getLanding, type LandingCopy } from './landing';
-export { getPrivacyDoc, GOOGLE_PRIVACY_URL, type PrivacyDoc } from './privacy';
+export { getPrivacyDoc, type PrivacyDoc } from './privacy';
 export { getSupportDoc, type SupportDoc } from './support';
