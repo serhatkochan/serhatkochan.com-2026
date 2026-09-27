@@ -1,0 +1,92 @@
+---
+import type { AnimsatLocale } from '../../data/animsat';
+
+interface Props {
+  locale: AnimsatLocale;
+}
+
+const { locale } = Astro.props;
+
+const CONTENT = {
+  tr: {
+    kicker: 'GİZLİLİK & GÜVEN',
+    title: 'Tamamen ücretsiz. Gizliliğine %100 saygılı.',
+    subtitle: 'Anımsat, anılarını hatırlaman için tasarlandı; seni izlemek veya reklam izletmek için değil.',
+    bento1Title: 'Verilerin Yalnızca Cihazında',
+    bento1Desc: 'Eklediğin tarihler, sevdiklerinin fotoğrafları ve özel anların asla bir sunucuya gitmez. Hesap açma yok, internet zorunluluğu yok.',
+    bento2Title: 'Sıfır Reklam, Sıfır Takip',
+    bento2Desc: 'Ne bir reklam bannerı, ne video molası, ne de kişisel veri takibi. Uygulama pırıl pırıl ve kesintisiz.',
+    bento3Title: 'Sınırsız Kullanım',
+    bento3Desc: 'Tarih ekleme limiti, widget kısıtlaması veya kilitli özellikler yok. Tüm yetenekler herkes için ücretsiz.',
+    bento4Title: 'Hızlı & Pil Dostu',
+    bento4Desc: 'Arka planda gereksiz veri transferi yapmaz, cihazının şarjını tüketmez. Anında açılır.',
+  },
+  default: {
+    kicker: 'PRIVACY & TRUST',
+    title: '100% Free. Completely private.',
+    subtitle: 'Anımsat was created to help you remember meaningful moments — not to track you or show you ads.',
+    bento1Title: 'Your Data Stays on Device',
+    bento1Desc: 'Events, personal photos, and notes are stored strictly on your local phone storage. No accounts, no servers.',
+    bento2Title: 'Zero Ads, Zero Trackers',
+    bento2Desc: 'No annoying interstitial popups, banners, or analytics trackers. Just a clean, respectful experience.',
+    bento3Title: 'Unlimited Everything',
+    bento3Desc: 'No countdown limits, no paywalls, and no locked features. The full app is open to everyone forever.',
+    bento4Title: 'Fast & Battery-Friendly',
+    bento4Desc: 'Lightweight local database ensures instantaneous launch times and zero background battery drain.',
+  },
+};
+
+const c = CONTENT[locale as keyof typeof CONTENT] ?? CONTENT.default;
+---
+
+<section class="relative mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
+  <div class="mx-auto max-w-2xl text-center">
+    <span class="inline-block font-mono text-xs font-semibold tracking-[0.25em] text-emerald-400 uppercase">
+      {c.kicker}
+    </span>
+    <h2 class="animsat-display mt-3 text-3xl font-bold tracking-tight text-[#fafafa] sm:text-5xl">
+      {c.title}
+    </h2>
+    <p class="mt-4 text-base leading-7 text-zinc-400 sm:text-lg">
+      {c.subtitle}
+    </p>
+  </div>
+
+  <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <!-- Bento 1 -->
+    <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-[#121215]/80 p-6 backdrop-blur-md transition hover:border-emerald-500/30 group">
+      <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-2xl mb-4 group-hover:scale-110 transition-transform">
+        🛡️
+      </div>
+      <h3 class="text-lg font-bold text-white mb-2">{c.bento1Title}</h3>
+      <p class="text-sm leading-relaxed text-zinc-400">{c.bento1Desc}</p>
+    </div>
+
+    <!-- Bento 2 -->
+    <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-[#121215]/80 p-6 backdrop-blur-md transition hover:border-emerald-500/30 group">
+      <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-500/10 text-2xl mb-4 group-hover:scale-110 transition-transform">
+        🚫
+      </div>
+      <h3 class="text-lg font-bold text-white mb-2">{c.bento2Title}</h3>
+      <p class="text-sm leading-relaxed text-zinc-400">{c.bento2Desc}</p>
+    </div>
+
+    <!-- Bento 3 -->
+    <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-[#121215]/80 p-6 backdrop-blur-md transition hover:border-emerald-500/30 group">
+      <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-500/10 text-2xl mb-4 group-hover:scale-110 transition-transform">
+        ♾️
+      </div>
+      <h3 class="text-lg font-bold text-white mb-2">{c.bento3Title}</h3>
+      <p class="text-sm leading-relaxed text-zinc-400">{c.bento3Desc}</p>
+    </div>
+
+    <!-- Bento 4 -->
+    <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-[#121215]/80 p-6 backdrop-blur-md transition hover:border-emerald-500/30 group">
+      <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-2xl mb-4 group-hover:scale-110 transition-transform">
+        ⚡
+      </div>
+      <h3 class="text-lg font-bold text-white mb-2">{c.bento4Title}</h3>
+      <p class="text-sm leading-relaxed text-zinc-400">{c.bento4Desc}</p>
+    </div>
+  </div>
+</section>
