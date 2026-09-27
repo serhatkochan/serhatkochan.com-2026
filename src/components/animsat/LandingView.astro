@@ -3,9 +3,6 @@ import AnimsatLayout from '../../layouts/AnimsatLayout.astro';
 import PhoneFrame from './PhoneFrame.astro';
 import SiteHeader from './SiteHeader.astro';
 import SiteFooter from './SiteFooter.astro';
-import InteractivePreview from './InteractivePreview.astro';
-import WidgetShowcase from './WidgetShowcase.astro';
-import FreeGuarantee from './FreeGuarantee.astro';
 import {
   ANIMSAT_APP_STORE_URL,
   ANIMSAT_NAME,
@@ -74,8 +71,6 @@ const schema = [
   },
   softwareApplicationSchema(),
 ];
-
-const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Android' : '100% Free & Ad-Free • iOS & Android';
 ---
 
 <AnimsatLayout
@@ -94,42 +89,29 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
 >
   <SiteHeader slot="header" locale={locale} page="home" />
 
-  <!-- Hero Section -->
-  <section class="relative mx-auto max-w-6xl px-5 pb-20 pt-12 sm:px-8 sm:pt-20 lg:pb-28">
-    <div class="mt-2 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+  <section class="relative mx-auto max-w-6xl px-5 pb-20 pt-16 sm:px-8 sm:pt-24 lg:pb-28">
+    <div class="mt-2 grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
       <div>
-        <!-- Pill Badge -->
-        <div class="animsat-reveal inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur-md mb-6 shadow-sm">
-          <span class="h-2 w-2 rounded-full bg-rose-500 animate-pulse"></span>
-          <span>{badgeLabel}</span>
-        </div>
-
-        <h1 class="animsat-display animsat-reveal text-[4.5rem] sm:text-[6rem] lg:text-[6.75rem] leading-[0.92] tracking-tight text-[#faf8f5]">
+        <h1 class="animsat-display animsat-reveal text-[7rem] leading-[0.92] tracking-tight text-[#faf8f5]">
           {copy.eyebrow}
         </h1>
-        <p class="animsat-display animsat-reveal animsat-reveal-2 mt-4 max-w-xl text-3xl leading-[1.08] text-[#f43f5e] sm:text-4xl lg:text-[2.75rem]">
+        <p class="animsat-display animsat-reveal animsat-reveal-2 mt-4 max-w-xl text-3xl leading-[1.08] text-[#c45c4a] sm:text-4xl lg:text-[2.75rem]">
           {copy.headline}
         </p>
-        <p class="animsat-reveal animsat-reveal-3 mt-6 max-w-md text-base leading-7 text-zinc-300 sm:text-lg">
+        <p class="animsat-reveal animsat-reveal-3 mt-6 max-w-md text-base leading-7 text-[#a8a29e] sm:text-lg">
           {copy.lede}
         </p>
-
-        <!-- CTA Buttons -->
-        <div class="animsat-reveal animsat-reveal-4 mt-8 flex flex-wrap items-center gap-3">
+        <div class="animsat-reveal animsat-reveal-4 mt-10 flex flex-wrap items-center gap-3">
           {
             ANIMSAT_APP_STORE_URL ? (
               <a
                 href={ANIMSAT_APP_STORE_URL}
-                class="inline-flex items-center gap-2.5 rounded-full bg-[#faf8f5] px-6 py-3 text-sm font-semibold text-[#121212] transition hover:bg-white hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
+                class="rounded-full bg-[#faf8f5] px-5 py-2.5 text-sm font-semibold text-[#121212] transition hover:bg-white"
               >
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 170 170">
-                  <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.68-7.85-11.96-14.35-7.39-11.21-13.16-24.16-17.31-38.84-4.14-14.68-6.22-28.02-6.22-40.01 0-14.34 3.73-26.24 11.19-35.69 7.46-9.46 16.74-14.28 27.84-14.47 5.11 0 10.77 1.34 16.98 4.02 6.21 2.68 10.15 4.07 11.83 4.16 1.45 0 5.48-1.42 12.09-4.27 6.6-2.85 12.28-4.14 17.03-3.87 13.06.67 23.47 5.38 31.23 14.15-11.4 6.89-16.95 16.39-16.66 28.52.28 9.94 4.15 18.28 11.59 25.03 7.45 6.74 16.33 10.49 26.65 11.23-2.19 6.88-4.71 13.75-7.55 20.61zM119.22 33.7c0-7.27 2.64-13.97 7.93-20.1 5.29-6.13 11.85-9.97 19.68-11.52.44 1.4.67 2.87.67 4.41 0 7.27-2.73 14.07-8.19 20.4-5.46 6.33-12.08 10.02-19.86 11.08-.15-1.47-.23-2.89-.23-4.27z"/>
-                </svg>
                 App Store
               </a>
             ) : (
-              <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white/90">
-                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              <span class="rounded-full bg-[#faf8f5] px-5 py-2.5 text-sm font-semibold text-[#121212]">
                 {copy.ctaSoon}
               </span>
             )
@@ -138,11 +120,8 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
             ANIMSAT_PLAY_STORE_URL ? (
               <a
                 href={ANIMSAT_PLAY_STORE_URL}
-                class="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-[#faf8f5] transition hover:border-white/50 hover:bg-white/10 hover:scale-105 active:scale-95"
+                class="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-[#faf8f5] transition hover:border-white/50"
               >
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 512 512">
-                  <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
-                </svg>
                 Google Play
               </a>
             ) : null
@@ -150,24 +129,24 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
         </div>
       </div>
 
-      <!-- Hero Interactive Phone Preview -->
-      <div class="animsat-reveal animsat-reveal-3 relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
-        <InteractivePreview locale={locale} />
+      <div class="animsat-reveal animsat-reveal-3 relative mx-auto flex w-full max-w-md justify-center lg:mx-0 lg:justify-end" dir="ltr">
+        <PhoneFrame src={shotHome} alt={copy.alts.phoneHome} class="relative z-10 rotate-[-7deg]" priority />
+        <PhoneFrame
+          src={shotWidget}
+          alt={copy.alts.phoneWidget}
+          class="absolute top-16 right-0 hidden w-[210px] rotate-[9deg] sm:block"
+        />
       </div>
     </div>
   </section>
 
-  <!-- Marquee text strip -->
-  <div class="animsat-marquee border-y border-white/10 bg-black/40 py-1" aria-hidden="true" dir="ltr">
+  <div class="animsat-marquee" aria-hidden="true" dir="ltr">
     <div class="animsat-marquee-track">
       {
         marqueeCopies.map(() => (
           <div class="animsat-marquee-group">
             {copy.moments.map((item) => (
-              <span class="inline-flex items-center gap-6">
-                <span>{item}</span>
-                <span class="text-rose-500/60">•</span>
-              </span>
+              <span>{item}</span>
             ))}
           </div>
         ))
@@ -175,18 +154,13 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
     </div>
   </div>
 
-  <!-- Features Section -->
   <section id="ozellikler" class="mx-auto max-w-6xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="mx-auto max-w-2xl text-center">
-      <span class="font-mono text-xs font-semibold tracking-[0.28em] text-[#f43f5e] uppercase">
-        {copy.featuresKicker}
-      </span>
-      <h2 class="animsat-display mt-4 text-3xl font-bold text-[#faf8f5] sm:text-5xl">
-        {copy.featuresTitle}
-      </h2>
+      <p class="text-xs font-semibold tracking-[0.28em] text-[#c45c4a] uppercase">{copy.featuresKicker}</p>
+      <h2 class="animsat-display mt-4 text-3xl text-[#faf8f5] sm:text-5xl">{copy.featuresTitle}</h2>
     </div>
 
-    <div class="mt-16 space-y-24 sm:mt-24 sm:space-y-32 lg:space-y-36">
+    <div class="mt-16 space-y-24 sm:mt-24 sm:space-y-32 lg:space-y-40">
       {
         features.map((feature, index) => {
           const shot = featureShots[feature.id];
@@ -201,15 +175,15 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
                 ]}
               >
                 <div class="inline-flex items-center gap-2.5">
-                  <span class="font-mono text-xs font-semibold tracking-[0.25em] text-[#f43f5e] uppercase">
+                  <span class="font-mono text-xs font-semibold tracking-[0.25em] text-[#c45c4a] uppercase">
                     {feature.kicker}
                   </span>
-                  <span class="h-px w-8 bg-[#f43f5e]/40" aria-hidden="true"></span>
+                  <span class="h-px w-8 bg-[#c45c4a]/40" aria-hidden="true"></span>
                 </div>
-                <h3 class="animsat-display mt-3 text-2xl font-bold text-[#faf8f5] sm:text-3xl lg:text-4xl lg:leading-[1.15]">
+                <h3 class="animsat-display mt-3 text-2xl text-[#faf8f5] sm:text-3xl lg:text-4xl lg:leading-[1.15]">
                   {feature.title}
                 </h3>
-                <p class="mt-4 max-w-md text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
+                <p class="mt-4 max-w-md text-base leading-7 text-[#a8a29e] sm:text-lg sm:leading-8">
                   {feature.body}
                 </p>
               </div>
@@ -221,10 +195,7 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
                 ]}
                 dir="ltr"
               >
-                <div class="relative group">
-                  <div class="pointer-events-none absolute -inset-4 rounded-[40px] bg-rose-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <PhoneFrame src={shot.src} alt={shot.alt} class="animsat-feature-phone transition duration-300 group-hover:scale-[1.02]" />
-                </div>
+                <PhoneFrame src={shot.src} alt={shot.alt} class="animsat-feature-phone" />
               </div>
             </article>
           );
@@ -233,11 +204,28 @@ const badgeLabel = locale === 'tr' ? '%100 Ücretsiz & Reklamsız • iOS & Andr
     </div>
   </section>
 
-  <!-- Widget Showcase Section -->
-  <WidgetShowcase locale={locale} />
-
-  <!-- 100% Free & Privacy Bento Section -->
-  <FreeGuarantee locale={locale} />
+  <section class="border-y border-white/10 bg-black/35">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-2">
+      <div>
+        <p class="text-xs font-semibold tracking-[0.28em] text-[#c45c4a] uppercase">{copy.privacyKicker}</p>
+        <h2 class="animsat-display mt-4 text-3xl text-[#faf8f5] sm:text-4xl">{copy.privacyTitle}</h2>
+        <p class="mt-4 max-w-md text-base leading-7 text-[#a8a29e]">{copy.privacyBody}</p>
+        <a href={privacyHref} class="mt-6 inline-block text-sm font-medium text-[#faf8f5] underline-offset-4 hover:underline">
+          {copy.ctaPrivacy}
+        </a>
+      </div>
+      <div>
+        <p class="text-xs font-semibold tracking-[0.28em] text-[#c45c4a] uppercase">{copy.proKicker}</p>
+        <h2 class="animsat-display mt-4 text-3xl text-[#faf8f5] sm:text-4xl">{copy.proTitle}</h2>
+        <p class="mt-4 max-w-md text-base leading-7 text-[#a8a29e]">{copy.proBody}</p>
+        <ul class="mt-6 grid gap-2 text-sm text-[#faf8f5]/80 sm:grid-cols-2">
+          {copy.proItems.map((item) => (
+            <li class="border-b border-white/10 py-2">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <SiteFooter slot="footer" locale={locale} />
 </AnimsatLayout>
