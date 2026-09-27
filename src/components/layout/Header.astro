@@ -2,7 +2,6 @@
 import { navigation, site } from '../../data/site';
 import OptimizedImage from '../ui/OptimizedImage.astro';
 import avatar from '../../assets/avatar.png';
-import Container from './Container.astro';
 import ThemeToggle from '../ui/ThemeToggle.astro';
 import MobileNav from '../../islands/MobileNav';
 import { navItemIsActive } from '../../lib/nav';
@@ -12,50 +11,60 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const items = navigation.map((item) => ({ ...item, href: buildCanonical(item.href) }));
 ---
 
-<header class="relative z-50 pt-6">
-  <Container>
-    <div class="flex items-center gap-4">
-      <div class="flex flex-1">
-        <a href={buildCanonical('/')} class="group block cursor-pointer" aria-label={`${site.name} anasayfa`}>
-          <OptimizedImage
-            src={avatar}
-            alt=""
-            width={44}
-            height={44}
-            loading="eager"
-            sizes="44px"
-            class="rounded-full object-cover shadow-sm ring-2 ring-zinc-200 transition group-hover:ring-primary/40 dark:ring-zinc-700 dark:group-hover:ring-primary/50"
-          />
-        </a>
+<header class="sticky top-0 z-50 w-full px-4 pt-4 sm:px-6 sm:pt-5 pointer-events-none">
+  <nav
+    class="pointer-events-auto mx-auto flex max-w-2xl items-center justify-between gap-3 rounded-full border border-zinc-200/80 bg-white/80 px-3.5 py-1.5 shadow-[0_8px_30px_rgb(0,0,0,0.06),_inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-2xl transition-all dark:border-white/[0.08] dark:bg-[#09090c]/75 dark:shadow-[0_8px_32px_rgba(0,0,0,0.65)] sm:px-4 sm:py-2"
+    aria-label="Ana gezinme"
+  >
+    <!-- Brand / Identity -->
+    <a
+      href={buildCanonical('/')}
+      class="group flex items-center gap-2.5 text-zinc-900 transition-opacity hover:opacity-90 dark:text-white"
+      aria-label={`${site.name} anasayfa`}
+    >
+      <div class="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full ring-1 ring-zinc-900/10 transition-transform duration-300 group-hover:scale-105 dark:ring-white/15">
+        <OptimizedImage
+          src={avatar}
+          alt=""
+          width={48}
+          height={48}
+          loading="eager"
+          sizes="32px"
+          class="h-full w-full object-cover"
+        />
       </div>
+      <span class="text-sm font-semibold tracking-tight text-zinc-900 transition-colors group-hover:text-primary dark:text-zinc-100 dark:group-hover:text-primary-light">
+        {site.name}
+      </span>
+    </a>
 
-      <nav class="hidden flex-1 justify-center md:flex" aria-label="Ana menü">
-        <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-          {
-            navigation.map((item) => (
-              <li>
-                <a
-                  href={buildCanonical(item.href)}
-                  class:list={[
-                    'block px-3 py-2 transition',
-                    navItemIsActive(item.href, currentPath)
-                      ? 'text-primary-dark dark:text-primary-light'
-                      : 'hover:text-primary-dark dark:hover:text-primary-light',
-                  ]}
-                  aria-current={navItemIsActive(item.href, currentPath) ? 'page' : undefined}
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-
-      <div class="flex flex-1 items-center justify-end gap-3">
-        <MobileNav client:media="(max-width: 767px)" items={items} currentPath={currentPath} />
-        <ThemeToggle />
-      </div>
+    <!-- Desktop Navigation -->
+    <div class="hidden items-center gap-1 md:flex" role="navigation" aria-label="Sayfa içi gezinme">
+      {
+        navigation.map((item) => {
+          const active = navItemIsActive(item.href, currentPath);
+          return (
+            <a
+              href={buildCanonical(item.href)}
+              class:list={[
+                'rounded-full px-3 py-1 text-sm font-medium transition-colors duration-200',
+                active
+                  ? 'text-zinc-950 font-semibold bg-zinc-900/[0.06] dark:text-white dark:bg-white/[0.08]'
+                  : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-900/[0.04] dark:text-zinc-400 dark:hover:text-white dark:hover:bg-white/[0.06]',
+              ]}
+              aria-current={active ? 'page' : undefined}
+            >
+              {item.name}
+            </a>
+          );
+        })
+      }
     </div>
-  </Container>
+
+    <!-- Right Controls -->
+    <div class="flex items-center gap-2 sm:gap-2.5">
+      <MobileNav client:media="(max-width: 767px)" items={items} currentPath={currentPath} />
+      <ThemeToggle />
+    </div>
+  </nav>
 </header>

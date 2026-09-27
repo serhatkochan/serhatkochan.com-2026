@@ -25,7 +25,7 @@ export default function MobileNav({ items, currentPath }: Props) {
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen((value) => !value)}
-        className="cursor-pointer rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+        className="cursor-pointer rounded-full border border-zinc-200/80 bg-zinc-50/50 px-3 py-1 text-xs font-semibold text-zinc-700 transition hover:bg-zinc-100 hover:text-zinc-950 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white"
       >
         Menü
       </button>
@@ -40,14 +40,14 @@ export default function MobileNav({ items, currentPath }: Props) {
           />
           <div
             id="mobile-menu"
-            className="absolute inset-x-4 top-8 rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
+            className="absolute inset-x-4 top-20 rounded-3xl bg-white/95 p-6 shadow-2xl ring-1 ring-zinc-900/10 backdrop-blur-2xl dark:bg-zinc-900/95 dark:ring-white/10"
           >
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-sm font-medium">Menü</h2>
+              <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Gezinme</h2>
               <button
                 type="button"
                 aria-label="Kapat"
-                className="cursor-pointer rounded-full p-1 text-zinc-500"
+                className="cursor-pointer rounded-full p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 transition-colors"
                 onClick={() => setOpen(false)}
               >
                 ✕

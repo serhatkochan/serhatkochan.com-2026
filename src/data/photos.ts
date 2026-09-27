@@ -1,4 +1,7 @@
 import type { ImageMetadata } from 'astro';
+import wp1 from '../assets/travel/wp1.jpg';
+import wp2 from '../assets/travel/wp2.jpg';
+import wp3 from '../assets/travel/wp3.jpg';
 import portrait from '../assets/portrait.png';
 import img1 from '../assets/travel/img1.jpg';
 import img2 from '../assets/travel/img2.jpg';
@@ -27,6 +30,9 @@ import noteSpreadImage from '../assets/notes/javascriptin-3-silahsoru-spread-res
 export { portrait };
 
 export const travelPhotos = [
+  { src: wp1, alt: 'Fotoğraf 1', width: 320, height: 356 },
+  { src: wp2, alt: 'Fotoğraf 2', width: 320, height: 356 },
+  { src: wp3, alt: 'Fotoğraf 3', width: 320, height: 356 },
   { src: portrait, alt: 'Serhat Koçhan portre fotoğrafı', width: 320, height: 356 },
   { src: img1, alt: 'Seyahat fotoğrafı 1', width: 320, height: 356 },
   { src: img2, alt: 'Seyahat fotoğrafı 2', width: 320, height: 356 },
