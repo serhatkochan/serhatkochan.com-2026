@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import {
-  ANIMSAT_APP_STORE_URL,
   ANIMSAT_NAME,
+  getAppStoreUrl,
   getLanding,
   landingPath,
   type AnimsatLocale,
@@ -19,6 +19,7 @@ interface Props {
 const { locale = 'tr', page = 'home' } = Astro.props;
 const copy = getLanding(locale);
 const homeHref = landingPath(locale);
+const appStoreUrl = getAppStoreUrl(locale);
 
 const navPrefix = page === 'home' ? '' : homeHref;
 const featuresHref = `${navPrefix}#ozellikler`;
@@ -49,10 +50,12 @@ const freeHref = `${navPrefix}#ucretsiz`;
     <div class="flex items-center gap-2.5 sm:gap-3">
       <LanguageSwitcher current={locale} page={page} />
       {
-        ANIMSAT_APP_STORE_URL ? (
+        appStoreUrl ? (
           <a
-            href={ANIMSAT_APP_STORE_URL}
+            href={appStoreUrl}
             class="animsat-nav-cta hidden sm:inline-flex"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <span>App Store</span>
           </a>

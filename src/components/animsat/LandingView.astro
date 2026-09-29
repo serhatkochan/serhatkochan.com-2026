@@ -4,12 +4,12 @@ import PhoneFrame from './PhoneFrame.astro';
 import SiteHeader from './SiteHeader.astro';
 import SiteFooter from './SiteFooter.astro';
 import {
-  ANIMSAT_APP_STORE_URL,
   ANIMSAT_NAME,
   ANIMSAT_PLAY_STORE_URL,
   ANIMSAT_POLICY_LOCALES,
   ANIMSAT_SITE_URL,
   getAnimsatLocale,
+  getAppStoreUrl,
   getLanding,
   landingCanonical,
   landingPath,
@@ -32,6 +32,7 @@ const copy = getLanding(locale);
 const privacyHref = policyPath(locale);
 const homePath = landingPath(locale);
 const homeCanonical = landingCanonical(locale);
+const appStoreUrl = getAppStoreUrl(locale);
 const marqueeCopies = [0, 1];
 
 const featureDates = copy.features.find((item) => item.id === 'dates') ?? copy.features[0];
@@ -135,12 +136,12 @@ const ui = {
       <!-- Left Content -->
       <div class="flex flex-col items-center text-center lg:items-start lg:text-left rtl:lg:items-start rtl:lg:text-right">
         <!-- Live Status Pill -->
-        <div class="animsat-reveal inline-flex items-center gap-2.5 rounded-full border border-[#d96b52]/35 bg-[#d96b52]/10 px-4 py-1.5 text-xs font-medium text-[#f2937e] shadow-sm backdrop-blur-md">
+        <div class="animsat-reveal inline-flex items-center gap-2.5 rounded-full border border-emerald-500/35 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium text-emerald-300 shadow-sm backdrop-blur-md">
           <span class="relative flex h-2 w-2">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#d96b52] opacity-75"></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-[#d96b52]"></span>
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
           </span>
-          <span class="tracking-wide">{copy.eyebrow} · {copy.tagline}</span>
+          <span class="tracking-wide">{copy.eyebrow} · {isTurkish ? "App Store'da Yayında" : 'Now on App Store'}</span>
         </div>
 
         <!-- Master Headline -->
@@ -161,9 +162,9 @@ const ui = {
         <!-- CTA Group -->
         <div class="animsat-reveal animsat-reveal-4 mt-8 flex flex-wrap items-center justify-center gap-3.5 lg:justify-start">
           {
-            ANIMSAT_APP_STORE_URL ? (
+            appStoreUrl ? (
               <a
-                href={ANIMSAT_APP_STORE_URL}
+                href={appStoreUrl}
                 class="animsat-cta-apple group"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -667,9 +668,9 @@ const ui = {
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           {
-            ANIMSAT_APP_STORE_URL ? (
+            appStoreUrl ? (
               <a
-                href={ANIMSAT_APP_STORE_URL}
+                href={appStoreUrl}
                 class="animsat-cta-apple"
                 target="_blank"
                 rel="noopener noreferrer"

@@ -19,7 +19,7 @@ export const currentProjects: Project[] = [
     title: 'Anımsat',
     techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite'],
     description:
-      'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.',
+      'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur. App Store\'da yayında.',
     link: {
       label: 'animsat.serhatkochan.com',
       href: ANIMSAT_SITE_URL,

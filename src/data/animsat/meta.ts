@@ -4,9 +4,19 @@ export const ANIMSAT_SUPPORT_EMAIL = 'serhatkochan@hotmail.com.tr';
 export const ANIMSAT_SITE_URL = 'https://animsat.serhatkochan.com';
 export const ANIMSAT_DEFAULT_LOCALE = 'tr' as const;
 export const ANIMSAT_POLICY_UPDATED_ISO = '2026-08-16';
-export const ANIMSAT_APP_STORE_URL = '';
+export const ANIMSAT_APP_STORE_ID = '6801894310';
+export const ANIMSAT_APP_STORE_URL =
+  'https://apps.apple.com/tr/app/an%C4%B1msat-ka%C3%A7-g%C3%BCn-kald%C4%B1/id6801894310?l=tr';
 export const ANIMSAT_PLAY_STORE_URL = '';
 export const ANIMSAT_OG_IMAGE = '/animsat-icon.png';
+
+export function getAppStoreUrl(locale: string = 'tr'): string {
+  if (!ANIMSAT_APP_STORE_ID) return '';
+  if (locale === 'tr') {
+    return ANIMSAT_APP_STORE_URL;
+  }
+  return `https://apps.apple.com/app/id${ANIMSAT_APP_STORE_ID}`;
+}
 
 export const ANIMSAT_DESCRIPTION =
   'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.';

@@ -1,6 +1,6 @@
 import type { SEOProps } from '../types/seo';
 import { site, socialMedia } from '../data/site';
-import { ANIMSAT_NAME, ANIMSAT_POLICY_UPDATED_ISO, ANIMSAT_SITE_URL, ANIMSAT_SUPPORT_EMAIL } from '../data/animsat/meta';
+import { ANIMSAT_APP_STORE_URL, ANIMSAT_NAME, ANIMSAT_POLICY_UPDATED_ISO, ANIMSAT_SITE_URL, ANIMSAT_SUPPORT_EMAIL } from '../data/animsat/meta';
 
 export function buildCanonical(path: string, base = site.url) {
   if (/^https?:\/\//i.test(path)) return path;
@@ -150,10 +150,12 @@ export function softwareApplicationSchema() {
     name: 'Anımsat',
     alternateName: 'Kaç Gün Kaldı',
     applicationCategory: 'LifestyleApplication',
-    operatingSystem: 'iOS, Android',
+    operatingSystem: 'iOS',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
     author: { '@type': 'Person', name: site.name, url: site.url },
     url: ANIMSAT_SITE_URL,
+    downloadUrl: ANIMSAT_APP_STORE_URL || undefined,
+    installUrl: ANIMSAT_APP_STORE_URL || undefined,
     description:
       'Doğum günü, düğün, yolculuk… Tarihi kaydet, ana ekranda kaç gün kaldığını gör. Verilerin yalnızca bu cihazda durur.',
     inLanguage: ['tr', 'en', 'de', 'fr', 'es', 'it', 'nl', 'ja', 'ko', 'zh', 'ar', 'pt', 'ru'],
