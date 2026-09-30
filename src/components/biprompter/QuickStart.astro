@@ -1,0 +1,79 @@
+---
+import { BIPROMPTER_GITHUB_URL } from '../../data/biprompter/meta';
+---
+
+<section id="install" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-20">
+  <div class="biprompter-glass-panel rounded-3xl p-6 sm:p-10 border border-zinc-800">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
+        <span>🚀 Hızlı Başlangıç & Açık Kaynak</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+        Dakikalar içinde yerel olarak derleyin ve çalıştırın.
+      </h2>
+      <p class="mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
+        Biprompter %100 açık kaynaklıdır (MIT Lisansı). Kendi makinenizde saniyeler içinde çalıştırabilir veya doğrudan Windows için MSI / Exe kurulum paketi üretebilirsiniz.
+      </p>
+    </div>
+
+    <!-- Terminal Code Blocks -->
+    <div class="mt-8 space-y-4 font-mono text-xs sm:text-sm">
+      <!-- Step 1: Clone -->
+      <div class="rounded-2xl bg-zinc-950/90 border border-zinc-800 p-4 sm:p-5 shadow-inner">
+        <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
+          <span># 1. Depoyu klonlayın ve klasöre girin</span>
+          <span>bash / powershell</span>
+        </div>
+        <div class="text-sky-300 select-all overflow-x-auto">
+          git clone {BIPROMPTER_GITHUB_URL}.git<br />
+          cd biprompter
+        </div>
+      </div>
+
+      <!-- Step 2: Install & Run Dev -->
+      <div class="rounded-2xl bg-zinc-950/90 border border-zinc-800 p-4 sm:p-5 shadow-inner">
+        <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
+          <span># 2. Bağımlılıkları yükleyin ve geliştirme modunda başlatın</span>
+          <span>bash / powershell</span>
+        </div>
+        <div class="text-sky-300 select-all overflow-x-auto">
+          npm install<br />
+          npm run tauri dev
+        </div>
+      </div>
+
+      <!-- Step 3: Production Build -->
+      <div class="rounded-2xl bg-zinc-950/90 border border-zinc-800 p-4 sm:p-5 shadow-inner">
+        <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
+          <span># 3. Windows için tek tıkla MSI / Exe paketi derleyin</span>
+          <span>bash / powershell</span>
+        </div>
+        <div class="text-emerald-400 select-all overflow-x-auto">
+          npm run tauri build
+        </div>
+        <p class="mt-3 text-xs text-zinc-500 font-sans">
+          Derlenen kurulum dosyaları otomatik olarak <code class="text-zinc-300 font-mono">src-tauri/target/release/bundle/</code> klasörüne çıkartılır.
+        </p>
+      </div>
+    </div>
+
+    <!-- Requirements & Links -->
+    <div class="mt-8 pt-6 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400">
+      <div class="flex items-center gap-4">
+        <span>Gereksinimler:</span>
+        <span class="text-zinc-200">Node.js (v18+)</span>
+        <span>•</span>
+        <span class="text-zinc-200">Rust & Cargo (MSVC)</span>
+      </div>
+
+      <a
+        href={BIPROMPTER_GITHUB_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 text-sky-400 hover:text-sky-300 font-medium transition"
+      >
+        <span>GitHub deposunda detaylı README'yi gör →</span>
+      </a>
+    </div>
+  </div>
+</section>

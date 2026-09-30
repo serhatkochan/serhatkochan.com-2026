@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import '../styles/biprompter.css';
+import {
+  BIPROMPTER_NAME,
+  BIPROMPTER_SITE_URL,
+  BIPROMPTER_TITLE,
+  BIPROMPTER_DESCRIPTION,
+  BIPROMPTER_OG_IMAGE,
+  BIPROMPTER_GITHUB_URL,
+} from '../data/biprompter/meta';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = BIPROMPTER_TITLE,
+  description = BIPROMPTER_DESCRIPTION,
+} = Astro.props;
+
+const canonicalUrl = BIPROMPTER_SITE_URL;
+const ogImageUrl = new URL(BIPROMPTER_OG_IMAGE, BIPROMPTER_SITE_URL).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: BIPROMPTER_NAME,
+  operatingSystem: 'Windows 10, Windows 11',
+  applicationCategory: 'MultimediaApplication',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  url: BIPROMPTER_SITE_URL,
+  downloadUrl: BIPROMPTER_GITHUB_URL,
+  softwareVersion: '1.0.0',
+  description: BIPROMPTER_DESCRIPTION,
+  author: {
+    '@type': 'Person',
+    name: 'Serhat Koçhan',
+    url: 'https://www.serhatkochan.com',
+  },
+};
+---
+
+<!doctype html>
+<html lang="tr" class="biprompter-root dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="theme-color" content="#070709" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/biprompter/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/biprompter/favicon.png" />
+    <link rel="shortcut icon" href="/biprompter/favicon.ico" />
+    <link rel="apple-touch-icon" href="/biprompter/app-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={BIPROMPTER_NAME} />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body class="min-h-screen bg-[#070709] text-zinc-100 selection:bg-sky-500/30 selection:text-sky-200">
+    <div class="biprompter-bg">
+      <div class="biprompter-grid"></div>
+    </div>
+    <div class="relative z-10 flex min-h-screen flex-col">
+      <slot />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+---
+// Biprompter Feature Bento Grid
+---
+
+<section id="features" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-20">
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <h2 class="text-xs font-mono font-semibold tracking-widest text-sky-400 uppercase">
+      Özellikler & Çözümler
+    </h2>
+    <p class="mt-3 text-2xl sm:text-4xl font-bold tracking-tight text-white">
+      Geleneksel prompterların can sıkan sorunlarını çözdük.
+    </p>
+    <p class="mt-4 text-sm sm:text-base text-zinc-400">
+      Kaba pencere kenarlıkları, internet gerektiren konuşma API'ları ve ekranı kapatan hantal arayüzler geride kaldı.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Card 1: Vosk AI Offline (Large Span) -->
+    <div class="md:col-span-2 biprompter-glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-4">
+          <span>🎙️ %100 Çevrimdışı WebAssembly</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          Sesiniz bilgisayarınızdan asla ayrılmaz.
+        </h3>
+        <p class="mt-3 text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl">
+          Harici bir bulut servisine (Google Speech, Whisper API vb.) bağlanmaz, API anahtarı istemez ve internet gerektirmez. WebAssembly ve AudioWorklet ile doğrudan istemci bilgisayarında yerel çalışarak konuşmanızı mikrofondan sıfır gecikmeyle kelime kelime eşler.
+        </p>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-zinc-800/80 grid grid-cols-3 gap-4 text-center">
+        <div>
+          <span class="block text-xl sm:text-2xl font-bold font-mono text-white">0 ms</span>
+          <span class="text-xs text-zinc-500">Bulut Ağ Gecikmesi</span>
+        </div>
+        <div>
+          <span class="block text-xl sm:text-2xl font-bold font-mono text-white">12 Dil</span>
+          <span class="text-xs text-zinc-500">Yerel Hafif Model</span>
+        </div>
+        <div>
+          <span class="block text-xl sm:text-2xl font-bold font-mono text-emerald-400">%100</span>
+          <span class="text-xs text-zinc-500">Gizlilik & Yerel Çalışma</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Ghost Mode (OBS Capture Exclude) -->
+    <div class="biprompter-glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-mono mb-4">
+          <span>👻 Win32 DWM API</span>
+        </div>
+        <h3 class="text-xl font-bold text-white tracking-tight">
+          Hayalet Modu: Yayında Görünmez
+        </h3>
+        <p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+          <kbd class="biprompter-kbd">Alt + G</kbd> kısayolu ile tek tıkla aktifleşir. Windows <code class="text-xs text-purple-300 bg-purple-950/60 px-1 py-0.5 rounded">WDA_EXCLUDEFROMCAPTURE</code> mimarisini kullanarak prompteri OBS, Zoom, Teams ve Discord yayınlarında görünmez kılar.
+        </p>
+      </div>
+
+      <div class="mt-6 p-3 rounded-2xl bg-zinc-950/80 border border-purple-900/40 text-center">
+        <span class="text-xs text-purple-300 font-mono">
+          ✓ Siz okursunuz, seyirci görmez.
+        </span>
+      </div>
+    </div>
+
+    <!-- Card 3: Minimal Notch Mode -->
+    <div class="biprompter-glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-mono mb-4">
+          <span>🔽 Minimalist Çentik</span>
+        </div>
+        <h3 class="text-xl font-bold text-white tracking-tight">
+          Zıplayan Ok Modu (Alt + D)
+        </h3>
+        <p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+          Prompteri tek bir tuşla ekranın en tepesine küçülterek sadece küçük bir aşağı ok ikonuna dönüştürür. Köşelerde boyutlandırma imleci çıkmaz, pürüzsüz ve temiz masaüstü deneyimi sunar.
+        </p>
+      </div>
+
+      <div class="mt-6 flex items-center justify-center py-2">
+        <div class="px-4 py-2 rounded-xl bg-black border border-zinc-800 flex items-center gap-2 shadow-inner">
+          <svg class="w-4 h-4 text-sky-400 biprompter-arrow-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+          </svg>
+          <span class="text-xs font-mono text-zinc-400">Tek tıkla adaya dönüşür</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Click-Through & Glide Cursor Tracking -->
+    <div class="biprompter-glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-mono mb-4">
+          <span>🖱️ Tıklama & İmleç Takibi</span>
+        </div>
+        <h3 class="text-xl font-bold text-white tracking-tight">
+          Tıklama Geçirgenliği (Alt + C)
+        </h3>
+        <p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+          Prompter açıkken arkasındaki sunum slaytlarını veya VS Code kodlarını doğrudan tıklayabilirsiniz. Dilerseniz <kbd class="biprompter-kbd">Alt + M</kbd> ile farenin peşinden süzülen fizik takip modunu devreye sokabilirsiniz.
+        </p>
+      </div>
+
+      <div class="mt-6 p-3 rounded-2xl bg-zinc-950/80 border border-emerald-900/40 text-center">
+        <span class="text-xs text-emerald-300 font-mono">
+          ✓ Prompteri kapatmadan çalışmaya devam edin
+        </span>
+      </div>
+    </div>
+
+    <!-- Card 5: Stage Directions / Reji -->
+    <div class="biprompter-glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-mono mb-4">
+          <span>🎭 Reji & Sahne Direktifleri</span>
+        </div>
+        <h3 class="text-xl font-bold text-white tracking-tight">
+          Akıllı Yönetmen Yönergeleri
+        </h3>
+        <p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+          Metin içine yazdığınız <span class="biprompter-directive-tag">[Gülümse]</span>, <span class="biprompter-directive-tag">[Nefes al]</span>, <span class="biprompter-directive-tag">[Kameraya Bak]</span> gibi sahne direktiflerini otomatik algılar. Ses motoru bu kelimeleri beklemez, akışı kesintisiz sürdürür.
+        </p>
+      </div>
+
+      <div class="mt-6 p-3 rounded-2xl bg-zinc-950/80 border border-rose-900/40 text-center">
+        <span class="text-xs text-rose-300 font-mono">
+          ✓ Konuşma metnini sahne yönergeleriyle zenginleştirin
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

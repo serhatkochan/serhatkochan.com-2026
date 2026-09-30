@@ -1,4 +1,5 @@
 const ANIMSAT_HOST = 'animsat.serhatkochan.com';
+const BIPROMPTER_HOST = 'biprompter.serhatkochan.com';
 const MAIN_SITE = 'https://www.serhatkochan.com';
 
 const POLICY_ALIASES = {
@@ -89,82 +90,143 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const pathname = normalizePath(url.pathname);
 
-  if (url.hostname !== ANIMSAT_HOST) {
-    if (pathname === '/animsat' || pathname.startsWith('/animsat/')) {
-      return notFound(url);
+  // --- BIPROMPTER SUBDOMAIN HANDLER ---
+  if (url.hostname === BIPROMPTER_HOST) {
+    if (
+      pathname.startsWith('/_astro') ||
+      pathname.startsWith('/assets') ||
+      pathname.startsWith('/biprompter') ||
+      pathname === '/humans.txt'
+    ) {
+      return;
     }
-    return;
+
+    if (
+      pathname === '/favicon.ico' ||
+      pathname === '/favicon.png' ||
+      pathname === '/favicon.svg' ||
+      pathname === '/apple-touch-icon.png'
+    ) {
+      return rewrite(url, `/biprompter${pathname === '/apple-touch-icon.png' ? '/app-icon.png' : pathname}`);
+    }
+
+    if (MAIN_SITE_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
+      return Response.redirect(`${MAIN_SITE}${url.pathname}${url.search}`, 308);
+    }
+
+    if (pathname === '/biprompter' || pathname.startsWith('/biprompter/')) {
+      const stripped = pathname.slice('/biprompter'.length) || '/';
+      const destination = new URL(url);
+      destination.pathname = stripped;
+      return Response.redirect(destination, 308);
+    }
+
+    if (pathname === '/robots.txt') {
+      return rewrite(url, '/biprompter-robots.txt');
+    }
+
+    if (pathname === '/sitemap.xml') {
+      return rewrite(url, '/biprompter/sitemap.xml');
+    }
+
+    if (pathname === '/llms.txt') {
+      return rewrite(url, '/biprompter-llms.txt');
+    }
+
+    if (pathname === '/manifest.webmanifest') {
+      return rewrite(url, '/biprompter-manifest.webmanifest');
+    }
+
+    if (pathname === '/') {
+      return rewrite(url, '/biprompter');
+    }
+
+    return rewrite(url, `/biprompter${pathname}`);
   }
 
-  if (pathname === '/favicon.png' || pathname === '/apple-touch-icon.png') {
-    return rewrite(url, '/animsat-icon.png');
+  // --- ANIMSAT SUBDOMAIN HANDLER ---
+  if (url.hostname === ANIMSAT_HOST) {
+    if (pathname === '/favicon.png' || pathname === '/apple-touch-icon.png') {
+      return rewrite(url, '/animsat-icon.png');
+    }
+
+    if (
+      pathname.startsWith('/_astro') ||
+      pathname.startsWith('/assets') ||
+      pathname === '/humans.txt'
+    ) {
+      return;
+    }
+
+    if (MAIN_SITE_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
+      return Response.redirect(`${MAIN_SITE}${url.pathname}${url.search}`, 308);
+    }
+
+    if (pathname === '/animsat' || pathname.startsWith('/animsat/')) {
+      const stripped = pathname.slice('/animsat'.length) || '/';
+      const destination = new URL(url);
+      destination.pathname = stripped;
+      return Response.redirect(destination, 308);
+    }
+
+    const alias = POLICY_ALIASES[pathname] || SUPPORT_ALIASES[pathname];
+    if (alias) {
+      const destination = new URL(url);
+      destination.pathname = alias;
+      return Response.redirect(destination, 308);
+    }
+
+    if (pathname === '/robots.txt') {
+      return rewrite(url, '/animsat-robots.txt');
+    }
+
+    if (pathname === '/sitemap.xml') {
+      return rewrite(url, '/animsat/sitemap.xml');
+    }
+
+    if (pathname === '/llms.txt') {
+      return rewrite(url, '/animsat-llms.txt');
+    }
+
+    if (pathname === '/llms-full.txt') {
+      return rewrite(url, '/animsat-llms-full.txt');
+    }
+
+    if (pathname === '/manifest.webmanifest') {
+      return rewrite(url, '/animsat-manifest.webmanifest');
+    }
+
+    if (pathname === '/') {
+      return rewrite(url, '/animsat');
+    }
+
+    // /tr → ana landing (canonical)
+    if (pathname === '/tr') {
+      const destination = new URL(url);
+      destination.pathname = '/';
+      return Response.redirect(destination, 301);
+    }
+
+    // /en-US, /ja, … → /animsat/en-US, …
+    const localeMatch = pathname.match(/^\/([^/]+)$/);
+    if (localeMatch && ANIMSAT_LOCALES.has(localeMatch[1])) {
+      return rewrite(url, `/animsat/${localeMatch[1]}`);
+    }
+
+    if (/^\/[^/]+\/(policy|support)$/.test(pathname)) {
+      return rewrite(url, `/animsat${pathname}`);
+    }
+
+    return notFound(url);
   }
 
-  if (
-    pathname.startsWith('/_astro') ||
-    pathname.startsWith('/assets') ||
-    pathname === '/humans.txt'
-  ) {
-    return;
-  }
-
-  if (MAIN_SITE_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
-    return Response.redirect(`${MAIN_SITE}${url.pathname}${url.search}`, 308);
-  }
-
+  // --- MAIN SITE HANDLER (serhatkochan.com) ---
+  // Subdomain sayfalarını ana sitede gizle (404)
   if (pathname === '/animsat' || pathname.startsWith('/animsat/')) {
-    const stripped = pathname.slice('/animsat'.length) || '/';
-    const destination = new URL(url);
-    destination.pathname = stripped;
-    return Response.redirect(destination, 308);
+    return notFound(url);
   }
-
-  const alias = POLICY_ALIASES[pathname] || SUPPORT_ALIASES[pathname];
-  if (alias) {
-    const destination = new URL(url);
-    destination.pathname = alias;
-    return Response.redirect(destination, 308);
-  }
-
-  if (pathname === '/robots.txt') {
-    return rewrite(url, '/animsat-robots.txt');
-  }
-
-  if (pathname === '/sitemap.xml') {
-    return rewrite(url, '/animsat/sitemap.xml');
-  }
-
-  if (pathname === '/llms.txt') {
-    return rewrite(url, '/animsat-llms.txt');
-  }
-
-  if (pathname === '/llms-full.txt') {
-    return rewrite(url, '/animsat-llms-full.txt');
-  }
-
-  if (pathname === '/manifest.webmanifest') {
-    return rewrite(url, '/animsat-manifest.webmanifest');
-  }
-
-  if (pathname === '/') {
-    return rewrite(url, '/animsat');
-  }
-
-  // /tr → ana landing (canonical)
-  if (pathname === '/tr') {
-    const destination = new URL(url);
-    destination.pathname = '/';
-    return Response.redirect(destination, 301);
-  }
-
-  // /en-US, /ja, … → /animsat/en-US, …
-  const localeMatch = pathname.match(/^\/([^/]+)$/);
-  if (localeMatch && ANIMSAT_LOCALES.has(localeMatch[1])) {
-    return rewrite(url, `/animsat/${localeMatch[1]}`);
-  }
-
-  if (/^\/[^/]+\/(policy|support)$/.test(pathname)) {
-    return rewrite(url, `/animsat${pathname}`);
+  if (pathname === '/biprompter' || pathname.startsWith('/biprompter/')) {
+    return notFound(url);
   }
 }
 

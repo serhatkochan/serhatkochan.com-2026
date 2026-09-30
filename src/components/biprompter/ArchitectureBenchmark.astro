@@ -1,0 +1,100 @@
+---
+import { BIPROMPTER_TECH_STACK } from '../../data/biprompter/meta';
+---
+
+<section id="benchmark" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-20">
+  <div class="biprompter-glass-panel rounded-3xl p-6 sm:p-10 border border-zinc-800">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <!-- Left: Story & Rationale -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono mb-4">
+          <span>⚡ Rust + Tauri v2 Mimarisi</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+          Masaüstünüzü Electron hantallığına mahkum etmeyin.
+        </h2>
+        <p class="mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
+          Klasik Electron uygulamaları her pencere için arka planda tam teşekküllü bir Chromium tarayıcısı ve Node.js runtime çalıştırır. Bu da prompter gibi basit ve sürekli açık kalması gereken bir aracın bile 400 MB RAM tüketmesine neden olur.
+        </p>
+        <p class="mt-3 text-sm sm:text-base text-zinc-400 leading-relaxed">
+          Biprompter; sistemin yerel WebView2 motorunu kullanan <strong>Rust tabanlı Tauri v2</strong> üzerinde çalışır. RAM tüketimi <strong>yalnızca ~35-45 MB</strong> seviyesindedir.
+        </p>
+
+        <!-- Tech Badges -->
+        <div class="mt-8 flex flex-wrap gap-2">
+          {BIPROMPTER_TECH_STACK.map((tech) => (
+            <div class="px-3 py-1.5 rounded-xl bg-zinc-900 border border-zinc-800 text-xs flex items-center gap-2">
+              <span class="font-semibold text-white">{tech.name}</span>
+              <span class="text-zinc-500">•</span>
+              <span class="text-sky-400 font-mono text-[11px]">{tech.badge}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Real Benchmark Comparison Bars -->
+      <div class="space-y-6 p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/80">
+        <h3 class="text-sm font-mono font-semibold text-zinc-300 uppercase tracking-wider">
+          Performans & Kaynak Tüketimi
+        </h3>
+
+        <!-- RAM Usage Bar -->
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs">
+            <span class="text-zinc-400">Bellek Tüketimi (RAM)</span>
+            <span class="font-mono text-emerald-400 font-semibold">10x Daha Hafif</span>
+          </div>
+
+          <!-- Biprompter Bar -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-[11px] font-mono">
+              <span class="text-sky-400 font-medium">Biprompter (Tauri v2 + Rust)</span>
+              <span class="text-white font-bold">~38 MB</span>
+            </div>
+            <div class="h-2.5 rounded-full bg-zinc-800 overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-sky-400 to-emerald-400 w-[10%]"></div>
+            </div>
+          </div>
+
+          <!-- Electron Bar -->
+          <div class="space-y-1 pt-1">
+            <div class="flex justify-between text-[11px] font-mono">
+              <span class="text-zinc-500">Standart Electron Prompter</span>
+              <span class="text-zinc-400 font-medium">~450 MB</span>
+            </div>
+            <div class="h-2.5 rounded-full bg-zinc-800 overflow-hidden">
+              <div class="h-full rounded-full bg-zinc-600 w-[95%]"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Binary Size -->
+        <div class="space-y-2 pt-2 border-t border-zinc-800/60">
+          <div class="flex justify-between text-xs">
+            <span class="text-zinc-400">Kurulum Dosyası Boyutu (MSI / Exe)</span>
+            <span class="font-mono text-emerald-400 font-semibold">Küçük & Hızlı</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800">
+              <span class="block text-[11px] text-zinc-400">Biprompter</span>
+              <span class="block text-lg font-bold font-mono text-white mt-0.5">~14 MB</span>
+            </div>
+            <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800">
+              <span class="block text-[11px] text-zinc-500">Electron Paketi</span>
+              <span class="block text-lg font-bold font-mono text-zinc-400 mt-0.5">~110 MB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Win32 Direct API -->
+        <div class="pt-2 border-t border-zinc-800/60 text-xs text-zinc-400 flex items-start gap-2.5">
+          <span class="text-sky-400 text-sm">💡</span>
+          <span>
+            Doğrudan Windows <code class="text-zinc-300 font-mono">user32.dll</code> ve <code class="text-zinc-300 font-mono">dwmapi.dll</code> entegrasyonu sayesinde pencere gecikmesi mikrosaniyeler düzeyindedir.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

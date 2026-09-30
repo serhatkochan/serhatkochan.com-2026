@@ -1,0 +1,49 @@
+---
+import { BIPROMPTER_GITHUB_URL, BIPROMPTER_NAME } from '../../data/biprompter/meta';
+---
+
+<footer class="mt-auto border-t border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md py-12 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-zinc-500">
+    <div class="flex items-center gap-3">
+      <img
+        src="/biprompter/logo.png"
+        alt={BIPROMPTER_NAME}
+        width="24"
+        height="24"
+        class="rounded-lg opacity-80"
+      />
+      <div>
+        <span class="font-semibold text-zinc-300">{BIPROMPTER_NAME}</span>
+        <span class="mx-1.5">•</span>
+        <span>MIT Lisansı ile Açık Kaynak</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <a
+        href={BIPROMPTER_GITHUB_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-zinc-300 transition-colors"
+      >
+        GitHub Deposu
+      </a>
+      <a
+        href="https://www.serhatkochan.com/projects"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-zinc-300 transition-colors"
+      >
+        Diğer Projeler
+      </a>
+      <a
+        href="https://www.serhatkochan.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-zinc-300 transition-colors"
+      >
+        Serhat Koçhan
+      </a>
+    </div>
+  </div>
+</footer>

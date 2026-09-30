@@ -1,4 +1,5 @@
 import { ANIMSAT_SITE_URL } from './animsat/meta';
+import { BIPROMPTER_SITE_URL } from './biprompter/meta';
 
 export type ProjectLink = {
   href: string;
@@ -15,6 +16,17 @@ export type Project = {
 };
 
 export const currentProjects: Project[] = [
+  {
+    title: 'Biprompter',
+    techStack: ['Tauri v2', 'Rust', 'React 19', 'Vosk Wasm', 'Astro', 'TypeScript', 'Tailwind CSS'],
+    description:
+      'Windows için Apple Dynamic Island estetiğinde, %100 yerel ve yapay zekâ ses takipli teleprompter. OBS hayalet modu, tıklama geçirgenliği ve sıfır bulut bağımlılığıyla açık kaynak.',
+    link: {
+      label: 'biprompter.serhatkochan.com',
+      href: BIPROMPTER_SITE_URL,
+      external: true,
+    },
+  },
   {
     title: 'Anımsat',
     techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite'],

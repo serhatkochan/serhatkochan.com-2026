@@ -1,0 +1,43 @@
+---
+import { BIPROMPTER_SHORTCUTS } from '../../data/biprompter/meta';
+---
+
+<section id="shortcuts" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-20">
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs font-mono mb-4">
+      <span>⌨️ Küresel Sistem Kısayolları</span>
+    </div>
+    <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+      Tek parmakla tüm akışı yönetin.
+    </h2>
+    <p class="mt-4 text-sm sm:text-base text-zinc-400">
+      Başka bir programda veya sunumda olsanız dahi küresel Windows kısayolları mikro-saniyelik gecikmeyle yakalanır.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {BIPROMPTER_SHORTCUTS.map((item) => (
+      <div class="biprompter-glass-panel rounded-2xl p-5 flex flex-col justify-between hover:border-zinc-700 transition">
+        <div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            {item.keys.map((k) => (
+              <kbd class="biprompter-kbd">{k}</kbd>
+            ))}
+            {item.altKey && (
+              <>
+                <span class="text-xs text-zinc-500 font-mono">veya</span>
+                <kbd class="biprompter-kbd">{item.altKey}</kbd>
+              </>
+            )}
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-white tracking-tight">
+            {item.action}
+          </h3>
+        </div>
+        <p class="mt-2 text-xs text-zinc-400 leading-relaxed">
+          {item.desc}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,21 @@
+{
+  "name": "Biprompter — Dynamic Island Teleprompter",
+  "short_name": "Biprompter",
+  "description": "Windows için Mac Dynamic Island estetiğinde, yapay zekâ ses takipli ve %100 yerel teleprompter.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08080a",
+  "theme_color": "#08080a",
+  "icons": [
+    {
+      "src": "/biprompter/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/biprompter/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Biprompter — Dynamic Island Teleprompter
+
+> Windows için Mac Dynamic Island estetiğinde, %100 yerel ve yapay zekâ ses takipli açık kaynaklı teleprompter.
+
+- Website: https://biprompter.serhatkochan.com
+- GitHub Repo: https://github.com/serhatkochan/biprompter
+- Geliştirici: Serhat Koçhan (https://www.serhatkochan.com)
+- Lisans: MIT
+
+## Öne Çıkan Yetenekler
+1. Vosk Speech AI (WebAssembly): %100 çevrimdışı, sıfır bulut bağımlılığı, mikrofondan konuşulan kelimeleri anlık takip eden algoritma.
+2. Mac Dynamic Island & Zıplayan Ok Çentik Modu: Ekranın en tepesinde zarifçe yüzen kapsül ve tek tıkla arkayı açan zıplayan ok ikonu (Alt+D).
+3. Hayalet Modu (OBS / Yayın Gizleme): Windows WDA_EXCLUDEFROMCAPTURE API ile Zoom, Teams, Meet ve OBS ekran paylaşımlarında prompteri görünmez kılma (Alt+G).
+4. Tıklama Geçirgenliği (Click-Through): Prompter açıkken arkadaki pencereye fare tıklamalarını aktarma (Alt+C).
+5. Tauri v2 (Rust) + React 19: ~35-45 MB ultra düşük RAM tüketimi (Electron'a göre 10 kat daha hafif).

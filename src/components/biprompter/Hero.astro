@@ -1,0 +1,68 @@
+---
+import InteractiveIslandSimulator from './InteractiveIslandSimulator';
+import { BIPROMPTER_GITHUB_URL } from '../../data/biprompter/meta';
+---
+
+<section class="relative pt-12 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto w-full flex flex-col items-center text-center">
+  <!-- Glowing Announcement Badge -->
+  <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/80 shadow-inner mb-8">
+    <span class="flex h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
+    <span class="text-xs font-medium text-zinc-300">
+      Windows için Mac Dynamic Island Deneyimi
+    </span>
+    <span class="text-zinc-600">•</span>
+    <span class="text-xs font-mono text-sky-400">
+      %100 Yerel Vosk AI
+    </span>
+  </div>
+
+  <!-- Primary Headline -->
+  <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.15]">
+    Ekranı kaplamayan, <span class="bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">sesinizi dinleyip</span> siz konuştukça ilerleyen prompter.
+  </h1>
+
+  <!-- Anti-Slop Authentic Description -->
+  <p class="mt-6 text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed">
+    Kamera karşısında konuşurken koca bir pencereyle ekranı bloke etmeye son. Biprompter ekranın en tepesinde zarif bir ada gibi yüzer; harici hiçbir sunucuya veri göndermeden sesinizi cihazda dinler ve OBS / Zoom yayınlarında izleyicilere görünmez kalır.
+  </p>
+
+  <!-- CTA Buttons -->
+  <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+    <a
+      href={BIPROMPTER_GITHUB_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-zinc-950 font-semibold text-sm transition-all shadow-lg shadow-sky-500/20 hover:scale-[1.02] active:scale-[0.98]"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+      </svg>
+      <span>GitHub'da İncele & Yıldızla</span>
+    </a>
+
+    <a
+      href="#install"
+      class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-200 text-sm font-medium transition hover:border-zinc-500"
+    >
+      <span>🚀 Kurulum & Çalıştırma</span>
+    </a>
+  </div>
+
+  <!-- Micro Specs Line -->
+  <div class="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-zinc-500 font-mono">
+    <span class="inline-flex items-center gap-1.5">
+      <span class="text-emerald-400">✓</span> ~35-45 MB RAM (Rust & Tauri v2)
+    </span>
+    <span class="inline-flex items-center gap-1.5">
+      <span class="text-emerald-400">✓</span> %100 Çevrimdışı WebAssembly
+    </span>
+    <span class="inline-flex items-center gap-1.5">
+      <span class="text-emerald-400">✓</span> OBS / Ekran Paylaşımından Gizleme
+    </span>
+  </div>
+
+  <!-- Interactive Simulator Anchor & Display -->
+  <div id="simulator" class="w-full mt-14 sm:mt-16 scroll-mt-24">
+    <InteractiveIslandSimulator client:load />
+  </div>
+</section>
