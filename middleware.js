@@ -146,16 +146,23 @@ export default function middleware(request) {
 
   // --- ANIMSAT SUBDOMAIN HANDLER ---
   if (url.hostname === ANIMSAT_HOST) {
-    if (pathname === '/favicon.png' || pathname === '/apple-touch-icon.png') {
-      return rewrite(url, '/animsat-icon.png');
-    }
-
     if (
       pathname.startsWith('/_astro') ||
       pathname.startsWith('/assets') ||
+      (pathname.startsWith('/animsat/') && /\.[a-zA-Z0-9]+$/.test(pathname)) ||
+      pathname === '/animsat-icon.png' ||
       pathname === '/humans.txt'
     ) {
       return;
+    }
+
+    if (
+      pathname === '/favicon.ico' ||
+      pathname === '/favicon.png' ||
+      pathname === '/favicon.svg' ||
+      pathname === '/apple-touch-icon.png'
+    ) {
+      return rewrite(url, `/animsat${pathname === '/apple-touch-icon.png' ? '/app-icon.png' : pathname}`);
     }
 
     if (MAIN_SITE_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
