@@ -48,7 +48,7 @@ html.dark .site-background {
 }
 
 html.dark .art-dots-fallback {
-  background-image: radial-gradient(circle, rgb(92 92 101 / 0.4) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgb(113 113 122 / 0.48) 1px, transparent 1px);
 }
 
 #art-dots-canvas {
