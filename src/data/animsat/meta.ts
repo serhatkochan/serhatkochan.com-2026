@@ -8,6 +8,7 @@ export const ANIMSAT_APP_STORE_ID = '6801894310';
 export const ANIMSAT_APP_STORE_URL =
   'https://apps.apple.com/tr/app/an%C4%B1msat-ka%C3%A7-g%C3%BCn-kald%C4%B1/id6801894310?l=tr';
 export const ANIMSAT_PLAY_STORE_URL = '';
+export const ANIMSAT_GITHUB_URL = 'https://github.com/serhatkochan/animsat';
 export const ANIMSAT_OG_IMAGE = '/animsat-icon.png';
 
 export function getAppStoreUrl(locale: string = 'tr'): string {
