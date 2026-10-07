@@ -22,7 +22,7 @@ export const currentProjects: Project[] = [
     description:
       'Steam hedefli indie ada oyununun erken web prototipi. Kamp yaşamı, takım yarışmaları ve sosyal kararlar bir arada. İnteraktif demoda kampını hazırla, hedef atışını dene ve oylamaya katıl.',
     link: {
-      label: 'Web prototipini oyna',
+      label: 'survival-on-the-island.serhatkochan.com',
       href: 'https://survival-on-the-island.serhatkochan.com',
       external: true,
     },
