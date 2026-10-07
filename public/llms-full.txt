@@ -28,6 +28,7 @@ Serhat Koçhan, yazılımcı ve teknoloji tutkunu. Kişisel sitesinde yazılım 
 | Anasayfa | https://www.serhatkochan.com/ | Son notlar, fotoğraflar ve iş deneyimi özeti |
 | Notlar | https://www.serhatkochan.com/notes/ | Yazılım geliştirme üzerine Türkçe blog yazıları |
 | Projeler | https://www.serhatkochan.com/projects/ | Kişisel ve açık kaynak projeler |
+| Survival on the Island | https://survival-on-the-island.serhatkochan.com/ | Steam hedefli indie ada oyununun interaktif web prototipi |
 | Anımsat | https://animsat.serhatkochan.com/ | Tarih sayacı uygulaması |
 | Anımsat (EN) | https://animsat.serhatkochan.com/en-US | English landing |
 | Anımsat Gizlilik Politikası | https://animsat.serhatkochan.com/tr/policy/ | Anımsat gizlilik politikası (çok dilli) |

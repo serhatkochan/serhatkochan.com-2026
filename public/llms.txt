@@ -15,6 +15,7 @@
 - [Anasayfa](https://www.serhatkochan.com/)
 - [Notlar](https://www.serhatkochan.com/notes/)
 - [Projeler](https://www.serhatkochan.com/projects/)
+- [Survival on the Island](https://survival-on-the-island.serhatkochan.com/)
 - [Anımsat](https://animsat.serhatkochan.com/)
 - [Anımsat Gizlilik Politikası](https://animsat.serhatkochan.com/tr/policy/)
 - [Anımsat sitemap](https://animsat.serhatkochan.com/sitemap.xml)

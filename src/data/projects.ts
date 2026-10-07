@@ -17,6 +17,17 @@ export type Project = {
 
 export const currentProjects: Project[] = [
   {
+    title: 'Survival on the Island',
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+    description:
+      'Steam hedefli indie ada oyununun erken web prototipi. Kamp yaşamı, takım yarışmaları ve sosyal kararlar bir arada. İnteraktif demoda kampını hazırla, hedef atışını dene ve oylamaya katıl.',
+    link: {
+      label: 'Web prototipini oyna',
+      href: 'https://survival-on-the-island.serhatkochan.com',
+      external: true,
+    },
+  },
+  {
     title: 'Biprompter',
     techStack: ['Tauri v2', 'Rust', 'React 19', 'Vosk Wasm', 'Astro', 'TypeScript', 'Tailwind CSS'],
     description:
