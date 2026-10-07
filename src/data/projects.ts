@@ -17,6 +17,17 @@ export type Project = {
 
 export const currentProjects: Project[] = [
   {
+    title: 'Fit Klan',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Vercel', 'Cloudflare'],
+    description:
+      'Hocalar ve öğrenciler için antrenman programı, geri bildirim ve kapalı topluluklar üzerine geliştirilen fitness platformu. Erken erişim tanıtım sayfası yayında.',
+    link: {
+      label: 'fitklan.com',
+      href: 'https://fitklan.com',
+      external: true,
+    },
+  },
+  {
     title: 'Mascot Reader',
     techStack: ['Python 3.11', 'PySide6', 'PyTorch', 'EMA Lightning'],
     description:
