@@ -39,6 +39,17 @@ export const currentProjects: Project[] = [
     },
   },
   {
+    title: 'Video Player',
+    techStack: ['Rust', 'egui / eframe', 'libmpv', 'FFmpeg'],
+    description:
+      'Windows 11 için açık kaynak video ve ses oynatıcı. HEVC ve AV1 desteği, ses ve altyazı seçimi, kaldığın yerden devam etme ve çevrimdışı kurulum paketi. 0.1.0 ön sürümü yayında.',
+    link: {
+      label: 'videoplayer.serhatkochan.com',
+      href: 'https://videoplayer.serhatkochan.com',
+      external: true,
+    },
+  },
+  {
     title: 'Survival on the Island',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     description:
