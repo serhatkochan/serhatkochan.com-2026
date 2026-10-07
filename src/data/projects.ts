@@ -17,6 +17,17 @@ export type Project = {
 
 export const currentProjects: Project[] = [
   {
+    title: 'Mascot Reader',
+    techStack: ['Python 3.11', 'PySide6', 'PyTorch', 'EMA Lightning'],
+    description:
+      'Markdown belgelerini Türkçe seslendiren çevrimdışı Windows uygulaması. 10 animasyonlu masaüstü maskotu, zaman çubuğu, metinden atlama ve WAV dışa aktarma.',
+    link: {
+      label: 'mascot-reader.serhatkochan.com',
+      href: 'https://mascot-reader.serhatkochan.com',
+      external: true,
+    },
+  },
+  {
     title: 'Survival on the Island',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     description:
