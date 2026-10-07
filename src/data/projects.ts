@@ -28,6 +28,17 @@ export const currentProjects: Project[] = [
     },
   },
   {
+    title: 'Outvoters',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Vercel', 'Cloudflare'],
+    description:
+      'Steam hedefli indie ada ve eleme oyununun erken web prototipi. Kamp yaşamı, takım yarışmaları, yakınlık mikrofonu ve akşam konseyi bir arada. İnteraktif demoda kampını hazırla, atışını yap ve oylamaya katıl.',
+    link: {
+      label: 'outvoters.com',
+      href: 'https://outvoters.com',
+      external: true,
+    },
+  },
+  {
     title: 'Mascot Reader',
     techStack: ['Python 3.11', 'PySide6', 'PyTorch', 'EMA Lightning'],
     description:
@@ -46,17 +57,6 @@ export const currentProjects: Project[] = [
     link: {
       label: 'videoplayer.serhatkochan.com',
       href: 'https://videoplayer.serhatkochan.com',
-      external: true,
-    },
-  },
-  {
-    title: 'Survival on the Island',
-    techStack: ['HTML', 'CSS', 'JavaScript'],
-    description:
-      'Steam hedefli indie ada oyununun erken web prototipi. Kamp yaşamı, takım yarışmaları ve sosyal kararlar bir arada. İnteraktif demoda kampını hazırla, hedef atışını dene ve oylamaya katıl.',
-    link: {
-      label: 'survival-on-the-island.serhatkochan.com',
-      href: 'https://survival-on-the-island.serhatkochan.com',
       external: true,
     },
   },
