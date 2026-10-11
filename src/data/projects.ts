@@ -50,6 +50,17 @@ export const currentProjects: Project[] = [
     },
   },
   {
+    title: 'Mimo',
+    techStack: ['C#', '.NET 9', 'WPF', 'Windows'],
+    description:
+      'Windows masaüstü için küçük, sürüklenebilir Pomodoro uygulaması. 10 özgün animasyonlu maskot, odak ve mola döngüleri, özelleştirilebilir süreler ve kompakt zaman paneli.',
+    link: {
+      label: 'mimo.serhatkochan.com',
+      href: 'https://mimo.serhatkochan.com',
+      external: true,
+    },
+  },
+  {
     title: 'Video Player',
     techStack: ['Rust', 'egui / eframe', 'libmpv', 'FFmpeg'],
     description:
