@@ -3,6 +3,10 @@ export const BIPROMPTER_TAGLINE = 'Dynamic Island Teleprompter';
 export const BIPROMPTER_SITE_URL = 'https://biprompter.serhatkochan.com';
 export const BIPROMPTER_GITHUB_URL = 'https://github.com/serhatkochan/biprompter';
 export const BIPROMPTER_RELEASES_URL = 'https://github.com/serhatkochan/biprompter/releases';
+export const BIPROMPTER_VERSION = '1.0.1';
+export const BIPROMPTER_DOWNLOAD_URL = `${BIPROMPTER_RELEASES_URL}/latest/download/Biprompter-Setup.exe`;
+export const BIPROMPTER_PORTABLE_URL = `${BIPROMPTER_RELEASES_URL}/latest/download/Biprompter-Portable.exe`;
+export const BIPROMPTER_CHECKSUMS_URL = `${BIPROMPTER_RELEASES_URL}/latest/download/SHA256SUMS.txt`;
 export const BIPROMPTER_OG_IMAGE = '/biprompter/logo.png';
 export const BIPROMPTER_ICON = '/biprompter/app-icon.png';
 

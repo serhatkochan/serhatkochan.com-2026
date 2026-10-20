@@ -4,6 +4,10 @@
 
 - Website: https://biprompter.serhatkochan.com
 - GitHub Repo: https://github.com/serhatkochan/biprompter
+- Windows x64 kurulum exe: https://github.com/serhatkochan/biprompter/releases/latest/download/Biprompter-Setup.exe
+- Taşınabilir exe: https://github.com/serhatkochan/biprompter/releases/latest/download/Biprompter-Portable.exe
+- Sürümler: https://github.com/serhatkochan/biprompter/releases
+- Kullanım: Windows 10 / 11 (x64). Node.js veya Rust gerekmez. WebView2 Runtime gerekir; kurulum exe'si eksikse yükler. Ses modeli ilk kullanımda indirilir, ardından ses takibi çevrimdışı çalışır.
 - Geliştirici: Serhat Koçhan (https://www.serhatkochan.com)
 - Lisans: MIT
 
