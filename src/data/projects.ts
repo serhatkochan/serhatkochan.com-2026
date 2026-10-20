@@ -39,6 +39,20 @@ export const currentProjects: Project[] = [
     },
   },
   {
+    title: 'serhatkochan.com / 2026',
+    techStack: ['Astro', 'TypeScript', 'Tailwind CSS', 'MDX', 'React', 'View Transitions'],
+    description:
+      'Notion API bağımlılığından vazgeçilerek sıfırdan yazıldı. MDX içerik koleksiyonları, seçici React island\'ları, animasyonlu nokta arka planı ve SEO odaklı statik üretimle performans hedefli kişisel site.',
+    link: {
+      label: 'github.com',
+      href: 'https://github.com/serhatkochan/serhatkochan.com-2026',
+      external: true,
+    },
+  },
+];
+
+export const pastProjects: Project[] = [
+  {
     title: 'AgentHUD',
     techStack: ['Rust', 'Win32', 'Windows'],
     description:
@@ -104,20 +118,6 @@ export const currentProjects: Project[] = [
       external: true,
     },
   },
-  {
-    title: 'serhatkochan.com / 2026',
-    techStack: ['Astro', 'TypeScript', 'Tailwind CSS', 'MDX', 'React', 'View Transitions'],
-    description:
-      'Notion API bağımlılığından vazgeçilerek sıfırdan yazıldı. MDX içerik koleksiyonları, seçici React island\'ları, animasyonlu nokta arka planı ve SEO odaklı statik üretimle performans hedefli kişisel site.',
-    link: {
-      label: 'github.com',
-      href: 'https://github.com/serhatkochan/serhatkochan.com-2026',
-      external: true,
-    },
-  },
-];
-
-export const pastProjects: Project[] = [
   {
     title: 'serhatkochan.com / 2024',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Notion API', 'Framer Motion', 'Vercel OG'],
