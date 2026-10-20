@@ -39,6 +39,17 @@ export const currentProjects: Project[] = [
     },
   },
   {
+    title: 'AgentHUD',
+    techStack: ['Rust', 'Win32', 'Windows'],
+    description:
+      'Cursor, Codex ve Antigravity kalan haklarını gösteren şeffaf Windows çubuğu. WebView yok. Görev Yöneticisi\'nde yaklaşık 4 MB bellek.',
+    link: {
+      label: 'agenthud.serhatkochan.com',
+      href: 'https://agenthud.serhatkochan.com',
+      external: true,
+    },
+  },
+  {
     title: 'Mimo',
     techStack: ['C#', '.NET 9', 'WPF', 'Windows'],
     description:
